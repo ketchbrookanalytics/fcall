@@ -1,3 +1,21 @@
+grab_and_unzip <- function(url = "https://www.fca.gov/template-fca/bank/2020March.zip") {
+
+  # url = "https://www.fca.gov/template-fca/bank/2020March.zip"
+  
+  #TODO make this thing pull latest call report
+  
+  temp <- tempdir()
+  download.file(url = url, destfile = paste0(temp,"tempzip.zip"))
+  zipF <- paste0(temp,"tempzip.zip")
+  outDir <- "data"
+  unzip(zipF,exdir=outDir)
+  unlink(temp)
+  
+  
+  
+}
+
+
 get_data <- function(directory_name, file_prefix, year_desc = NULL) {
 
   # Define prefix for .TXT description & data files
