@@ -67,44 +67,14 @@ download_data <- function(year, month, dest, files = NULL) {
 }
 
 
-get_data <- function(directory_name, file_prefix, year_desc = NULL) {
+get_data <- function(dir, code) {
 
-  # Define prefix for .TXT description & data files
-  if (!is.null(year_desc)) {
-
-    desc_file_path <- list.files(
-      path = directory_name,
-      pattern = paste0(
-        "D_",
-        file_prefix,
-        "_",
-        year_desc,
-        ".TXT"
-      )
-    )
-
-  } else {
-
-    desc_file_path <- list.files(
-      path = directory_name,
-      pattern = paste0(
-        "D_",
-        file_prefix,
-        ".TXT"
-      )
-    )
-
-  }
+  schema_file_name <- paste0("D_", code, ".TXT")
 
   # Read lines from source .TXT file
-  lines <- suppressWarnings(
-    readLines(
-      paste0(
-        directory_name,
-        "/",
-        desc_file_path
-      )
-    )
+  lines <- readLines(
+    here::here(dir, schema_file_name),
+    warn = FALSE
   )
 
   # Get the line where the variables start
@@ -145,8 +115,8 @@ get_data <- function(directory_name, file_prefix, year_desc = NULL) {
   # print(schema)
 
   path_to_data <- list.files(
-    path = directory_name,
-    pattern = paste0(file_prefix, "_")
+    path = dir,
+    pattern = paste0("^", code, "_Q*")
   )
 
   if (length(path_to_data > 1)) {
@@ -157,7 +127,7 @@ get_data <- function(directory_name, file_prefix, year_desc = NULL) {
 
   # Read the data
   read.csv(
-    file = paste0(directory_name, "/", path_to_data),
+    file = here::here(dir, path_to_data),
     header = F,
     col.names = schema$vars,
     colClasses = schema$types
