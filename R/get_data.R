@@ -4,6 +4,9 @@
 #' @param month Integer, they month of the call report (e.g., 3)
 #' @param dest String, representing the directory where the data will be
 #'   downloaded into
+#' @param files (Optional) character vector, representing the names of the files
+#'   in the .zip archive to be downloaded. If left `NULL`, all files will be
+#'   downloaded.
 #'
 #' @details FCA publishes call reports are quarterly, and are typically dated
 #'   as "March", "June", "September", and "December". Therefore, valid values
@@ -22,10 +25,11 @@
 #'   download_data(
 #'     year = 2022,
 #'     month = 12,
-#'     dest = "data"
+#'     dest = "data",
+#'     c("D_INST.TXT", "D_RC.TXT")
 #'    )
 #' }
-download_data <- function(year, month, dest) {
+download_data <- function(year, month, dest, files = NULL) {
 
   # Example valid URL: "https://www.fca.gov/template-fca/bank/2020March.zip"
 
@@ -49,7 +53,7 @@ download_data <- function(year, month, dest) {
   # Un-zip the files into the directory defined by the `dest` argument
   unzip(
     zipfile = temp_path,
-    files = c("D_INST.TXT", "D_RC.TXT"),
+    files = files,
     exdir = dest
   )
 
