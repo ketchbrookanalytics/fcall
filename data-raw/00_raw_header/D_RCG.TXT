@@ -1,0 +1,35 @@
+     FILE LAYOUT FOR SCHEDULE RC-G AVERAGE DAILY AMOUNTS FOR THE QUARTER
+                           DATA DELIMITED BY COMMAS
+                                            
+                      
+				   VARIABLE    FIELD  DEC.     
+					   NAME     TYPE  POS.  VARIABLE DESCRIPTION                    
+			---------------  -------  ----  ---------------------                   
+					 SYSTEM  Numeric     0  System Code    	       	                
+					   DIST  Numeric     0  District Code                           
+					  ASSOC  Numeric     0  Association Code                        
+					  MONTH  Numeric     0  Month of Report               
+					   YEAR  Numeric     0  Year of Report              
+					 UNINUM  Numeric     0  System, District, and Association   
+											 codes concatenated
+				   AVACRLNS  Numeric     0  Accrual loans, sales contracts, notes,
+											 and leases
+				   AVAIRLNS  Numeric     0  Accrued interest receivable (loans)
+			 AVGOEARNASSETS  Numeric     0  Other Interest-Earning Assets 	   
+				   AVEARNAS  Numeric     0  Total Interest-Earning Assets
+				   AVNONACB  Numeric     0  Nonaccrual loans - Cash basis
+				   AVNONACO  Numeric     0  Nonaccrual loans - Other  
+				   AVAQPROP  Numeric     0  Other property owned
+					AVASSET  Numeric     0  Total Assets         
+				 AVSYSNTBDS  Numeric     0  Systemwide notes and bonds
+				AVNTPAYOFCI  Numeric     0  Notes payable to other FCS institutions
+			  AVGOBEARLIABS  Numeric     0  Other Interest-Bearing Liabilities
+				   AVBEARLI  Numeric     0  Total Interest-Bearing Liabilities
+				   AVGLIABS  Numeric     0  Total Liabilities    
+					AVNWRTH  Numeric     0  Total net worth 
+			AvLoanLeaseHeld  Numeric     0  Loans and leases held for sale
+  AvgDailyInvDebtSecurities	 Numeric     0  Investments: Debt securities
+ 	  AvgDailyInvEquityFCSI  Numeric     0  Investments: Equity investments in 
+											System institutions and Farmer Mac
+   AvgDailyInvEquityNonFCSI	 Numeric     0  Investments: Equity investments in 
+											non-System institutions

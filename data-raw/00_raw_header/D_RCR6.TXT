@@ -1,0 +1,57 @@
+          FILE LAYOUT FOR SCHEDULE RC-R.6 Permanent Capital Numerator
+                           DATA DELIMITED BY COMMA
+                 
+                              
+                  VARIABLE     FIELD  DEC.               
+                      NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+             --------------  -------  ----  --------------------
+                    SYSTEM   Numeric     0  System Code   
+                      DIST   Numeric     0  District Code
+                     ASSOC   Numeric     0  Association Code
+                     MONTH   Numeric     0  Month of Report
+                      YEAR   Numeric     0  Year of Report
+                    UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+     AvgDailyTotCCEPermCap   Numeric     0  CCEs included in Permanent Capital
+         AvgDailyPaidInCap   Numeric     0  Additions to Permanent Capital
+                                    	     Paid-in Capital (includes APIC)
+	       AvgDailyURE   Numeric     0  Additions To Permanent Capital
+                                    	     URE (Sch. RC-R.4 item 3)
+        AvgDailyPrefStkAT1   Numeric     0  Additions To Permanent Capital
+                                    	     Capital items previously approved by FCA
+                                    	      Noncumulative perpetual preferred stock
+ AvgDailyTotPrefStkSubDebt   Numeric     0  Additions To Permanent Capital
+                                    	     Capital items previously approved by FCA
+                                    	      Other preferred stock and subordinated debt
+  AvgDailyOtherPerpPrefStk   Numeric     0  Additions To Permanent Capital
+                                    	     Capital items previously approved by FCA
+                                    	      Other perpetual preferred stock
+   AvgDailyTotAprvdPermCap   Numeric     0  Additions To Permanent Capital
+                                    	     Capital items previously approved by FCA
+                                    	      Total capital items previously approved by FCA
+   AvgDailyOtherAddPermCap   Numeric     0  Additions To Permanent Capital
+                                    	     Additional items approved by FCA
+     AvgDailyTotAddPermCap   Numeric     0  Additions To Permanent Capital
+                                    	     Total Additions to Permanent Capital
+     AvgDailyPermCapBfrDed   Numeric     0  Permanent Capital before deductions
+	  AvgDailyGoodwill   Numeric     0  Deductions to Permanent Capital
+                                    	     Less: Goodwill – net of associated DTLs
+       AvgDailyDTACarryFwd   Numeric     0  Deductions To Permanent Capital
+                                    	     Less: DTAs
+   AvgDailyAllocInvPermCap   Numeric     0  Deductions To Permanent Capital
+                                    	     Less: Amount of allocated investments allotted to 
+                                    	     other System institutions per § 615.5208
+AvgDailyPurcInvFCSIPermCap   Numeric     0  Deductions to Permanent Capital
+                                    	     Less: Amount of purchased investments in other 
+                                    	     System institutions
+  AvgDailyTermStkSubDebtPO   Numeric     0  Deductions to Permanent Capital
+                                    	     Less: Phased-out amount of limited life preferred 
+                                    	     stock and subordinated debt
+     AvgDailyExcessPermCap   Numeric     0  Deductions to Permanent Capital
+                                    	     Less: Excess above third–party capital limits
+   AvgDailyOtherDedPermCap   Numeric     0  Deductions to Permanent Capital
+                                    	     Less: Other deductions required by FCA
+     AvgDailyTotDedPermCap   Numeric     0  Deductions to Permanent Capital
+                                    	     Total Deductions
+		  AVPRMCAP   Numeric     0  Total Permanent Capital
+

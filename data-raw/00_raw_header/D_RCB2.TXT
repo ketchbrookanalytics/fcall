@@ -1,0 +1,52 @@
+         FILE LAYOUT FOR SCHEDULE RC-B.2 Assets Held for Liquidity
+										(Applicable to banks only)  
+                    DATA DELIMITED BY COMMA        
+                                      
+       VARIABLE    FIELD  DEC.     
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code      
+           DIST  Numeric     0  District Code   
+          ASSOC  Numeric     0  Association Code  
+          MONTH  Numeric     0  Month of Report             
+           YEAR  Numeric     0  Year of Report             
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+** AssetCodeRCB2  Numeric    0  Asset Code for Assets Held for Liquidity 
+				110  Level 1: Cash
+                120  Level 1: Overnight money market instruments
+				130  Level 1: U.S. Government obligations ? 3years 
+								remaining maturity
+                140  Level 1: GSE senior debt ? 60 days remaining maturity
+				150  Level 1: Diversified investments funds comprised
+								of Level 1 securities
+                160  Level 1: Subtotal
+					
+				210  Level 2: U.S. Government obligations > 3 year
+								remaining maturity
+				220  Level 2: MBS fully and explicitly guaranteed
+								(both P&I) by U.S. Government
+                230  Level 2: Diversified investment funds comprised
+								of Levels 1 and 2 securities
+                240  Level 2: Subtotal
+                                       
+                310  Level 3: GSE senior debt > 60 days remaining maturity
+                320  Level 3: MBS fully guaranteed (both P&I) by a GSE
+
+                330  Level 3: Money market instruments ? 90 day remaining maturity
+				340  Level 3: Diversified investments funds comprised of Levels 1,
+								2, and 3 securities
+				350  Level 3: Subtotal
+				
+				410  Supplemental liquidity buffer
+				
+				510  Total
+          
+			** AmortizedCost   Numeric    0  Amortized cost of Assets Held for Liquidity
+				** FairValue   Numeric    0  Fair Value of Assets Held for Liquidity  
+	  ** DiscountedFairValue   Numeric    0  Discounted Fair Value of Assets Held for Liquidity
+ ** LiquidityDaysForCategory   Numeric    0  Days of Liquidity For Category
+
+                                    
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH INV_CODE VALUE.

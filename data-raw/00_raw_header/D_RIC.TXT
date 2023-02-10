@@ -1,0 +1,24 @@
+                 FILE LAYOUT FOR SCHEDULE RI-C OPERATING EXPENSES
+                           DATA DELIMITED BY COMMAS
+                                              
+                                       
+         VARIABLE    FIELD  DEC.         
+             NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code
+             DIST  Numeric     0  District Code
+            ASSOC  Numeric     0  Association Code
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, District, and Association 
+                                   codes concatenated
+        EXPSALARY  Numeric     0  Salaries and Employee Benefits
+           EXPDIR  Numeric     0  Directors' Compensation
+          EXPBLDG  Numeric     0  Occupancy and Equipment Expense
+          EXPSERV  Numeric     0  Purchased Services
+            EXPDP  Numeric     0  Data Processing
+          EXPCOMP  Numeric     0  Compensation
+         EXPFCSIC  Numeric     0  Farm Credit System Insurance
+                                   Corp. premium expense
+             OEXP  Numeric     0  Other Operating Expenses
+          OPEREXP  Numeric     0  Total Operating Expenses

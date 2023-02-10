@@ -1,0 +1,25 @@
+           FILE LAYOUT FOR SCHEDULE RC-M OTHER PROPERTY OWNED 
+                       ACTIVITY RECONCILEMENT
+                      DATA DELIMITED BY COMMAS
+                                                
+                                   
+       VARIABLE    FIELD  DEC.          
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------
+         SYSTEM  Numeric     0  System Code   
+           DIST  Numeric     0  District Code  
+          ASSOC  Numeric     0  Association Code
+          MONTH  Numeric     0  Month of Report
+           YEAR  Numeric     0  Year of Report
+         UNINUM  Numeric     0  System, District, and Association   
+                                 codes concatenated
+    ACQPROPBBAL  Numeric     0  Other Property Owned-Beginning Balance
+  TRANSACQPROPT  Numeric     0  Gross Amounts Transferred in from
+                                 Other Property Owned
+     ACQPROPDEP  Numeric     0  Amounts Depreciated on Other
+                                 Property Owned
+    ACQPROPDISP  Numeric     0  Properties Disposed of
+  CHGOFFACQPROP  Numeric     0  Net chargeoffs/write-ups on Other
+                                 Property Owned
+       OACQPROP  Numeric     0  Other - Other Property Owned
+        ACQPROP  Numeric     0  Other Property Owned-Ending Balance
