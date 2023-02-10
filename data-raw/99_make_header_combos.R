@@ -1,5 +1,6 @@
 
 library(dplyr)
+library(readr)
 library(tidyr)
 
 
@@ -37,6 +38,22 @@ b <- c(
   350,410,510
 )
 
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCB3 --------------------------------------------------------------------
+
+a <- c(
+  "_name", "_SystemwideDebt", "_OtherBankDebt", "_TotalDebt"
+)
+
+b <- c(
+  110,120,130,140,150,160,170,180,185,190
+)
 
 tidyr::expand_grid(b,a) |>
   dplyr::arrange(b) |>
