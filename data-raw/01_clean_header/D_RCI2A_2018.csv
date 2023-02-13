@@ -1,0 +1,10 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+CreditDerivNVCDS,    Numeric,0,
+CreditDerivNVOther,    Numeric,0,
+CreditDerivNVNotRskMtgnt,    Numeric,0,

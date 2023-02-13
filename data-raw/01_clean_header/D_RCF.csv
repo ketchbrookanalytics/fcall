@@ -1,0 +1,37 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+10_name,    Numeric,0,
+10_NOTPDUE,    Numeric,0,
+10_PDUE30,    Numeric,0,
+10_PDUE90,    Numeric,0,
+10_TOTPDUE,    Numeric,0,
+20_name,    Numeric,0,
+20_NOTPDUE,    Numeric,0,
+20_PDUE30,    Numeric,0,
+20_PDUE90,    Numeric,0,
+20_TOTPDUE,    Numeric,0,
+54_name,    Numeric,0,
+54_NOTPDUE,    Numeric,0,
+54_PDUE30,    Numeric,0,
+54_PDUE90,    Numeric,0,
+54_TOTPDUE,    Numeric,0,
+56_name,    Numeric,0,
+56_NOTPDUE,    Numeric,0,
+56_PDUE30,    Numeric,0,
+56_PDUE90,    Numeric,0,
+56_TOTPDUE,    Numeric,0,
+60_name,    Numeric,0,
+60_NOTPDUE,    Numeric,0,
+60_PDUE30,    Numeric,0,
+60_PDUE90,    Numeric,0,
+60_TOTPDUE,    Numeric,0,
+80_name,    Numeric,0,
+80_NOTPDUE,    Numeric,0,
+80_PDUE30,    Numeric,0,
+80_PDUE90,    Numeric,0,
+80_TOTPDUE,    Numeric,0,

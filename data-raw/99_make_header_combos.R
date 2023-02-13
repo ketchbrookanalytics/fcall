@@ -59,3 +59,109 @@ tidyr::expand_grid(b,a) |>
   dplyr::arrange(b) |>
   dplyr::mutate(ans = paste0(b,a)) |>
   readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCF ---------------------------------------------------------------------
+
+a <- c("_name", "_NOTPDUE", "_PDUE30",
+       "_PDUE90", "_TOTPDUE"
+)
+
+b <- c(
+  10,20,54,56,60,80
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCF1 --------------------------------------------------------------------
+
+a <- c(
+  "_name", "_ACCR", "_ACCRPDUE",
+  "_FRMREST", "_NONCSH", "_NONOTH",
+  "_TOTPERF"
+)
+
+b <- c(
+  100,105,110,115,120,125,130,135,140,145,150,152,155
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCI2B_2018 --------------------------------------------------------------
+
+a <- c(
+  "_name", "_DerivIntRate", "_DerivFX",
+  "_DerivOther"
+)
+
+b <- c(
+  10,20,30,40,50,60,70,80,90,100,110,120,130,140,
+  150,160,170,180,190,200,210,220,230
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCI2C_2018 --------------------------------------------------------------
+
+a <- c(
+  "_name", "_ExposureCleared",
+  "_ExposureNonCleared"
+)
+
+b <- c(
+  10,20,30,40,50,70,80,90,100,110,120,140
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+
+
+# RCI2D_2018 --------------------------------------------------------------
+
+a <- c(
+  "_name", "_DerivRMLE1Yr",
+  "_DerivRMGT1YrLE5Yr",
+  "_DerivRMGT5Yr"
+)
+
+b <- c(
+  10,20,30,40,50,60,70,80,90,100,110
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCO ---------------------------------------------------------------------
+
+a <- c(
+  "_ASSET_CODE", "_TRANSWFCI",
+  "_TRANSWNONFCI"
+)
+
+b <- c(
+  10,20,30,40,50,60,70,80,90,100,110,120
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
