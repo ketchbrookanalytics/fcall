@@ -1,0 +1,13 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+CET1Ratio,    Numeric,0,
+Tier1Ratio,    Numeric,0,
+TotRegCapRatio,    Numeric,0,
+Tier1LvrgRatio,    Numeric,0,
+UREandEquivLvrgRatio,    Numeric,0,
+PERMCAPD,    Numeric,0,

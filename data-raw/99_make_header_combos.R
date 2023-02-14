@@ -165,3 +165,61 @@ tidyr::expand_grid(b,a) |>
   dplyr::arrange(b) |>
   dplyr::mutate(ans = paste0(b,a)) |>
   readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCR3 --------------------------------------------------------------------
+
+a <- c(
+  "_RegCapCode", "_AvgDailyCCECET1", "_AvgDailyCCETier2",
+  "_AvgDailyCCETotRegCap", "_AvgDailyCCEPermCap"
+)
+
+b <- c(
+  100,210,220,230,310,320,330,410,420,430,510,520,530,540,600
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RCR7 --------------------------------------------------------------------
+
+a <- c(
+  "_RegCapCode", "_AvgDailyCreditExposure", "_CreditConvFactor",
+  "_CreditEquil", "_RW0Pct", "_RW2Pct", "_RW4Pct",
+  "_RW10Pct", "_RW20Pct", "_RW50Pct", "_RW100Pct",
+  "_RW100Pct", "_RW150Pct", "_RW600Pct", "_RW625Pct",
+  "_RW937pt5Pct", "_RW1250Pct", "_RWSSFACalc", "_RWGrossUpCalc",
+
+)
+
+b <- c(
+  100,210,220,310,320,410,420,430,510,520,600,700,800,900,1000,
+  1110,1120,1200,1310,1320,1330,1400,1500,1600,1700,1800,1900,2000,2100
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
+
+
+# RID ---------------------------------------------------------------------
+
+a <- c(
+  "_CAP_CODE", "_CapStkPurch", "_CAPSTKALLOC",
+  "_PREFSTKPERP", "_PREFSTKO", "_PAIDIN",
+  "_ALSUR", "_NQASSubj2Retire", "_NQASNotSubj2Retire",
+  "_UNRETERN", "_ACNOCOMINC", "_TOTNW"
+)
+
+b <- c(
+  10,25,35,45,80,70,75,85,95,105,120,130
+)
+
+tidyr::expand_grid(b,a) |>
+  dplyr::arrange(b) |>
+  dplyr::mutate(ans = paste0(b,a)) |>
+  readr::write_csv("~/Desktop/foo.csv")
