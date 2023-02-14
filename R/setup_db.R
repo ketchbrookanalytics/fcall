@@ -5,9 +5,10 @@ con <- DBI::dbConnect(
 
 )
 
+# Create "institution" schema for the `INST.txt` file
 glue::glue_sql(
   "
-  CREATE TABLE inst (
+  CREATE TABLE institution (
     system int NOT NULL,
     district int NOT NULL,
     association int NOT NULL,
@@ -25,7 +26,7 @@ glue::glue_sql(
 )
 
 
-upload_INST <- function(data) {
+upload_institution <- function(data) {
 
 
 
