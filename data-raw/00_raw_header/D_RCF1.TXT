@@ -1,0 +1,39 @@
+            FILE LAYOUT FOR SCHEDULE RC-F1 PERFORMANCE OF LOANS, NOTES,
+                           SALES CONTRACTS, AND LEASES
+                             DATA DELIMITED BY COMMAS
+                                                   
+                                    
+       VARIABLE    FIELD  DEC.      
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  -------------  -------  ----  ---------------------
+         SYSTEM  Numeric     0  System Code
+           DIST  Numeric     0  District Code 
+          ASSOC  Numeric     0  Association Code 
+          MONTH  Numeric     0  Month of Report
+           YEAR  Numeric     0  Year of Report
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated               
+  ** LOANSTATUS  Numeric     0  Code for Loan Performance Status: 
+                                 100 Production Agribulture: Real Estate
+                                 105 Production Agribulture: Production
+                                      and Intermediate Term
+                                 110 Agribusiness
+                                 115 Communication
+                                 120 Energy
+                                 125 Water/Waste disposal
+                                 130 Rural residential real estate
+                                 135 International
+                                 140 Lease receivables
+                                 145 Direct loans to associations
+                                 150 Discounted loans to OFIs
+				 152 Other loans
+                                 155 Total
+  **       ACCR  Numeric     0  Accruing Loans
+  **   ACCRPDUE  Numeric     0  Accruing 90 days or more past due
+  **    FRMREST  Numeric     0  Formally restructured accruing
+  **     NONCSH  Numeric     0  Nonaccrual cash basis
+  **     NONOTH  Numeric     0  Nonaccrual other
+  **    TOTPERF  Numeric     0  Total
+            
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH LOANSTATUS CODE.

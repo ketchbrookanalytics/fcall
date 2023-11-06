@@ -1,0 +1,34 @@
+         FILE LAYOUT FOR SCHEDULE RC-B.3 Demands on Liquidity
+					(Applicable to banks and block-funded associations only)  
+                    DATA DELIMITED BY COMMA        
+                                      
+       VARIABLE    FIELD  DEC.     
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code      
+           DIST  Numeric     0  District Code   
+          ASSOC  Numeric     0  Association Code  
+          MONTH  Numeric     0  Month of Report             
+           YEAR  Numeric     0  Year of Report             
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+** DebtMaturityCode  Numeric    0  DebtMaturity code for Demands on Liquidity
+				110  <8 days
+                120  8-15 days
+				130  16-30 days
+                140  31-45 days
+				150  46-90 days
+                160  91-120 day
+				170  121-150 days
+				180  >150 days	
+				185  Unamortized discount or premium and
+						unamortized debt issuance costs
+				190  Total
+          
+** SystemwideDebt   Numeric    0  Consolidated Systemwide Debt Obligation
+ ** OtherBankDebt   Numeric    0  Other Bank Borrowings
+	 ** TotalDebt   Numeric    0  Total
+
+                                    
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH INV_CODE VALUE.

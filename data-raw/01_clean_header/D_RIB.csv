@@ -1,0 +1,24 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+GLMKTINV,    Numeric,0,
+GAINMKTINV,    Numeric,0,
+LOSSMKTINV,    Numeric,0,
+GLAQPROP,    Numeric,0,
+GAINACQPROP,    Numeric,0,
+LOSSACQPROP,    Numeric,0,
+NETGLOASSETS,    Numeric,0,
+GAINOASSETS,    Numeric,0,
+LOSSOASSETS,    Numeric,0,
+NETGLOTRAN,    Numeric,0,
+GAINOTRAN,    Numeric,0,
+LOSSOTRAN,    Numeric,0,
+NETGLASSETS,    Numeric,0,
+NETIMPAIRLOSS,    Numeric,0,
+LoanLeaseSaleNetGain,    Numeric,0,
+LoanLeaseSaleGain,    Numeric,0,
+LoanLeaseSaleLoss,    Numeric,0,

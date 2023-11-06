@@ -1,0 +1,43 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+10_name,    Numeric,0,
+10_ExposureCleared,    Numeric,0,
+10_ExposureNonCleared,    Numeric,0,
+20_name,    Numeric,0,
+20_ExposureCleared,    Numeric,0,
+20_ExposureNonCleared,    Numeric,0,
+30_name,    Numeric,0,
+30_ExposureCleared,    Numeric,0,
+30_ExposureNonCleared,    Numeric,0,
+40_name,    Numeric,0,
+40_ExposureCleared,    Numeric,0,
+40_ExposureNonCleared,    Numeric,0,
+50_name,    Numeric,0,
+50_ExposureCleared,    Numeric,0,
+50_ExposureNonCleared,    Numeric,0,
+70_name,    Numeric,0,
+70_ExposureCleared,    Numeric,0,
+70_ExposureNonCleared,    Numeric,0,
+80_name,    Numeric,0,
+80_ExposureCleared,    Numeric,0,
+80_ExposureNonCleared,    Numeric,0,
+90_name,    Numeric,0,
+90_ExposureCleared,    Numeric,0,
+90_ExposureNonCleared,    Numeric,0,
+100_name,    Numeric,0,
+100_ExposureCleared,    Numeric,0,
+100_ExposureNonCleared,    Numeric,0,
+110_name,    Numeric,0,
+110_ExposureCleared,    Numeric,0,
+110_ExposureNonCleared,    Numeric,0,
+120_name,    Numeric,0,
+120_ExposureCleared,    Numeric,0,
+120_ExposureNonCleared,    Numeric,0,
+140_name,    Numeric,0,
+140_ExposureCleared,    Numeric,0,
+140_ExposureNonCleared,    Numeric,0,

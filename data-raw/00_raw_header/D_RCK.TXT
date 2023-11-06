@@ -1,0 +1,37 @@
+                FILE LAYOUT FOR SCHEDULE RC-K ACCRUAL LOAN ACTIVITY
+                 RECONCILEMENT FOR LOANS, LEASES, NOTES RECEIVABLE,
+                                 AND SALES CONTRACTS
+                             DATA DELIMITED BY COMMAS
+                                      
+                         
+       VARIABLE    FIELD  DEC.                                          
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION                    
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code                             
+           DIST  Numeric     0  District Code                           
+          ASSOC  Numeric     0  Association Code                        
+          MONTH  Numeric     0  Month of Report              
+           YEAR  Numeric     0  Year of Report                
+         UNINUM  Numeric     0  System, District, and Association   
+                                 Codes concatenated
+     ACRLNSBBAL  Numeric     0  Accrual Loans-Beginning Balance         
+       NEWMONEY  Numeric     0  Direct New Money                        
+       PRTLNPUR  Numeric     0  Purchases of Loans and Participations   
+        CONVAIR  Numeric     0  Conversions of Accrued Interest         
+       PRINADDS  Numeric     0  Refinancing of Principal                
+       REINSTNA  Numeric     0  Reinstatements from Nonaccrual Status   
+       RECACRLN  Numeric     0  Recoveries/Reinstatements of            
+                                 Chargeoffs
+          OADDS  Numeric     0  Other Debits                            
+          REPAY  Numeric     0  Repayments        
+       PRTLNSLD  Numeric     0  Sales of Loans and Participations       
+       PRINSUBS  Numeric     0  Refinancing of Principal                
+       TRNONACR  Numeric     0  Transfers to Nonaccrual Status          
+       TRAQPROP  Numeric     0  Transfers to Other Property Owned       
+       COACRLNS  Numeric     0  Chargeoffs       
+          OSUBS  Numeric     0  Other Credits                           
+       ACRLNSEB  Numeric     0  Accrual Loans-Ending Balance            
+       VTNGSTKH  Numeric     0  Voting Stockholders                     
+      NVTNGSTKH  Numeric     0  Nonvoting Stockholders                  
+      SECMKTLNS  Numeric     0  Secondary market loans (made/acquired 
+                                 during period)

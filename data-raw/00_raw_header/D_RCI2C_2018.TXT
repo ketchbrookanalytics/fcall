@@ -1,0 +1,47 @@
+				FILE LAYOUT FOR SCHEDULE RC-I.2 Off-Balance Sheet Derivative Contracts: 
+						Fair Value Counterparty Exposures Including Impact of Netting Agreements)
+								 DATA DELIMITED BY COMMAS
+													   										
+		   VARIABLE    FIELD  DEC.      
+			   NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+	  -------------  -------  ----  ---------------------
+			 SYSTEM  Numeric     0  System Code
+			   DIST  Numeric     0  District Code 
+			  ASSOC  Numeric     0  Association Code 
+			  MONTH  Numeric     0  Month of Report
+			   YEAR  Numeric     0  Year of Report
+			 UNINUM  Numeric     0  System, District, and Association codes concatenated               
+	** ExposureCode  Numeric     0  Code for Fair Value Counterparty Exposures 
+										(Including Impact of Netting Agreements):
+									 10  Institution’s Exposure to Counterparties after netting: 
+											Derivative contracts in a gain position
+									 20  Institution’s Exposure to Counterparties after netting: 
+											Initial margin posted by counterparties - Cash
+									 30  Institution’s Exposure to Counterparties after netting: 
+											Initial margin posted by counterparties - Securities
+									 40  Institution’s Exposure to Counterparties after netting: 
+											Variation margin or settlement payments posted by counterparties - Cash
+									 50  Institution’s Exposure to Counterparties after netting: 
+											Variation margin or settlement payments posted by counterparties - Securities
+									 70  Institution’s Exposure to Counterparties after netting: 
+											Institution’s exposure to counterparties (item 10(a) minus (items 10(b) through 10(e))
+									 80  Counterparties’ Exposure to Institution after netting: 
+											Derivative contracts in a loss position
+									 90  Counterparties’ Exposure to Institution after netting: 
+											Initial margin posted by counterparties - Cash
+									 100 Counterparties’ Exposure to Institution after netting: 
+											Initial margin posted by counterparties - Securities
+									 110 Counterparties’ Exposure to Institution after netting: 
+											Variation margin or settlement payments posted by counterparties - Cash
+									 120 Counterparties’ Exposure to Institution after netting: 
+											Variation margin or settlement payments posted by counterparties - Securities
+									 140 Counterparties’ Exposure to Institution after netting: 
+											Counterparty exposure to institution (item 11(a) minus (items 11(b) through 11(e))
+								 
+**    ExposureCleared  Numeric     0  Cleared
+
+** ExposureNonCleared  Numeric     0  Non-cleared
+
+            
+**  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+		 VARIABLES.  THERE IS ONE OCCURENCE FOR EACH ExposureCode CODE.

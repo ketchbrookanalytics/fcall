@@ -1,0 +1,17 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+AvgDailyAssets,    Numeric,0,
+AvgDailyCET1AT1Ded,    Numeric,0,
+AvgDailyOtherAdjLvrg,    Numeric,0,
+AvgDailyAssetsLvrg,    Numeric,0,
+AvgDailyPaidInCap,    Numeric,0,
+AvgDailyURE,    Numeric,0,
+AvgDailyNQASNotSubj2RetireCCECET1,    Numeric,0,
+AvgDailyAllocEquityFCSI,    Numeric,0,
+AvgDailyCertainCET1Ded,    Numeric,0,
+AvgDailyUREandEquiv,    Numeric,0,

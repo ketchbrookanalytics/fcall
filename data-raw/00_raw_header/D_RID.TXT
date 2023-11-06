@@ -1,0 +1,49 @@
+	                 FILE LAYOUT FOR SCHEDULE RI-D CHANGES IN NET WORTH
+	                             DATA DELIMITED BY COMMAS
+    
+                                
+	         VARIABLE    FIELD  DEC.         
+	             NAME     TYPE  POS.  VARIABLE DESCRIPTION
+	  ---------------  -------  ----  --------------------------------------
+ 	          SYSTEM  Numeric     0  System Code
+	             DIST  Numeric     0  District Code
+	            ASSOC  Numeric     0  Association Code
+	            MONTH  Numeric     0  Month of Report
+	             YEAR  Numeric     0  Year of Report
+	           UNINUM  Numeric     0  System, District, and Association 
+                                   codes concatenated
+	     **  CAP_CODE  Numeric     0  Capital Stock Code: 
+	                                   10  Beginning balance
+	                                   25  Prior Period & Accounting Adjustments
+	                                   35  Net Income
+	                                   45  Other Comprehensive Income
+       	                                   80  Patronage Distributions
+ 	   	                           70  Dividends
+  	                                   75  Stock Issued
+                                	   85  Stock Retired
+                        	           95  Paid-in Capital Adjustments
+                	                   105 Allocated Equity Retired
+        	                           120 Other
+	                                   130 Ending balance
+    **        CapStkPurch  Numeric     0  Capital Stock:
+					    Purchased
+    **        CAPSTKALLOC  Numeric     0  Capital Stock:
+					    Allocated
+    **        PREFSTKPERP  Numeric     0  Perpetual Preferred Stock
+					    Noncumulative
+    **           PREFSTKO  Numeric     0  Perpetual Preferred Stock
+					    Other
+    **    	   PAIDIN  Numeric     0  Paid-In Capital
+    **     	    ALSUR  Numeric     0  Allocated Surplus:
+					    Qualified
+    **    NQASSubj2Retire  Numeric     0  Allocated Surplus:
+					    Nonqualified Subject To Retirement
+    ** NQASNotSubj2Retire  Numeric     0  Allocated Surplus:
+					    Nonqualified Not Subject To Retirement
+    **           UNRETERN  Numeric     0  Unallocated Retained Earnings
+    **         ACNOCOMINC  Numeric     0  Accumulated other comprehensive income (AOCI)
+    **	            TOTNW  Numeric     0  Total Net Worth
+
+                                                   
+  ** NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+            VARIABLES.  THERE IS ONE OCCURENCE FOR EACH CAP_CODE VALUE.

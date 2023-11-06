@@ -1,0 +1,36 @@
+           FILE LAYOUT FOR SCHEDULE RC-I.1 Off-Balance Sheet Commitments, Contingencies, and Other Items (Excluding Derivatives)         
+                             DATA DELIMITED BY COMMAS
+                                              
+                       
+					  VARIABLE    FIELD  DEC.                                          
+						  NAME     TYPE  POS.  VARIABLE DESCRIPTION                    
+				 -------------  -------  ----  ---------------------                   
+						SYSTEM  Numeric     0  System Code                             
+						  DIST  Numeric     0  District Code                           
+						 ASSOC  Numeric     0  Association Code                        
+						 MONTH  Numeric     0  Month of Report            
+						  YEAR  Numeric     0  Year of Report        
+						UNINUM  Numeric     0  System, District, and Association codes concatenated
+
+   	  UnusedCommitUncondCancel  Numeric     0  Unused Commitments: Retail loans to borrowers - unconditionally cancellable 
+                                 
+         UnusedCommitLE14Month  Numeric     0  Unused Commitments: Retail loans to borrowers – 14 months or less (excludes unconditionally cancellable)
+                                 
+         UnusedCommitGT14Month  Numeric     0  Unused Commitments: Retail loans to borrowers – greater than 14 months (excludes unconditionally cancellable)
+
+		UnusedCommitDirectLoan  Numeric     0  Unused Commitments: Direct loans to associations/OFIs (bank only)
+
+		LetterCrdtFinclStandby  Numeric     0  Letters of Credit: Financial standby letters of credit
+		
+         LetterCrdtPerfStandby  Numeric     0  Letters of Credit: Performance standby letters of credit
+		 
+          LetterCrdtCommercial  Numeric     0  Letters of Credit: Commercial and other similar letters of credit
+		  
+     Commit2PurchWhenIssuedTBA  Numeric     0  Commitments to purchase “when issued” or “to-be announced” securities
+	 
+			  AssetServBalance  Numeric     0  Assets Serviced for Others: Total principal outstanding
+			  
+			AssetServTotCommit  Numeric     0  Assets Serviced for Others: Total commitment
+			
+     OtherOBSCommitContingency  Numeric     0  Other Material Off-Balance Sheet Commitments and Contingencies (include only if greater than $10 million or 10% of net worth – whichever is less)
+   

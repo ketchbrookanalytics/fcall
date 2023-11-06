@@ -1,0 +1,20 @@
+        FILE LAYOUT FOR SCHEDULE RC-R.2 SUMMARY - REGULATORY CAPITAL RATIOS
+                              DATA DELIMITED BY COMMA
+                 
+                               
+                 VARIABLE     FIELD  DEC.               
+                     NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+            --------------  -------  ----  --------------------
+                   SYSTEM   Numeric     0  System Code   
+                     DIST   Numeric     0  District Code
+                    ASSOC   Numeric     0  Association Code
+                    MONTH   Numeric     0  Month of Report
+                     YEAR   Numeric     0  Year of Report
+                   UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+                CET1Ratio   Numeric     2  Common Equity Tier 1 capital ratio
+               Tier1Ratio   Numeric     2  Tier 1 capital ratio
+           TotRegCapRatio   Numeric     2  Total regulatory capital ratio
+           Tier1LvrgRatio   Numeric     2  Tier 1 leverage ratio
+     UREandEquivLvrgRatio   Numeric     2  URE and URE equivalents leverage ratio
+                 PERMCAPD   Numeric     2  Permanent capital ratio 

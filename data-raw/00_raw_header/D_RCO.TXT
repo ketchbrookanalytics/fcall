@@ -1,0 +1,42 @@
+         FILE LAYOUT FOR SCHEDULE RC-O ASSET PURCHASES AND SALES
+                              DATA DELIMITED BY COMMAS  
+                                               
+                                      
+       VARIABLE    FIELD  DEC.     
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code      
+           DIST  Numeric     0  District Code   
+          ASSOC  Numeric     0  Association Code  
+          MONTH  Numeric     0  Month of Report             
+           YEAR  Numeric     0  Year of Report             
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+   **  ASSET_CODE  Numeric   0  Code for Asset Type: 
+                                   10  Loan participations: Purchased
+                                   20  Loan participations: Sold
+                                   30  Similar entity transactions: Acquired
+				       On Interest Held
+                                   40  Similar entity transactions: Sold
+                                   50  Lease interest purchases and sales:
+                                       Purchased
+                                   60  Lease interest purchases and sales:
+                                       Sold
+                                   70  Other asset purchases and sales:
+                                       Purchased
+                                   80  Other asset purchases and sales:
+                                       Sold
+				   90  Participations in Notes Receivables:
+                                       Purchased
+				  100  Participations in Notes Receivables:
+                                       Sold	
+				  110  Asset Purchases and Sales - Certain Pool Items:
+				       Purchased
+				  120  Asset Purchases and Sales - Certain Pool Items:
+                                       Sold
+             
+**    TRANSWFCI  Numeric     0  Amortized cost
+** TRANSWNONFCI  Numeric     0  Fair Value
+                                    
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH ASSET_CODE VALUE.

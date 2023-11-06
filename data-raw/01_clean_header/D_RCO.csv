@@ -1,0 +1,43 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+10_ASSET_CODE,    Numeric,0,
+10_TRANSWFCI,    Numeric,0,
+10_TRANSWNONFCI,    Numeric,0,
+20_ASSET_CODE,    Numeric,0,
+20_TRANSWFCI,    Numeric,0,
+20_TRANSWNONFCI,    Numeric,0,
+30_ASSET_CODE,    Numeric,0,
+30_TRANSWFCI,    Numeric,0,
+30_TRANSWNONFCI,    Numeric,0,
+40_ASSET_CODE,    Numeric,0,
+40_TRANSWFCI,    Numeric,0,
+40_TRANSWNONFCI,    Numeric,0,
+50_ASSET_CODE,    Numeric,0,
+50_TRANSWFCI,    Numeric,0,
+50_TRANSWNONFCI,    Numeric,0,
+60_ASSET_CODE,    Numeric,0,
+60_TRANSWFCI,    Numeric,0,
+60_TRANSWNONFCI,    Numeric,0,
+70_ASSET_CODE,    Numeric,0,
+70_TRANSWFCI,    Numeric,0,
+70_TRANSWNONFCI,    Numeric,0,
+80_ASSET_CODE,    Numeric,0,
+80_TRANSWFCI,    Numeric,0,
+80_TRANSWNONFCI,    Numeric,0,
+90_ASSET_CODE,    Numeric,0,
+90_TRANSWFCI,    Numeric,0,
+90_TRANSWNONFCI,    Numeric,0,
+100_ASSET_CODE,    Numeric,0,
+100_TRANSWFCI,    Numeric,0,
+100_TRANSWNONFCI,    Numeric,0,
+110_ASSET_CODE,    Numeric,0,
+110_TRANSWFCI,    Numeric,0,
+110_TRANSWNONFCI,    Numeric,0,
+120_ASSET_CODE,    Numeric,0,
+120_TRANSWFCI,    Numeric,0,
+120_TRANSWNONFCI,    Numeric,0,

@@ -1,0 +1,24 @@
+    FILE LAYOUT FOR SCHEDULE RC-L NONACCRUAL LOAN ACTIVITY RECONCILEMENT
+                             DATA DELIMITED BY COMMAS   
+                                                
+                             
+       VARIABLE    FIELD  DEC.         
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  -------------  -------  ----  -------------------- 
+         SYSTEM  Numeric     0  System Code
+           DIST  Numeric     0  District Code 
+          ASSOC  Numeric     0  Association Code 
+          MONTH  Numeric     0  Month of Report
+           YEAR  Numeric     0  Year of Report
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+     NONACRBBAL  Numeric     0  Nonaccrual Loans-Beginning Balance
+   TRANSNONACRN  Numeric     0  Gross Amounts Transferred into
+                                 Nonaccrual
+   CHGOFFNONACR  Numeric     0  Chargeoffs on Nonaccrual Loans
+  TRANSACQPROPN  Numeric     0  Transfers to Other Property Owned
+ REINSTTONONACR  Numeric     0  Reinstatements to Accrual Status
+    RECOVNONACR  Numeric     0  Recoveries on Nonaccrual Loans
+    REPAYNONACR  Numeric     0  Repayments on Nonaccrual Loans
+        ONONACR  Numeric     0  Other Nonaccrual Loans
+         NONACR  Numeric     0  Nonaccrual Loans-Ending Balance

@@ -1,0 +1,91 @@
+                     FILE LAYOUT FOR SCHEDULE RC.1 MEMORANDA         
+                             DATA DELIMITED BY COMMAS                                                   
+  
+                      
+                 
+       VARIABLE    FIELD   DEC.     
+           NAME     TYPE   POS.  VARIABLE DESCRIPTION
+  -------------   ------   ----  ---------------------
+         SYSTEM   Numeric     0  System Code    
+           DIST   Numeric     0  District Code     
+          ASSOC   Numeric     0  Association Code
+          MONTH   Numeric     0  Month of Report
+           YEAR   Numeric     0  Year of Report
+         UNINUM   Numeric     0  System, District, and association
+                                  codes concatenated
+          TYPRE   Numeric     0  Loans - Production agriculture Real 
+                                  estate mortgages
+      TYPPROINT   Numeric     0  Loans - Production agriculture Production
+                                  and intermediate term
+        TYPCOOP   Numeric     0  Loans - Agibusiness - Loans to cooperatives
+     TYPPROCMKT   Numeric     0  Loans - Agibusiness - Processing and Marketing
+     TYPFARMREL   Numeric     0  Loans - Agibusiness - Farm related business
+        TYPCOMM   Numeric     0  Loans - Communications
+       TYPENERG   Numeric     0  Loans - Energy
+        TYPWATW   Numeric     0  Loans - Water/waste disposal
+       TYPRURRE   Numeric     0  Loans - Rural residence real estate
+       TYPINTNL   Numeric     0  Loans - International
+      TYPLESREC   Numeric     0  Loans - Lease receivables
+       DLNASSOC   Numeric     0  Direct loans to associations 
+       OFIAMTLN   Numeric     0  Discounted loans to OFIs
+       TYPTOTAL   Numeric     0  Total
+      FINLEASES   Numeric     0  Finance leases
+       OPLEASES   Numeric     0  Operating receivables leases
+   OPLEASESASST   Numeric     0  Operating assets leases
+          LNSYN   Numeric     0  Loan syndications to eligible borrowers
+                                  (excluding similiar entity transactions)
+        GUARFED   Numeric     0  Guarantees: Federal
+    GUARSTATLOC   Numeric     0  Guarantees: State and local
+       GUARFAMC   Numeric     0  Guarantees: Farmer Mac
+      GUAROTHER   Numeric     0  Guarantees: Other
+
+         OFINUM   Numeric     0  Number of Other Financial Institutions 
+                                  (OFIs)
+       OFINUMLN   Numeric     0  Number of loans to OFIs
+       LSANUMOS   Numeric     0  Association loans outsite its chartered
+                                  territory: Number of loans outstanding
+      LSANUMNEW   Numeric     0  Association loans outsite its chartered
+                                  territory: Number of loans made
+       LSAAMTOS   Numeric     0  Association loans outsite its chartered
+                                  territory: Amount of loans outstanding
+      LSAAMTNEW   Numeric     0  Association loans outsite its chartered
+                                  territory: Amount of loans made
+
+  AMTLNBKRUPTCY   Numeric     0  Total amount of loans in bankruptcy
+AMTLNFORECLOSUR   Numeric     0  Total amount of loans in foreclosure
+   TAMTBANKFORE   Numeric     0  Total amount of loans in both 
+                                  bankruptcy and foreclosure
+       FCIBONDS   Numeric     0  Farm Credit investment bonds 
+                                  outstanding
+    INVFARMNOTE   Numeric     0  Investments in farmers' notes
+     NPDIRLNTBK   Numeric     0  Notes payable/direct loan to district 
+                                  bank
+   FCSICPREMPAY   Numeric     0	 Farm Credit System Insurance 
+                                  Corporation premium payable
+		 TYPOTH	  Numeric     0  Other loans
+       LMPRIN90   Numeric     0  Deprecated				 
+          LMAMT   Numeric     0  Deprecated
+           LMNO	  Numeric     0  Deprecated
+   TYPPROCMKT12	  Numeric     0  Processing and Marketing Loans:
+                                  Loans made under 613.3010(a)(1) and (a)(2) 
+    TYPPROCMKT3   Numeric     0  Processing and Marketing Loans: 
+                                  Loans made under 613.3010(a)(3)
+    TYPPROCMKT4   Numeric     0  Processing and Marketing Loans: 
+                                  Loans made under 613.3010(a)(4)
+    TYPPROCMKT5   Numeric     0  Processing and Marketing Loans: 
+                                  Loans made under 613.3010(a)(5)
+     TOP10LOANS   Numeric     0  Aggregate amount of institution’s                                  
+								 10 largest loan commitments
+NUMLOANSFRMFDIC   Numeric  	  0  Number of loans outstanding pur
+									chased from the FDIC
+AMTLOANSFRMFDIC   Numeric  0	 Amount of loans outstanding purchased 
+									from the FDIC
+    LLLIMITBASE   Numeric     0  Lending and Leasing Limit Base (Stops collecting as of March 2022)
+LoanLeaseHeldAmortizedCost   Numeric     0  Loans and Leases Held for Sale: Amortized cost   
+    LoanLeaseHeldFairValue   Numeric     0  Loans and Leases Held for Sale: Fair value
+				 TotRegCap	 Numeric     0  Lending and Leasing Limit Base:
+												Total regulatory capital (Sch. RC-R.1, item 5b.)
+		 Excess3rdPartyCap	 Numeric     0  Lending and Leasing Limit Base:
+												Eligible excess third-party capital above regulatory capital limits
+	 LendLeaseLimitBaseTRC	 Numeric     0  Lending and Leasing Limit Base:
+												Lending and Leasing Limit Base (sum of items 5a. and 5b.)									

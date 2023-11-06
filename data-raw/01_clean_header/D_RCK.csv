@@ -1,0 +1,26 @@
+var_name,   data_type, decimal_pos,var_desc
+         SYSTEM,    Numeric,0,System Code
+           DIST,    Numeric,0,District Code
+          ASSOC,    Numeric,0,Association Code
+          MONTH,    Numeric,0,Month of Report
+           YEAR,    Numeric,0,Year of Report
+         UNINUM,    Numeric,0,"System, District, and association codes concatenated"
+ACRLNSBBAL,    Numeric,0,
+NEWMONEY,    Numeric,0,
+PRTLNPUR,    Numeric,0,
+CONVAIR,    Numeric,0,
+PRINADDS,    Numeric,0,
+REINSTNA,    Numeric,0,
+RECACRLN,    Numeric,0,
+OADDS,    Numeric,0,
+REPAY,    Numeric,0,
+PRTLNSLD,    Numeric,0,
+PRINSUBS,    Numeric,0,
+TRNONACR,    Numeric,0,
+TRAQPROP,    Numeric,0,
+COACRLNS,    Numeric,0,
+OSUBS,    Numeric,0,
+ACRLNSEB,    Numeric,0,
+VTNGSTKH,    Numeric,0,
+NVTNGSTKH,    Numeric,0,
+SECMKTLNS,    Numeric,0,
