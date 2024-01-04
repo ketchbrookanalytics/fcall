@@ -1,86 +1,239 @@
-download_data(
-  year = 2023,
-  month = 9,
-  dest = "data-raw/2023_09"
-)
+process_data <- function(folder) {
 
-# Description
-description_files <- list.files(
-  path = "data-raw/2023_09",
-  pattern = "^D_",
-  full.names = TRUE
-)
+  # List all files in folder
+  files <- list.files(folder)
 
-descriptions <- vector("list", length(description_files))
+  # List metadata files (those that start with D_)
+  metadata_files <- files[stringr::str_detect(files, "^D_")]
 
-for (i in seq_along(description_files)) {
+  # List data files
+  data_files <- setdiff(files, metadata_files)
 
-  raw_text <- readLines(description_files[[i]]) |>
+  # Store file root names (all characters until first underscore occurrence)
+  data_root_names <- sub("^(.*?)_.*$", "\\1", data_files)
+
+  # Process metadata files
+  metadata <- purrr::map(metadata_files, function(metadata_filename) {
+    process_metadata_file(here::here(folder, metadata_filename))
+  })
+
+  names(metadata) <- data_root_names
+
+  # Assuming that metadata and data files have the same sorting...
+
+  # Process data files
+  data <- purrr::map2(data_files, metadata, function(data_filename, metadata) {
+
+    data_name <- sub("^(.*?)_.*$", "\\1", data_filename)
+
+    process_data_file(
+      filepath = here::here(folder, data_filename),
+      metadata = metadata,
+      codes_dict = tryCatch(
+        expr = get(paste0(data_name, "_CODES")),
+        error = function(error) NULL
+      )
+    )
+  })
+
+  names(data) <- data_root_names
+
+  return(
+    list(
+      data = data,
+      metadata = metadata
+    )
+  )
+}
+
+process_metadata_file <- function(filepath) {
+
+  raw_text <-
+    # Read text lines from file
+    readLines(filepath, warn = FALSE) |>
+    # Create a single string by concatenating each line
     paste0(collapse = " ") |>
+    # Encode object.
+    # Some characters in files where throwing an error due to its encoding.
     utf8::utf8_encode() |>
+    # Replace tabs with single space.
+    # This is necessary because tabs do not separate words as needed.
     stringr::str_replace_all("\\\\t", " ") |>
+    # Field Type is either "Numeric" or "Alphanum.", but I found one instance
+    # in which is expressed as "numeric". In order to be properly captured by
+    # the regular expression I capitalize the "n". As of writing these lines,
+    # I can't guarantee that the process won't fail if "numeric" word is used
+    # in variable descriptions.
     stringr::str_replace_all(" numeric ", " Numeric ") |>
-    # Remove "** NOTE"
+    # Remove NOTE string from the end of the file. A variable named NOTE would
+    # cause the processing to not work as expected, but it is highly unlikely
+    # for a variable to be called NOTE.
     stringr::str_replace_all("\\*\\*\\s+NOTE.*$", "") |>
-    # Consider ** a component of ColumnName
+    # Remove blank spaces between double asterisks and variable names. This is
+    # done to temporary consider the double asterisk a part of variable name.
     stringr::str_replace_all("\\*\\*\\s+", "\\*\\*")
 
-  descriptions[[i]] <- gsub("(\\*\\*)?\\b(\\w+)(?=(\\s+Alphanum\\.|\\s+Numeric))", "\n\\1\\2", raw_text, perl = TRUE) |>
+  vars_info <-
+    # Use regular expression to add a newline before words that are followed by
+    # either "Numeric" or "Alphanum.". The case where a double asterisk is part
+    # of the variable name is also considered.
+    gsub(
+      pattern = "(\\*\\*)?\\b(\\w+)(?=(\\s+Alphanum\\.|\\s+Numeric))",
+      replacement = "\n\\1\\2",
+      x = raw_text,
+      perl = TRUE
+    ) |>
+    # Split string
     stringr::str_split("\n") |>
+    # Flatten the list
     unlist() |>
+    # Convert to a tibble with a single column
     tibble::as_tibble() |>
+    # Remove the header row which does not contain variable information
     dplyr::slice(-1) |>
-    tidyr::separate(value, into = c("ColumnName", "ColumnType", "DecimalPosition", "Definition"), sep = "\\s+", extra = "merge") |>
+    # Separate strings into columns. This is possible because variable names and
+    # field type are a single word.
+    tidyr::separate(
+      col = value,
+      into = c("ColumnName", "ColumnType", "DecimalPosition", "Definition"),
+      sep = "\\s+",
+      extra = "merge"
+    ) |>
     dplyr::mutate(
-      MultipleOccurranceColumn = stringr::str_detect(ColumnName, "^\\*\\*"),
-      CodeColumn = cumsum(MultipleOccurranceColumn) == 1,
-      Definition = stringr::str_replace_all(Definition, "\\s+", " ") |>
+      # Use double asterisks to identify multiple occurrence columns
+      MultipleOccurrenceColumn = stringr::str_detect(ColumnName, "^\\*\\*"),
+      # Set the first multiple occurrence column as the code column
+      CodeColumn = cumsum(MultipleOccurrenceColumn) == 1,
+      # Clean Definition column by removing white spaces
+      Definition = Definition |>
+        stringr::str_replace_all("\\s+", " ") |>
         stringr::str_trim(),
+      # Remove double asterisk from variable names
       ColumnName = stringr::str_replace_all(ColumnName, "\\*\\*", "")
     )
 
+  # Determine the scenario that metadata belongs to.
+  scenario <- switch (length(rle(vars_info$MultipleOccurrenceColumn)$lengths),
+    "1" = "single",
+    "2" = "single_multiple",
+    "3" = "single_multiple_single"
+  )
+
+  return(
+    list(
+      scenario = scenario,
+      vars_info = vars_info
+    )
+  )
+
 }
 
-description_files <- description_files |>
-  # Remove the last instance of "_NUMBER" before the ".TXT" extension
-  # Data files are missing that component in the name
-  sub(
-    pattern = "_[0-9]+(?=\\.TXT$)",
-    replacement = "",
-    x = _,
-    perl = TRUE
-  )
+process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 
-names(descriptions) <- basename(tools::file_path_sans_ext(description_files))
+  data <- read_data_file(filepath, metadata, codes_dict)
 
-# Data
-data <- purrr::imap(descriptions, .f = function(metadata, filename) {
+  if (metadata$scenario == "single") {
 
-  data_name <- gsub("D_", "", filename)
+    names(data) <- metadata$vars_info$ColumnName
 
-  data_filepath <- list.files(
-    path = "data-raw/2023_09",
-    pattern = paste0("^", data_name, "_"),
-    full.names = TRUE
-  )
+  } else {
 
-  if (data_name %in% c("RCR7")) {
-
-    code_column <- metadata |>
-      dplyr::filter(CodeColumn == TRUE) |>
+    single_occurrence_columns <- metadata$vars_info |>
+      dplyr::filter(MultipleOccurrenceColumn == FALSE) |>
       dplyr::pull(ColumnName)
 
-    codes <- get(paste0(data_name, "__", code_column))
+    multiple_occurrence_columns <- metadata$vars_info |>
+      dplyr::filter(MultipleOccurrenceColumn == TRUE) |>
+      dplyr::pull(ColumnName)
 
-    n_codes <- nrow(codes)
+    n_codes <- nrow(codes_dict)
+
+    if (metadata$scenario == "single_multiple") {
+
+      column_names <- c(
+
+        # Single occurrence columns
+        single_occurrence_columns,
+
+        # Multiple occurrence columns
+        do.call(
+          paste0,
+          expand.grid(
+            multiple_occurrence_columns,
+            paste0("__", 1:n_codes)
+          )
+        )
+
+      )
+
+    } else if (metadata$scenario == "single_multiple_single") {
+
+      column_names <- c(
+
+        # First set of single occurrence columns
+        intersect(
+          single_occurrence_columns,
+          metadata$vars_info |>
+            dplyr::filter(cumsum(CodeColumn) == 0) |>
+            dplyr::pull(ColumnName)
+        ),
+
+        # Multiple occurrence columns
+        do.call(
+          paste0,
+          expand.grid(
+            multiple_occurrence_columns,
+            paste0("__", 1:n_codes)
+          )
+        ),
+
+        # Second set of single occurrence columns
+        intersect(
+          single_occurrence_columns,
+          metadata$vars_info |>
+            dplyr::filter(cumsum(CodeColumn) > 0) |>
+            dplyr::pull(ColumnName)
+        )
+      )
+
+    }
+
+    names(data) <- column_names
+
+    data <- data |>
+      tidyr::pivot_longer(cols = -dplyr::all_of(single_occurrence_columns)) |>
+      dplyr::mutate(ID = stringr::str_extract(name, "\\d+$"), .after = UNINUM) |>
+      dplyr::mutate(name = stringr::str_replace_all(name, "__\\d+$", "")) |>
+      tidyr::pivot_wider(names_from = name, values_from = value) |>
+      dplyr::select(-ID)
+
+  }
+
+  return(data)
+
+}
+
+read_data_file <- function(filepath, metadata, codes_dict) {
+
+  if (metadata$scenario %in% c("single", "single_multiple")) {
+
+    # I use read.csv instead of readr::read_csv to avoid having to specify
+    # column types (which is not straightforward and read.csv defaults are
+    # working as expected identifying integers and character types)
+    data <- read.csv(file = filepath, header = FALSE) |>
+      tibble::as_tibble()
+
+  } else if (metadata$scenario == "single_multiple_single") {
+
+    n_codes <- nrow(codes_dict)
 
     # Read the content of the file into a vector
-    lines <- readLines(data_filepath)
+    lines <- readLines(filepath, warn = FALSE)
 
     # Create a new vector to store the collapsed lines
     collapsed_lines <- character()
 
-    # Loop through the lines, collapsing every N_CODES + 2 lines
+    # Loop through the lines, collapsing every (N_CODES + 2) lines
     for (i in seq(1, length(lines), by = (n_codes + 2))) {
       chunk <- lines[i:min(i + (n_codes + 2 - 1), length(lines))]
       collapsed_lines <- c(collapsed_lines, paste(chunk, collapse = ""))
@@ -88,83 +241,8 @@ data <- purrr::imap(descriptions, .f = function(metadata, filename) {
 
     data <- read.table(text = collapsed_lines, sep = ",", header = FALSE)
 
-  } else {
-
-    # I use read.csv instead of readr::read_csv to avoid having to specify
-    # column types (which is not straightforward and read.csv defaults are
-    # working as expected identifying integers and character types)
-    data <- read.csv(
-      file = data_filepath,
-      header = FALSE
-    ) |>
-      tibble::as_tibble()
-
   }
 
-  if (ncol(data) == nrow(metadata)) {
+  return(data)
 
-    names(data) <- metadata$ColumnName
-
-  } else {
-
-    single_occurrance_columns <- metadata |>
-      dplyr::filter(MultipleOccurranceColumn == FALSE) |>
-      dplyr::pull(ColumnName)
-
-    multiple_occurrance_columns <- metadata |>
-      dplyr::filter(MultipleOccurranceColumn == TRUE) |>
-      dplyr::pull(ColumnName)
-
-    n_single_occurrance_columns <- length(single_occurrance_columns)
-
-    n_multiple_occurrance_columns <- length(multiple_occurrance_columns)
-
-
-    multiple_single_occurance_columns_sets <- length(rle(metadata$MultipleOccurranceColumn)$lengths) > 2
-
-
-    code_column <- metadata |>
-      dplyr::filter(CodeColumn == TRUE) |>
-      dplyr::pull(ColumnName)
-
-    codes <- get(paste0(data_name, "__", code_column))
-
-    n_codes <- nrow(codes)
-
-    if (multiple_single_occurance_columns_sets == TRUE) {
-
-      column_names <- c(
-        intersect(single_occurrance_columns,  metadata |> dplyr::filter(cumsum(CodeColumn) == 0) |> dplyr::pull(ColumnName)),
-        do.call(paste0, expand.grid(multiple_occurrance_columns, paste0("__", 1:n_codes))),
-        intersect(single_occurrance_columns,  metadata |> dplyr::filter(cumsum(CodeColumn) > 0) |> dplyr::pull(ColumnName))
-      )
-
-    } else {
-
-      column_names <- c(
-        single_occurrance_columns,
-        do.call(paste0, expand.grid(multiple_occurrance_columns, paste0("__", 1:n_codes)))
-      )
-
-    }
-
-    expected_n_columns <- n_single_occurrance_columns + n_multiple_occurrance_columns * n_codes
-
-    if (expected_n_columns == ncol(data)) {
-
-
-      names(data) <- column_names
-
-      data <- data |>
-        tidyr::pivot_longer(cols = -dplyr::all_of(single_occurrance_columns)) |>
-        dplyr::mutate(ID = stringr::str_extract(name, "\\d+$"), .after = UNINUM) |>
-        dplyr::mutate(name = stringr::str_replace_all(name, "__\\d+$", "")) |>
-        tidyr::pivot_wider(names_from = name, values_from = value) |>
-        dplyr::select(-ID)
-    }
-
-  }
-
-  data
-
-})
+}
