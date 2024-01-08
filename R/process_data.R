@@ -109,7 +109,13 @@ process_metadata_file <- function(filepath) {
         stringr::str_replace_all("\\s+", " ") |>
         stringr::str_trim(),
       # Remove double asterisk from variable names
-      ColumnName = stringr::str_replace_all(ColumnName, "\\*\\*", "")
+      ColumnName = stringr::str_replace_all(ColumnName, "\\*\\*", ""),
+      # Express column type as expected in PostgreSQL
+      ColumnTypeSQL = dplyr::case_when(
+        ColumnType == "Alphanum." ~ "text",
+        ColumnType == "Numeric" & DecimalPosition == 0 ~ "integer",
+        ColumnType == "Numeric" & DecimalPosition > 0 ~ "float"
+      )
     )
 
   # Determine the scenario that metadata belongs to.
