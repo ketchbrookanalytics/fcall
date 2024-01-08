@@ -10,36 +10,22 @@ create_single_table <- function(conn, table_name, vars_info) {
 
   message(glue::glue("#### Creating table: { table_name }"))
 
-  columns_definitions <- vars_info |>
-    dplyr::mutate(
-      ColumnTypeSQL = dplyr::case_when(
-        ColumnType == "Alphanum." ~ "text",
-        ColumnType == "Numeric" & DecimalPosition == 0 ~ "integer",
-        ColumnType == "Numeric" & DecimalPosition > 0 ~ "float"
-      ),
-      ColumnDefinitionSQL = paste(ColumnName, ColumnTypeSQL)
-    ) |>
-    dplyr::pull(ColumnDefinitionSQL) |>
-    paste0(collapse = ",\n")
+  # Extract table fields from vars_info
+  fields <- vars_info$ColumnTypeSQL
+  names(fields) <- vars_info$ColumnName
 
-  create_table_statement <- glue::glue("
-    create table { table_name }
-    (
-    { columns_definitions }
-    );
-  ")
+  # Add column to store period information
+  fields <- append(fields, c("DATA_PERIOD" = "text"))
 
-  # Print to console
-  message(create_table_statement)
-
-  # Create table
-  DBI::dbSendQuery(
+  DBI::dbCreateTable(
     conn = conn,
-    statement = create_table_statement
+    name = table_name,
+    fields = fields
   )
 
+  # Placeholder code to add table comment
   # table_comment_statement <- glue::glue("
-  #   comment on table { table_name } is '{ table_comment }';
+  #   comment on table \"{ table_name }\" is '{ table_comment }';
   # ")
   #
   # # Print to console
@@ -51,10 +37,14 @@ create_single_table <- function(conn, table_name, vars_info) {
   #   statement = table_comment_statement
   # )
 
+  # Prepare column comments
   columns_comments <- vars_info |>
     dplyr::mutate(
-      Definition = gsub("'", "", Definition), # Presence of ' in Definition throws error
-      ColumnCommentSQL = glue::glue("comment on column { table_name }.{ ColumnName } is '{ Definition }'")
+      # Single quotes are not supported by default in PostgreSQL
+      # Check: https://stackoverflow.com/questions/12316953/insert-text-with-single-quotes-in-postgresql
+      Definition = gsub("'", "''", Definition),
+      # PostgreSQL is not case sensitive by default. For that reason, the use of " " is needed.
+      ColumnCommentSQL = glue::glue("comment on column \"{ table_name }\".\"{ ColumnName }\" is '{ Definition }'")
     ) |>
     dplyr::pull(ColumnCommentSQL)
 
