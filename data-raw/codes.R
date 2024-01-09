@@ -1,5 +1,7 @@
-# INV_CODE
-RCB_CODES <- tibble::tribble(
+## Prepare codes dictionary for corresponding data
+## Naming convention: data_name__code_var
+
+RCB__INV_CODE <- tibble::tribble(
   ~code, ~value,
   10L, "U.S. Treasury securities",
   15L, "SBA securities",
@@ -38,8 +40,7 @@ RCB_CODES <- tibble::tribble(
   99L, "Total Debt Securities"
 )
 
-# AssetCodeRCB2
-RCB2_CODES <- tibble::tribble(
+RCB2__AssetCodeRCB2 <- tibble::tribble(
   ~code, ~value,
   110L, "Level 1: Cash",
   120L, "Level 1: Overnight money market instruments",
@@ -60,8 +61,7 @@ RCB2_CODES <- tibble::tribble(
   510L, "Total"
 )
 
-# DebtMaturityCode
-RCB3_CODES <- tibble::tribble(
+RCB3__DebtMaturityCode <- tibble::tribble(
   ~code, ~value,
   110L, "<8 days",
   120L, "8-15 days",
@@ -75,8 +75,7 @@ RCB3_CODES <- tibble::tribble(
   190L, "Total"
 )
 
-# LOANSTATUS
-RCF_CODES <- tibble::tribble(
+RCF__LOANSTATUS <- tibble::tribble(
   ~code, ~value,
   10L, "Accruing",
   20L, "Formally restructured accruing",
@@ -86,8 +85,7 @@ RCF_CODES <- tibble::tribble(
   80L, "Number of Loans"
 )
 
-# LOANSTATUS
-RCF1_CODES <- tibble::tribble(
+RCF1__LOANSTATUS <- tibble::tribble(
   ~code, ~value,
   100L, "Production Agriculture: Real Estate",
   105L, "Production Agriculture: Production and Intermediate Term",
@@ -104,8 +102,7 @@ RCF1_CODES <- tibble::tribble(
   155L, "Total"
 )
 
-# DerivCode
-RCI2B_CODES <- tibble::tribble(
+RCI2B__DerivCode <- tibble::tribble(
   ~code, ~value,
   10L, "Cleared Derivatives (Notional): Swap contracts",
   20L, "Cleared Derivatives (Notional): Option contracts ? purchased",
@@ -132,8 +129,7 @@ RCI2B_CODES <- tibble::tribble(
   230L, "Total derivative contracts (Fair Value ? sum of 7(e) and 8(e))"
 )
 
-# ExposureCode
-RCI2C_CODES <- tibble::tribble(
+RCI2C__ExposureCode <- tibble::tribble(
   ~code, ~value,
   10L, "Institution?s Exposure to Counterparties after netting: Derivative contracts in a gain position",
   20L, "Institution?s Exposure to Counterparties after netting: Initial margin posted by counterparties - Cash",
@@ -149,8 +145,7 @@ RCI2C_CODES <- tibble::tribble(
   140L, "Counterparties? Exposure to Institution after netting: Counterparty exposure to institution (item 11(a) minus (items 11(b) through 11(e)))"
 )
 
-# DerivRMCode
-RCI2D_CODES <- tibble::tribble(
+RCI2D__DerivRMCode <- tibble::tribble(
   ~code, ~value,
   10L, "Cleared derivatives: Interest rate risk",
   20L, "Cleared derivatives: Foreign exchange",
@@ -165,8 +160,7 @@ RCI2D_CODES <- tibble::tribble(
   110L, "Total derivative contracts (sum 12(e) + 13(e))"
 )
 
-# ASSET_CODE
-RCO_CODES <- tibble::tribble(
+RCO__ASSET_CODE <- tibble::tribble(
   ~code, ~value,
   10L, "Loan participations: Purchased",
   20L, "Loan participations: Sold",
@@ -182,8 +176,7 @@ RCO_CODES <- tibble::tribble(
   120L, "Asset Purchases and Sales - Certain Pool Items: Sold"
 )
 
-# RegCapCode
-RCR3_CODES <- tibble::tribble(
+RCR3__RegCapCode <- tibble::tribble(
   ~code, ~value,
   100L, "Purchased Statutory Required Stock",
   210L, "Purchased Other Required Stock < 5 years",
@@ -202,8 +195,7 @@ RCR3_CODES <- tibble::tribble(
   600L, "Total Common Cooperative Equities"
 )
 
-# RegCapCode
-RCR7_CODES <- tibble::tribble(
+RCR7__RegCapCode <- tibble::tribble(
   ~code, ~value,
   100L, "Cash and cash balances due from depository institutions or Federal Reserve",
   210L, "Federal funds sold",
@@ -236,8 +228,7 @@ RCR7_CODES <- tibble::tribble(
   2100L, "Risk Weighted Assets before deductions"
 )
 
-# CAP_CODE
-RID_CODES <- tibble::tribble(
+RID__CAP_CODE <- tibble::tribble(
   ~code, ~value,
   10L, "Beginning balance",
   25L, "Prior Period & Accounting Adjustments",
@@ -253,8 +244,7 @@ RID_CODES <- tibble::tribble(
   130L, "Ending balance"
 )
 
-# ACLCode
-RIE1_CODES <- tibble::tribble(
+RIE1__ACLCode <- tibble::tribble(
   ~code, ~value,
   10L, "Allowances for Credit Losses, beginning of period",
   20L, "Net increase (or decrease (-)) resulting from provision for credit losses (current period)",
@@ -263,4 +253,22 @@ RIE1_CODES <- tibble::tribble(
   50L, "Recoveries",
   60L, "Other",
   70L, "Allowances for credit losses, end of period"
+)
+
+
+usethis::use_data(
+  RCB__INV_CODE,
+  RCB2__AssetCodeRCB2,
+  RCB3__DebtMaturityCode,
+  RCF__LOANSTATUS,
+  RCF1__LOANSTATUS,
+  RCI2B__DerivCode,
+  RCI2C__ExposureCode,
+  RCI2D__DerivRMCode,
+  RCO__ASSET_CODE,
+  RCR3__RegCapCode,
+  RCR7__RegCapCode,
+  RID__CAP_CODE,
+  RIE1__ACLCode,
+  overwrite = TRUE
 )

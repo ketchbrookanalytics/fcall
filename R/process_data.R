@@ -29,10 +29,7 @@ process_data <- function(folder) {
     process_data_file(
       filepath = here::here(folder, data_filename),
       metadata = metadata,
-      codes_dict = tryCatch(
-        expr = get(paste0(data_name, "_CODES")),
-        error = function(error) NULL
-      )
+      codes_dict = get_codes_dict(data_name)
     )
   })
 
@@ -251,4 +248,23 @@ read_data_file <- function(filepath, metadata, codes_dict) {
 
   return(data)
 
+}
+
+get_codes_dict <- function(data_name) {
+
+  # Get list of internal .rda files
+  internal_data <- utils::data(package = "fcacallr")$results[, "Item"]
+
+  # Get codes dict based on data name and naming convention
+  codes_dict_name <- internal_data[
+    stringr::str_detect(
+      string = internal_data,
+      pattern = glue::glue("^{ data_name }__"))
+  ]
+
+  # Get codes dict (if exists)
+  tryCatch(
+    expr = get(codes_dict_name),
+    error = function(error) NULL
+  )
 }
