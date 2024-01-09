@@ -74,6 +74,8 @@ process_data <- function(folder) {
 #' @details The function processes metadata files following specific rules to handle
 #' encoding, remove unnecessary information, and extract variable details. It detects
 #' the scenario based on the occurrence of double asterisks in variable names.
+#'
+#' @export
 process_metadata_file <- function(filepath) {
 
   raw_text <-
@@ -179,6 +181,8 @@ process_metadata_file <- function(filepath) {
 #' It handles cases where variables have multiple occurrences and organizes the data
 #' into a tidy format with appropriate column names. The function relies on the
 #' \code{\link{read_data_file}} function for the actual data reading.
+#'
+#' @export
 process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 
   data <- read_data_file(filepath, metadata, codes_dict)
