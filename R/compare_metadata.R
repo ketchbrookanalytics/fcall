@@ -1,3 +1,21 @@
+#' Compare metadata files between two folders
+#'
+#' This function compares metadata files between two specified folders. It identifies
+#' differences in the number of files, file names, and their order. Additionally, it
+#' compares the content of shared metadata files to identify any differences.
+#'
+#' @param folder1 A character string specifying the path to the first folder.
+#' @param folder2 A character string specifying the path to the second folder.
+#'
+#' @return A list containing information about differences in file names, file order,
+#'   and content differences for shared metadata files.
+#'
+#' @details The function lists metadata files in each folder, identifies shared metadata
+#' files, and then compares the number of files, file names, and their order using the
+#' \code{waldo::compare} function. It further compares the content of shared metadata
+#' files using the \code{compare_files_content} function.
+#'
+#' @export
 compare_metadata <- function(folder1, folder2) {
 
   # List files in each folder
@@ -34,6 +52,20 @@ compare_metadata <- function(folder1, folder2) {
 
 }
 
+#' Compare content of a specific file between two folders
+#'
+#' This function reads the content of a specified file from two folders and compares
+#' the content using the \code{waldo::compare} function. It identifies any differences
+#' in the content and returns the comparison results.
+#'
+#' @param filename A character string specifying the name of the file to compare.
+#' @param folder1 A character string specifying the path to the first folder.
+#' @param folder2 A character string specifying the path to the second folder.
+#'
+#' @return A list containing information about differences in the content of the specified file.
+#'
+#' @details The function reads the content of the specified file from both folders using
+#' \code{readLines} and compares the content using the \code{waldo::compare} function.
 compare_files_content <- function(filename, folder1, folder2) {
 
   content1 <- readLines(here::here(folder1, filename), warn = FALSE)

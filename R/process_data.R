@@ -1,3 +1,19 @@
+#' Process data in a specified folder
+#'
+#' This function processes data files and their corresponding metadata files
+#' in a given folder. It extracts information from metadata files (prefixed with
+#' "D_") and applies the extracted metadata to process the associated data files.
+#'
+#' @param folder A character string specifying the path to the folder containing
+#'   the data and metadata files.
+#'
+#' @return A list containing processed data and metadata.
+#'
+#' @details The function assumes that metadata and data files share a common
+#' root name (characters until the first underscore occurrence) and that
+#' metadata and data files are sorted in the same order.
+#'
+#' @export
 process_data <- function(folder) {
 
   # List all files in folder
@@ -43,6 +59,21 @@ process_data <- function(folder) {
   )
 }
 
+#' Process metadata file to extract variable information
+#'
+#' This function reads a metadata file and extracts information about variables,
+#' including column names, column types, decimal positions, and variable definitions.
+#' It performs necessary preprocessing steps to handle encoding issues and ensure
+#' proper extraction.
+#'
+#' @param filepath A character string specifying the path to the metadata file.
+#'
+#' @return A list containing the scenario (e.g., "single", "single_multiple",
+#'   "single_multiple_single") and a tibble with variable information.
+#'
+#' @details The function processes metadata files following specific rules to handle
+#' encoding, remove unnecessary information, and extract variable details. It detects
+#' the scenario based on the occurrence of double asterisks in variable names.
 process_metadata_file <- function(filepath) {
 
   raw_text <-
@@ -131,6 +162,23 @@ process_metadata_file <- function(filepath) {
 
 }
 
+#' Process a data file using metadata and codes dictionary
+#'
+#' This function reads a data file, applies the provided metadata and codes dictionary,
+#' and organizes the data into a tidy format. The column names are determined based on
+#' the metadata scenario (e.g., "single", "single_multiple", "single_multiple_single").
+#'
+#' @param filepath A character string specifying the path to the data file.
+#' @param metadata A list containing the scenario and variable information obtained
+#'   from the metadata file using \code{\link{process_metadata_file}}.
+#' @param codes_dict An optional data frame containing codes dictionary information.
+#'
+#' @return A tibble containing the processed data in a tidy format.
+#'
+#' @details The function processes the data file according to the metadata scenario.
+#' It handles cases where variables have multiple occurrences and organizes the data
+#' into a tidy format with appropriate column names. The function relies on the
+#' \code{\link{read_data_file}} function for the actual data reading.
 process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 
   data <- read_data_file(filepath, metadata, codes_dict)
@@ -216,6 +264,26 @@ process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 
 }
 
+#' Read and process a data file based on metadata and codes dictionary
+#'
+#' This function reads a data file and processes it based on the provided metadata
+#' and codes dictionary. The processing depends on the metadata scenario, which
+#' includes cases like "single," "single_multiple," and "single_multiple_single."
+#' For certain scenarios, the function utilizes \code{read.csv} to infer column
+#' types without explicit specification.
+#'
+#' @param filepath A character string specifying the path to the data file.
+#' @param metadata A list containing the scenario and variable information obtained
+#'   from the metadata file using \code{\link{process_metadata_file}}.
+#' @param codes_dict A data frame containing codes dictionary information.
+#'
+#' @return A tibble containing the processed data.
+#'
+#' @details The function reads the data file and applies necessary processing based
+#' on the metadata scenario. For scenarios like "single" and "single_multiple," it
+#' uses \code{read.csv} for convenient type inference. For "single_multiple_single,"
+#' it reads the file line by line, collapses every (N_CODES + 2) lines, and then reads
+#' the collapsed lines using \code{read.table}.
 read_data_file <- function(filepath, metadata, codes_dict) {
 
   if (metadata$scenario %in% c("single", "single_multiple")) {
@@ -250,6 +318,23 @@ read_data_file <- function(filepath, metadata, codes_dict) {
 
 }
 
+#' Retrieve codes dictionary for a specified data name
+#'
+#' This function searches for an internal .rda file in the specified package
+#' and retrieves the codes dictionary based on the provided data name and naming
+#' convention. The naming convention is assumed to include the data name followed
+#' by a double underscore "__". If the codes dictionary is found, it is returned;
+#' otherwise, a NULL value is returned.
+#'
+#' @param data_name A character string specifying the data name to retrieve the
+#'   codes dictionary for.
+#'
+#' @return A codes dictionary if found, otherwise NULL.
+#'
+#' @details The function uses the provided data name to construct the expected
+#' naming convention and searches for an internal .rda file in the specified package.
+#' If found, it attempts to retrieve the codes dictionary using \code{get} and returns
+#' it; otherwise, it returns NULL.
 get_codes_dict <- function(data_name) {
 
   # Get list of internal .rda files
