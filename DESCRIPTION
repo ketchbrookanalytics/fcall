@@ -1,17 +1,29 @@
 Package: fcacallr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Title: Parse FCA Call Report Data into Dataframes
+Version: 1.0.0
+Authors@R: c(
+    person("Ketchbrook", "Analytics", email = "MTHOMAS@KETCHBROOKANALYTICS.COM", role = c("cre", "aut"))
+    person("Ivan", "Millanes", , "ivanmillanes26@gmail.com", role = "aut"),
+    person("Michael", "Thomas", , "mthomas@ketchbrookanalytics.com", role = "aut")
+  )
+Description: R package for parsing most FCA call report data into dataframes. FCA publishes call report data at [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
 License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    DBI,
+    dplyr,
+    glue,
+    here,
+    purrr,
+    rlang,
+    stringr,
+    tibble,
+    tidyr,
+    utf8,
+    utils,
+    waldo
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Depends: 
-    R (>= 2.10)
