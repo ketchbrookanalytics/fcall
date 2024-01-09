@@ -1,3 +1,4 @@
+#' @noRd
 create_tables <- function(conn, metadata) {
 
   purrr::iwalk(metadata, function(metadata, name) {
@@ -6,6 +7,7 @@ create_tables <- function(conn, metadata) {
 
 }
 
+#' @noRd
 create_single_table <- function(conn, table_name, vars_info) {
 
   message(glue::glue("#### Creating table: { table_name }"))

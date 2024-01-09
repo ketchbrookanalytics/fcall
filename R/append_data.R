@@ -1,3 +1,4 @@
+#' @noRd
 append_data <- function(conn, data, period) {
 
   purrr::iwalk(data, function(data, name) {
@@ -6,6 +7,7 @@ append_data <- function(conn, data, period) {
 
 }
 
+#' @noRd
 append_single_data <- function(conn, table, data, period) {
 
   # Clean period from table (to avoid duplicates)
