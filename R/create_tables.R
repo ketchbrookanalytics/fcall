@@ -23,20 +23,6 @@ create_single_table <- function(conn, table_name, vars_info) {
     fields = fields
   )
 
-  # Placeholder code to add table comment
-  # table_comment_statement <- glue::glue("
-  #   comment on table \"{ table_name }\" is '{ table_comment }';
-  # ")
-  #
-  # # Print to console
-  # message(table_comment_statement)
-  #
-  # # Add table comment
-  # DBI::dbSendQuery(
-  #   conn = conn,
-  #   statement = table_comment_statement
-  # )
-
   # Prepare column comments
   columns_comments <- vars_info |>
     dplyr::mutate(
