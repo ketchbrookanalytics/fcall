@@ -11,7 +11,8 @@ get_codes_dict(data_name)
 codes dictionary for.}
 }
 \value{
-A codes dictionary if found, otherwise NULL.
+A list with the codes dictionary (\code{codes_dict}) and the associated
+variable name (\code{codes_varname}) if found, otherwise each element will be NULL.
 }
 \description{
 This function searches for an internal .rda file in the specified package

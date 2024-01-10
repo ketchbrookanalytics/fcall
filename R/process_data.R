@@ -45,7 +45,7 @@ process_data <- function(folder) {
     process_data_file(
       filepath = here::here(folder, data_filename),
       metadata = metadata,
-      codes_dict = get_codes_dict(data_name)
+      codes_dict = get_codes_dict(data_name)$codes_dict
     )
   })
 
@@ -333,7 +333,8 @@ read_data_file <- function(filepath, metadata, codes_dict) {
 #' @param data_name A character string specifying the data name to retrieve the
 #'   codes dictionary for.
 #'
-#' @return A codes dictionary if found, otherwise NULL.
+#' @return A list with the codes dictionary (\code{codes_dict}) and the associated
+#' variable name (\code{codes_varname}) if found, otherwise each element will be NULL.
 #'
 #' @details The function uses the provided data name to construct the expected
 #' naming convention and searches for an internal .rda file in the specified package.
@@ -351,9 +352,29 @@ get_codes_dict <- function(data_name) {
       pattern = glue::glue("^{ data_name }__"))
   ]
 
-  # Get codes dict (if exists)
-  tryCatch(
-    expr = get(codes_dict_name),
-    error = function(error) NULL
+  # Set initial values as NULL (these values represent data without codes)
+  codes_dict <- NULL
+  codes_varname <- NULL
+
+  # Get corresponding information when data has codes
+  if (length(codes_dict_name) > 0) {
+
+    codes_dict <- get(codes_dict_name)
+
+    codes_varname <- gsub(
+      pattern = ".*__",
+      replacement = "",
+      x = codes_dict_name
+    )
+
+  }
+
+  # Return objects
+  return(
+    list(
+      codes_dict = codes_dict,
+      codes_varname = codes_varname
+    )
   )
+
 }
