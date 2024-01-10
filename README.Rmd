@@ -72,6 +72,27 @@ download_data(year = 2023, month = 6, dest = "data-raw/2023_06")
 compare_metadata(folder1 = "data-raw/2023_03", folder2 = "data-raw/2023_06")
 ```
 
+### Internal Datasets
+
+`fcacallr` comes with internal datasets which can be classified into two groups:
+
+- A single `file_metadata` (which you can access using `get("file_metadata")` or just calling `file_metadata` once the package is loaded) that contains a short description about each file.
+
+- A set of codes dictionaries that follow the naming convention: `FILE_NAME__CODES_VARNAME`. These datasets are only available for datasets featuring variables encoded. For instance, the dataset `RCB` includes a variable named `INV_CODE`, and its corresponding internal dataset is labeled `RCB__INV_CODE`.
+
+To streamline data retrieval and usage, a dedicated function named `get_codes_dict()` has been integrated into the package. This function allows users to load code dictionaries effortlessly by providing only the data name, without the need to specify the exact variable name:
+
+```{r, eval=FALSE}
+# Get codes dictionary information for "RCB" data
+dict <- get_codes_dict("RCB")
+
+# Access codes dictionary
+dict$codes_dict
+
+# Access associated codes variable name
+dict$codes_varname
+```
+
 ## Database
 
 [Ketchbrook Analytics](https://www.ketchbrookanalytics.com/) has created a PostgreSQL database to store data from different periods. The following code could be used to establish a connection to the database:
