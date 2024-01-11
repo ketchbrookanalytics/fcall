@@ -34,7 +34,7 @@ starts with *“INST\_”*.
 
 Further, some of these datasets are structured in a way that makes data
 analysis difficult. In these cases, we chose to pivot the data to make
-it more analysis-friendly. See [Metadata Files
+it more analysis-friendly. See [Metadata File
 Scenarios](#metadata-file-scenarios) for a more in-depth discussion of
 when and how this pivoting took place.
 
