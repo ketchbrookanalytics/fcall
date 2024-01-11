@@ -6,7 +6,7 @@
 #' comma-separated data files, as well as storing the metadata from the "D_"
 #' files
 #'
-#' @param folder (String) The path to a folder containing FCA Call Report .TXT
+#' @param dir (String) The path to a folder containing FCA Call Report .TXT
 #'   files for a single quarter
 #'
 #' @return A list containing processed data and metadata.
@@ -32,10 +32,10 @@
 #'   process_data(path)
 #'
 #' }
-process_data <- function(folder) {
+process_data <- function(dir) {
 
   # List all files in folder
-  files <- list.files(folder)
+  files <- list.files(dir)
 
   # List metadata files (those that start with D_)
   metadata_files <- files[stringr::str_detect(files, "^D_")]
@@ -48,7 +48,7 @@ process_data <- function(folder) {
 
   # Process metadata files
   metadata <- purrr::map(metadata_files, function(metadata_filename) {
-    process_metadata_file(here::here(folder, metadata_filename))
+    process_metadata_file(here::here(dir, metadata_filename))
   })
 
   names(metadata) <- data_root_names
@@ -61,7 +61,7 @@ process_data <- function(folder) {
     data_name <- sub("^(.*?)_.*$", "\\1", data_filename)
 
     process_data_file(
-      file = here::here(folder, data_filename),
+      file = here::here(dir, data_filename),
       metadata = metadata,
       dict = get_codes_dict(data_name)$codes_dict
     )
