@@ -1,17 +1,33 @@
-Package: fcacallr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Package: fcall
+Title: Parse Farm Credit Administration Call Report Data into Tidy Data Frames
+Version: 1.0.0
+Authors@R: c(
+    person("Michael", "Thomas", email = "mthomas@ketchbrookanalytics.com", 
+           role = c("aut", "cre")),
+    person("Ivan", "Millanes", email = "imillanes@ketchbrookanalytics.com", 
+           role = "aut"),
+    person("Ketchbrook Analytics", role = c("cph", "fnd"))
+  )
+Description: R package for parsing most Farm Credit Administration ("FCA") Call
+    Report data into R data frames. FCA publishes call report data at 
+    [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
 License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    DBI,
+    dplyr,
+    glue,
+    here,
+    purrr,
+    rlang,
+    stringr,
+    tibble,
+    tidyr,
+    utf8,
+    utils,
+    waldo
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-Depends: 
-    R (>= 2.10)
+RoxygenNote: 7.2.3
