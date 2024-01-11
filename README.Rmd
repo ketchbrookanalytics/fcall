@@ -180,7 +180,7 @@ This classification is important because the corresponding data file will have a
 In general terms, the processing workflow of data files involves:
 
 1. Reading data
-2. Applyng column names
+2. Applying column names
 3. Performing pivot operations (if necessary)
 
 Specific pivot operations depend on the [scenario](#metadata-file-scenarios) of the corresponding metadata file

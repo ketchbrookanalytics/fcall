@@ -245,7 +245,7 @@ will have a different structure depending on the scenario.
 In general terms, the processing workflow of data files involves:
 
 1.  Reading data
-2.  Applyng column names
+2.  Applying column names
 3.  Performing pivot operations (if necessary)
 
 Specific pivot operations depend on the
