@@ -1,4 +1,43 @@
 url: https://ketchbrookanalytics.github.io/fcall/
 template:
   bootstrap: 5
-
+  bootswatch: simplex
+  bslib:
+    base_font: {google: "Lora"}
+  theme: breeze-light
+navbar:
+  structure:
+    left:  [intro, reference, news]
+    right: [search]
+reference:
+  - title: "Primary Call Report Data Processing"
+    desc: "Primary functions for downloading & parsing Call Report data"
+    contents:
+    - download_data
+    - process_data
+    - compare_metadata
+  - title: "Secondary Call Report Data Processing"
+    desc: "Secondary functions for downloading & parsing Call Report data"
+    contents:
+    - compare_files_content
+    - get_codes_dict
+    - process_data_file
+    - process_metadata_file
+    - read_data_file
+  - title: "Package Datasets"
+    desc: "Lookup Table Dictionaries for Interpreting Codes"
+    contents:
+    - RCB__INV_CODE
+    - RCB2__AssetCodeRCB2
+    - RCB3__DebtMaturityCode
+    - RCF__LOANSTATUS
+    - RCF1__LOANSTATUS
+    - RCI2B__DerivCode
+    - RCI2C__ExposureCode
+    - RCI2D__DerivRMCode
+    - RCO__ASSET_CODE
+    - RCR3__RegCapCode
+    - RCR7__RegCapCode
+    - RID__CAP_CODE
+    - RIE1__ACLCode
+    - file_metadata
