@@ -4,14 +4,14 @@
 \alias{compare_files_content}
 \title{Compare content of a specific file between two folders}
 \usage{
-compare_files_content(filename, folder1, folder2)
+compare_files_content(filename, dir1, dir2)
 }
 \arguments{
 \item{filename}{A character string specifying the name of the file to compare.}
 
-\item{folder1}{A character string specifying the path to the first folder.}
+\item{dir1}{A character string specifying the path to the first folder.}
 
-\item{folder2}{A character string specifying the path to the second folder.}
+\item{dir2}{A character string specifying the path to the second folder.}
 }
 \value{
 A list containing information about differences in the content of the specified file.
@@ -23,5 +23,5 @@ in the content and returns the comparison results.
 }
 \details{
 The function reads the content of the specified file from both folders using
-\code{readLines} and compares the content using the \code{waldo::compare} function.
+\code{readLines()} and compares the content using the \code{waldo::compare()} function.
 }

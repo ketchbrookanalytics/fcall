@@ -7,39 +7,55 @@
 download_data(year, month, dest, files = NULL)
 }
 \arguments{
-\item{year}{Integer, the year of the call report (e.g., 2022)}
+\item{year}{(Integer) The year of the Call Report (e.g., \code{2022})}
 
-\item{month}{Integer, they month of the call report (e.g., 3)}
+\item{month}{(String) The month of the Call Report (e.g., "March"); you may
+also supply an integer (e.g., \code{3}) representing the month numerically}
 
-\item{dest}{String, representing the directory where the data will be
-downloaded into}
+\item{dest}{(String) The path to the directory where the data will be
+downloaded (and unzipped)into}
 
-\item{files}{(Optional) character vector, representing the names of the files
-in the .zip archive to be downloaded. If left \code{NULL}, all files will be
-downloaded.}
+\item{files}{(Optional) Character vector, representing the names of the files
+in the .zip archive to be downloaded; default is \code{NULL}, meaning all files
+will be downloaded}
 }
 \value{
 Console message informing the user where the data was successfully
-downloaded to
+downloaded (and unzipped) into
 }
 \description{
 Download data from FCA website
 }
 \details{
-FCA publishes call reports are quarterly, and are typically dated
-as "March", "June", "September", and "December". Therefore, valid values
-to the \code{month} argument should be limited to \code{c(3, 6, 9, 12)}, unless there
-is an anomoly in FCA's reporting/publishing. Check
-\url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
+FCA publishes Call Report data quarterly. These .zip files are
+typically named "\if{html}{\out{<YYYY>}}March.zip", "\if{html}{\out{<YYYY>}}June.zip", "\if{html}{\out{<YYYY>}}September.zip",
+and "\if{html}{\out{<YYYY>}}December.zip" (where \if{html}{\out{<YYYY>}} represents the 4-digit year).
+Therefore, valid values to the \code{month} argument should be limited to
+\code{c(3, 6, 9, 12)}, unless there is an anomoly in FCA's reporting/publishing.
+Check \url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
 ensure the data is available for the quarter you are interested in.
 }
 \examples{
 \dontrun{
+
+  path <- tempdir()
+
   download_data(
     year = 2022,
-    month = 12,
-    dest = "data",
-    c("D_INST.TXT", "D_RC.TXT")
+    month = "December",   # using the name of the month
+    dest = path
    )
+
+  download_data(
+    year = 2023,
+    month = 9,   # using the month number (to refer to September)
+    dest = path,
+    # only download the following files
+    files = c(
+      "D_INST.TXT",
+      "INST_Q202309_G20231106.TXT"
+    )
+  )
+
 }
 }

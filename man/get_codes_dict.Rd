@@ -2,7 +2,7 @@
 % Please edit documentation in R/process_data.R
 \name{get_codes_dict}
 \alias{get_codes_dict}
-\title{Retrieve codes dictionary for a specified data name}
+\title{Retrieve dictionary of lookup codes for a specified dataset name}
 \usage{
 get_codes_dict(data_name)
 }
@@ -26,4 +26,8 @@ The function uses the provided data name to construct the expected
 naming convention and searches for an internal .rda file in the specified package.
 If found, it attempts to retrieve the codes dictionary using \code{get} and returns
 it; otherwise, it returns NULL.
+}
+\examples{
+get_codes_dict("RCB")
+
 }

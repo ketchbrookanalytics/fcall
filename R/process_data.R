@@ -1,19 +1,37 @@
-#' Process data in a specified folder
+#' Process FCA Call Report data in a specified folder
 #'
-#' This function processes data files and their corresponding metadata files
-#' in a given folder. It extracts information from metadata files (prefixed with
-#' "D_") and applies the extracted metadata to process the associated data files.
+#' @description
+#' `process_data()` reads the downloaded (and unzipped) .TXT files into tidy
+#' data frames, applying the schema from the "D_" files to the corresponding raw
+#' comma-separated data files, as well as storing the metadata from the "D_"
+#' files
 #'
-#' @param folder A character string specifying the path to the folder containing
-#'   the data and metadata files.
+#' @param folder (String) The path to a folder containing FCA Call Report .TXT
+#'   files for a single quarter
 #'
 #' @return A list containing processed data and metadata.
 #'
-#' @details The function assumes that metadata and data files share a common
-#' root name (characters until the first underscore occurrence) and that
-#' metadata and data files are sorted in the same order.
+#' @details
+#' `process_data()` assumes that metadata and data files share a common root
+#' name (characters until the first underscore occurrence) and that metadata and
+#' data files are sorted in the same order.
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#'
+#'   path <- tempdir()
+#'
+#'   download_data(
+#'     year = 2022,
+#'     month = "December",
+#'     dest = path
+#'    )
+#'
+#'   process_data(path)
+#'
+#' }
 process_data <- function(folder) {
 
   # List all files in folder
@@ -43,9 +61,9 @@ process_data <- function(folder) {
     data_name <- sub("^(.*?)_.*$", "\\1", data_filename)
 
     process_data_file(
-      filepath = here::here(folder, data_filename),
+      file = here::here(folder, data_filename),
       metadata = metadata,
-      codes_dict = get_codes_dict(data_name)$codes_dict
+      dict = get_codes_dict(data_name)$codes_dict
     )
   })
 
@@ -61,26 +79,43 @@ process_data <- function(folder) {
 
 #' Process metadata file to extract variable information
 #'
-#' This function reads a metadata file and extracts information about variables,
-#' including column names, column types, decimal positions, and variable definitions.
-#' It performs necessary preprocessing steps to handle encoding issues and ensure
-#' proper extraction.
+#' @description
+#' `process_metadata_file()` reads a metadata file and extracts information
+#' about the column names, column types, decimal positions, and variable
+#' definitions.
 #'
-#' @param filepath A character string specifying the path to the metadata file.
+#' @param file (String) The path to the metadata file.
 #'
 #' @return A list containing the scenario (e.g., "single", "single_multiple",
 #'   "single_multiple_single") and a tibble with variable information.
 #'
-#' @details The function processes metadata files following specific rules to handle
-#' encoding, remove unnecessary information, and extract variable details. It detects
-#' the scenario based on the occurrence of double asterisks in variable names.
+#' @details
+#' `process_metadata_file()` processes metadata files following specific rules
+#' to handle encoding, remove unnecessary information, and extract variable
+#' details. It detects the scenario based on the occurrence of double asterisks
+#' in variable names.
 #'
 #' @export
-process_metadata_file <- function(filepath) {
+#'
+#' @examples
+#' \dontrun{
+#'
+#'   path <- tempdir()
+#'
+#'   download_data(
+#'     year = 2022,
+#'     month = "December",
+#'     dest = path
+#'    )
+#'
+#'   process_metadata_file(here::here(path, "D_RC1.TXT"))
+#'
+#' }
+process_metadata_file <- function(file) {
 
   raw_text <-
     # Read text lines from file
-    readLines(filepath, warn = FALSE) |>
+    readLines(file, warn = FALSE) |>
     # Create a single string by concatenating each line
     paste0(collapse = " ") |>
     # Encode object.
@@ -164,28 +199,51 @@ process_metadata_file <- function(filepath) {
 
 }
 
+
+
 #' Process a data file using metadata and codes dictionary
 #'
-#' This function reads a data file, applies the provided metadata and codes dictionary,
+#' `process_data_file()` reads a data file, applies the provided metadata and codes dictionary,
 #' and organizes the data into a tidy format. The column names are determined based on
 #' the metadata scenario (e.g., "single", "single_multiple", "single_multiple_single").
 #'
-#' @param filepath A character string specifying the path to the data file.
-#' @param metadata A list containing the scenario and variable information obtained
-#'   from the metadata file using \code{\link{process_metadata_file}}.
-#' @param codes_dict An optional data frame containing codes dictionary information.
+#' @param file (String) The path to the data file
+#' @param metadata A list containing the scenario and variable information
+#'   obtained from the metadata file using \code{\link{process_metadata_file}}.
+#' @param dict (Optional) A data frame containing codes dictionary
+#'   information
 #'
-#' @return A tibble containing the processed data in a tidy format.
+#' @return A tibble containing the processed data in a tidy format
 #'
-#' @details The function processes the data file according to the metadata scenario.
+#' @details
+#' `process_data_file()` processes the data file according to the metadata scenario.
 #' It handles cases where variables have multiple occurrences and organizes the data
 #' into a tidy format with appropriate column names. The function relies on the
 #' \code{\link{read_data_file}} function for the actual data reading.
 #'
 #' @export
-process_data_file <- function(filepath, metadata, codes_dict = NULL) {
+#'
+#' @examples
+#' \dontrun{
+#'
+#'   path <- tempdir()
+#'
+#'   download_data(
+#'     year = 2022,
+#'     month = "March",
+#'     dest = path
+#'    )
+#'
+#'   process_data_file(
+#'     file = here::here(path, "RCB_Q202203_G20220808.TXT"),
+#'     metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+#'     dict = RCB__INV_CODE
+#'   )
+#'
+#' }
+process_data_file <- function(file, metadata, dict = NULL) {
 
-  data <- read_data_file(filepath, metadata, codes_dict)
+  data <- read_data_file(file, metadata, dict)
 
   if (metadata$scenario == "single") {
 
@@ -201,7 +259,7 @@ process_data_file <- function(filepath, metadata, codes_dict = NULL) {
       dplyr::filter(MultipleOccurrenceColumn == TRUE) |>
       dplyr::pull(ColumnName)
 
-    n_codes <- nrow(codes_dict)
+    n_codes <- nrow(dict)
 
     if (metadata$scenario == "single_multiple") {
 
@@ -276,10 +334,10 @@ process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 #' For certain scenarios, the function utilizes \code{read.csv} to infer column
 #' types without explicit specification.
 #'
-#' @param filepath A character string specifying the path to the data file.
+#' @param file A character string specifying the path to the data file.
 #' @param metadata A list containing the scenario and variable information obtained
 #'   from the metadata file using \code{\link{process_metadata_file}}.
-#' @param codes_dict A data frame containing codes dictionary information.
+#' @param dict A data frame containing codes dictionary information.
 #'
 #' @return A tibble containing the processed data.
 #'
@@ -288,22 +346,22 @@ process_data_file <- function(filepath, metadata, codes_dict = NULL) {
 #' uses \code{read.csv} for convenient type inference. For "single_multiple_single,"
 #' it reads the file line by line, collapses every (N_CODES + 2) lines, and then reads
 #' the collapsed lines using \code{read.table}.
-read_data_file <- function(filepath, metadata, codes_dict) {
+read_data_file <- function(file, metadata, dict) {
 
   if (metadata$scenario %in% c("single", "single_multiple")) {
 
     # I use read.csv instead of readr::read_csv to avoid having to specify
     # column types (which is not straightforward and read.csv defaults are
     # working as expected identifying integers and character types)
-    data <- read.csv(file = filepath, header = FALSE) |>
+    data <- utils::read.csv(file = file, header = FALSE) |>
       tibble::as_tibble()
 
   } else if (metadata$scenario == "single_multiple_single") {
 
-    n_codes <- nrow(codes_dict)
+    n_codes <- nrow(dict)
 
     # Read the content of the file into a vector
-    lines <- readLines(filepath, warn = FALSE)
+    lines <- readLines(file, warn = FALSE)
 
     # Create a new vector to store the collapsed lines
     collapsed_lines <- character()
@@ -314,7 +372,7 @@ read_data_file <- function(filepath, metadata, codes_dict) {
       collapsed_lines <- c(collapsed_lines, paste(chunk, collapse = ""))
     }
 
-    data <- read.table(text = collapsed_lines, sep = ",", header = FALSE)
+    data <- utils::read.table(text = collapsed_lines, sep = ",", header = FALSE)
 
   }
 
@@ -322,7 +380,7 @@ read_data_file <- function(filepath, metadata, codes_dict) {
 
 }
 
-#' Retrieve codes dictionary for a specified data name
+#' Retrieve dictionary of lookup codes for a specified dataset name
 #'
 #' This function searches for an internal .rda file in the specified package
 #' and retrieves the codes dictionary based on the provided data name and naming
@@ -340,10 +398,16 @@ read_data_file <- function(filepath, metadata, codes_dict) {
 #' naming convention and searches for an internal .rda file in the specified package.
 #' If found, it attempts to retrieve the codes dictionary using \code{get} and returns
 #' it; otherwise, it returns NULL.
+#'
+#' @export
+#'
+#' @examples
+#' get_codes_dict("RCB")
+#'
 get_codes_dict <- function(data_name) {
 
   # Get list of internal .rda files
-  internal_data <- utils::data(package = "fcacallr")$results[, "Item"]
+  internal_data <- utils::data(package = "fcall")$results[, "Item"]
 
   # Get codes dict based on data name and naming convention
   codes_dict_name <- internal_data[

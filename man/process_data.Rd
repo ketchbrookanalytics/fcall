@@ -2,24 +2,40 @@
 % Please edit documentation in R/process_data.R
 \name{process_data}
 \alias{process_data}
-\title{Process data in a specified folder}
+\title{Process FCA Call Report data in a specified folder}
 \usage{
 process_data(folder)
 }
 \arguments{
-\item{folder}{A character string specifying the path to the folder containing
-the data and metadata files.}
+\item{folder}{(String) The path to a folder containing FCA Call Report .TXT
+files for a single quarter}
 }
 \value{
 A list containing processed data and metadata.
 }
 \description{
-This function processes data files and their corresponding metadata files
-in a given folder. It extracts information from metadata files (prefixed with
-"D_") and applies the extracted metadata to process the associated data files.
+\code{process_data()} reads the downloaded (and unzipped) .TXT files into tidy
+data frames, applying the schema from the "D_" files to the corresponding raw
+comma-separated data files, as well as storing the metadata from the "D_"
+files
 }
 \details{
-The function assumes that metadata and data files share a common
-root name (characters until the first underscore occurrence) and that
-metadata and data files are sorted in the same order.
+\code{process_data()} assumes that metadata and data files share a common root
+name (characters until the first underscore occurrence) and that metadata and
+data files are sorted in the same order.
+}
+\examples{
+\dontrun{
+
+  path <- tempdir()
+
+  download_data(
+    year = 2022,
+    month = "December",
+    dest = path
+   )
+
+  process_data(path)
+
+}
 }

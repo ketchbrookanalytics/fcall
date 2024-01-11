@@ -2,6 +2,7 @@
 
 export(compare_metadata)
 export(download_data)
+export(get_codes_dict)
 export(process_data)
 export(process_data_file)
 export(process_metadata_file)

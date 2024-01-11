@@ -4,15 +4,15 @@
 \alias{read_data_file}
 \title{Read and process a data file based on metadata and codes dictionary}
 \usage{
-read_data_file(filepath, metadata, codes_dict)
+read_data_file(file, metadata, dict)
 }
 \arguments{
-\item{filepath}{A character string specifying the path to the data file.}
+\item{file}{A character string specifying the path to the data file.}
 
 \item{metadata}{A list containing the scenario and variable information obtained
 from the metadata file using \code{\link{process_metadata_file}}.}
 
-\item{codes_dict}{A data frame containing codes dictionary information.}
+\item{dict}{A data frame containing codes dictionary information.}
 }
 \value{
 A tibble containing the processed data.

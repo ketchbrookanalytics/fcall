@@ -4,23 +4,38 @@
 \alias{process_metadata_file}
 \title{Process metadata file to extract variable information}
 \usage{
-process_metadata_file(filepath)
+process_metadata_file(file)
 }
 \arguments{
-\item{filepath}{A character string specifying the path to the metadata file.}
+\item{file}{(String) The path to the metadata file.}
 }
 \value{
 A list containing the scenario (e.g., "single", "single_multiple",
 "single_multiple_single") and a tibble with variable information.
 }
 \description{
-This function reads a metadata file and extracts information about variables,
-including column names, column types, decimal positions, and variable definitions.
-It performs necessary preprocessing steps to handle encoding issues and ensure
-proper extraction.
+\code{process_metadata_file()} reads a metadata file and extracts information
+about the column names, column types, decimal positions, and variable
+definitions.
 }
 \details{
-The function processes metadata files following specific rules to handle
-encoding, remove unnecessary information, and extract variable details. It detects
-the scenario based on the occurrence of double asterisks in variable names.
+\code{process_metadata_file()} processes metadata files following specific rules
+to handle encoding, remove unnecessary information, and extract variable
+details. It detects the scenario based on the occurrence of double asterisks
+in variable names.
+}
+\examples{
+\dontrun{
+
+  path <- tempdir()
+
+  download_data(
+    year = 2022,
+    month = "December",
+    dest = path
+   )
+
+  process_metadata_file(here::here(path, "D_RC1.TXT"))
+
+}
 }

@@ -1,47 +1,91 @@
-#' Compare metadata files between two folders
+#' Compare FCA Call Report metadata files between two folders
 #'
-#' This function compares metadata files between two specified folders. It identifies
-#' differences in the number of files, file names, and their order. Additionally, it
-#' compares the content of shared metadata files to identify any differences.
+#' @description
+#' `compare_metadata()` compares the content of the metadata files (files that
+#' start with "D_") between two specified folders containing FCA Call Report
+#' data (from two different quarters).
 #'
-#' @param folder1 A character string specifying the path to the first folder.
-#' @param folder2 A character string specifying the path to the second folder.
+#' @param dir1 (String) The path to a folder containing FCA Call Report .TXT
+#'   files for a single quarter
+#' @param dir2 (String) The path to a folder containing FCA Call Report .TXT
+#'   files for a (different) single quarter
 #'
-#' @return A list containing information about differences in file names, file order,
-#'   and content differences for shared metadata files.
+#' @return
+#' A list containing information about differences in file names, file order,
+#' and content differences between the metadata files in `dir1` and `dir2`
 #'
-#' @details The function lists metadata files in each folder, identifies shared metadata
-#' files, and then compares the number of files, file names, and their order using the
-#' \code{waldo::compare} function. It further compares the content of shared metadata
-#' files using the \code{compare_files_content} function.
+#' @details
+#' The function lists metadata files in each folder, identifies shared metadata
+#' files, and then compares (a) the number of files, (b) file names, (c) file
+#' order, and (d) file content (using the `waldo::compare()` function).
 #'
 #' @export
-compare_metadata <- function(folder1, folder2) {
+#'
+#' @examples
+#' \dontrun{
+#'
+#'   # Download data from March 2023
+#'   path_1 <- paste0(tempdir(), "/fca1")
+#'
+#'   download_data(
+#'     year = 2023,
+#'     month = 3,
+#'     dest = path_1
+#'   )
+#'
+#'   # Download data from March 2022
+#'   path_2 <- paste0(tempdir(), "/fca2")
+#'
+#'   download_data(
+#'     year = 2022,
+#'     month = 3,
+#'     dest = path_2
+#'   )
+#'
+#'   compare_metadata(path_1, path_2)
+#'
+#' }
+compare_metadata <- function(dir1, dir2) {
+
+  # Ensure same folder wasn't supplied to both arguments
+  if (identical(dir1, dir2)) {
+    rlang::abort("`dir1` and `dir2` are identical; nothing to compare")
+  }
 
   # List files in each folder
-  files1 <- list.files(folder1)
-  files2 <- list.files(folder2)
+  files1 <- list.files(dir1)
+  files2 <- list.files(dir2)
 
   # Subset metadata files (those that start with D_)
   metadata_files1 <- files1[stringr::str_detect(files1, "^D_")]
   metadata_files2 <- files2[stringr::str_detect(files2, "^D_")]
 
   # Find differences in files amount, names and order
-  file_differences <- waldo::compare(metadata_files1, metadata_files2, max_diffs = Inf)
+  file_differences <- waldo::compare(
+    x = metadata_files1,
+    y = metadata_files2,
+    max_diffs = Inf
+  )
 
   # List shared metadata files
-  shared_metadata_files <- intersect(metadata_files1, metadata_files2)
+  shared_metadata_files <- intersect(
+    x = metadata_files1,
+    y = metadata_files2
+  )
 
   # Find content differences
   content_differences <- purrr::map(
     .x = shared_metadata_files,
-    .f = \(filename) compare_files_content(filename, folder1, folder2)
+    .f = function(x) compare_files_content(x, dir1, dir2)
   )
 
   names(content_differences) <- shared_metadata_files
 
   # Keep files with content differences
-  content_differences <- purrr::keep(content_differences, ~length(.x) > 0)
+  content_differences <- purrr::keep(
+    .x = content_differences,
+    .p = function(x) length(x) > 0
+  )
 
   return(
     list(
@@ -52,6 +96,8 @@ compare_metadata <- function(folder1, folder2) {
 
 }
 
+
+
 #' Compare content of a specific file between two folders
 #'
 #' This function reads the content of a specified file from two folders and compares
@@ -59,17 +105,17 @@ compare_metadata <- function(folder1, folder2) {
 #' in the content and returns the comparison results.
 #'
 #' @param filename A character string specifying the name of the file to compare.
-#' @param folder1 A character string specifying the path to the first folder.
-#' @param folder2 A character string specifying the path to the second folder.
+#' @param dir1 A character string specifying the path to the first folder.
+#' @param dir2 A character string specifying the path to the second folder.
 #'
 #' @return A list containing information about differences in the content of the specified file.
 #'
 #' @details The function reads the content of the specified file from both folders using
-#' \code{readLines} and compares the content using the \code{waldo::compare} function.
-compare_files_content <- function(filename, folder1, folder2) {
+#' `readLines()` and compares the content using the `waldo::compare()` function.
+compare_files_content <- function(filename, dir1, dir2) {
 
-  content1 <- readLines(here::here(folder1, filename), warn = FALSE)
-  content2 <- readLines(here::here(folder2, filename), warn = FALSE)
+  content1 <- readLines(here::here(dir1, filename), warn = FALSE)
+  content2 <- readLines(here::here(dir2, filename), warn = FALSE)
 
   differences <- waldo::compare(content1, content2, max_diffs = Inf)
 

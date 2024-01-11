@@ -2,27 +2,53 @@
 % Please edit documentation in R/compare_metadata.R
 \name{compare_metadata}
 \alias{compare_metadata}
-\title{Compare metadata files between two folders}
+\title{Compare FCA Call Report metadata files between two folders}
 \usage{
-compare_metadata(folder1, folder2)
+compare_metadata(dir1, dir2)
 }
 \arguments{
-\item{folder1}{A character string specifying the path to the first folder.}
+\item{dir1}{(String) The path to a folder containing FCA Call Report .TXT
+files for a single quarter}
 
-\item{folder2}{A character string specifying the path to the second folder.}
+\item{dir2}{(String) The path to a folder containing FCA Call Report .TXT
+files for a (different) single quarter}
 }
 \value{
 A list containing information about differences in file names, file order,
-and content differences for shared metadata files.
+and content differences between the metadata files in \code{dir1} and \code{dir2}
 }
 \description{
-This function compares metadata files between two specified folders. It identifies
-differences in the number of files, file names, and their order. Additionally, it
-compares the content of shared metadata files to identify any differences.
+\code{compare_metadata()} compares the content of the metadata files (files that
+start with "D_") between two specified folders containing FCA Call Report
+data (from two different quarters).
 }
 \details{
 The function lists metadata files in each folder, identifies shared metadata
-files, and then compares the number of files, file names, and their order using the
-\code{waldo::compare} function. It further compares the content of shared metadata
-files using the \code{compare_files_content} function.
+files, and then compares (a) the number of files, (b) file names, (c) file
+order, and (d) file content (using the \code{waldo::compare()} function).
+}
+\examples{
+\dontrun{
+
+  # Download data from March 2023
+  path_1 <- paste0(tempdir(), "/fca1")
+
+  download_data(
+    year = 2023,
+    month = 3,
+    dest = path_1
+  )
+
+  # Download data from March 2022
+  path_2 <- paste0(tempdir(), "/fca2")
+
+  download_data(
+    year = 2022,
+    month = 3,
+    dest = path_2
+  )
+
+  compare_metadata(path_1, path_2)
+
+}
 }

@@ -13,91 +13,108 @@ knitr::opts_chunk$set(
 )
 ```
 
-# fcacallr
+# fcall
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-R package for parsing most FCA call report data into dataframes.
+R package for parsing most Farm Credit Administration ("FCA") Call Report data into [tidy](https://tidyr.tidyverse.org/articles/tidy-data.html) R data frames.
 
 ## Installation
 
-You can install the development version of fcacallr from [GitHub](https://github.com/) with:
+You can install {fcall} from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ketchbrookanalytics/fccallr")
+devtools::install_github("ketchbrookanalytics/fcall")
 ```
 
-## Getting Started
+## Background
 
-FCA publishes call report data at [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
+FCA publishes Call Report data on a quarterly basis at [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
 
-### Download Data
+As of September 2023, this data represents a set of 72 *.TXT* files. These files represent 36 datasets. The files prefixed with "D_" contain *metadata* (the column names, data types, etc.) of the associated file containing the raw, header-less comma-separated data. For example, the file that starts with *"D_INST"* contains the metadata for the file that starts with *"INST_"*.
+
+Further, some of these datasets are structured in a way that makes data analysis difficult. In these cases, we chose to pivot the data to make it more analysis-friendly. See [Metadata Files Scenarios](#metadata-files-scenarios) for a more in-depth discussion of when and how this pivoting took place.
+
+This package provides 3 utility functions:
+
+1. `download_data()` allows users to programmatically download (and unzip) data from a specific quarter
+2. `process_data()` parses the data from these unzipped *.TXT* files into a list of R data frames containing the Call Report data and file metadata 
+3. `compare_metadata()` compares two sets of Call Report data from different quarters 
+
+### Downloading Data
 
 You can download data for a particular period using `download_data()`:
 
 ``` r
-# Download data from March 2023
-download_data(year = 2023, month = 3, dest = "data-raw/2023_03")
+# Download FCA Call Report data from March 2023
+download_data(
+  year = 2023, 
+  month = 3, 
+  dest = "path/to/some/folder"
+)
 ```
 
-### Process All Files
+### Process Files
 
-You can process files downloaded using `process_data()`:
+You can parse the data from the downloaded *.TXT* files into tidy R data frames using `process_data()`:
 
 ``` r
 # Process data from March 2023
-data_2023_03 <- process_data(folder = "data-raw/2023_03")
+data_2023_03 <- process_data(folder = "path/to/some/folder")
 ```
 
-The processed object contains both data and metadata information for each file.
-
-### Process Single File
-
-You can use `process_metadata_file()` and `process_data_file()` to process single
-metadata and data files respectively. Please refer to documentation for details
-about these functions.
+You can also use `process_metadata_file()` and `process_data_file()` to process single metadata and data files, respectively.
 
 ### Comparing Metadata from Different Periods
 
-You can use `compare_metadata()` to make sure that file structure remains the 
-same across periods.
+The FCA Call Report data has changed over time, making it difficult to perform analysis across multiple periods. To ensure that such comparisons can be made safely, the `compare_metadata()` returns differences in the data structure (files, column names, and column definitions) between two sets of FCA Call Report data.
 
 ``` r
 # Download data from June 2023
-download_data(year = 2023, month = 6, dest = "data-raw/2023_06")
+download_data(
+  year = 2023, 
+  month = 6, 
+  dest = "path/to/some/other/folder"
+)
 
 # Compare metadata files from March and June 2023
-compare_metadata(folder1 = "data-raw/2023_03", folder2 = "data-raw/2023_06")
+compare_metadata(
+  dir1 = "path/to/some/folder",   # where we downloaded the March 2023 data
+  dir2 = "path/to/some/other/folder"
+)
 ```
 
 ### Internal Datasets
 
-`fcacallr` comes with internal datasets which can be classified into two groups:
+`fcall` contains with the following internal datasets:
 
-- A single `file_metadata` (which you can access using `get("file_metadata")` or just calling `file_metadata` once the package is loaded) that contains a short description about each file.
-
-- A set of codes dictionaries that follow the naming convention: `FILE_NAME__CODES_VARNAME`. These datasets are only available for datasets featuring variables encoded. For instance, the dataset `RCB` includes a variable named `INV_CODE`, and its corresponding internal dataset is labeled `RCB__INV_CODE`.
+* `file_metadata` contains a short description about each file.
+* The remaining datasets represent a set of "lookup table" dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention `<file>__<column>`, where `file` is the name of the raw data file and `column` is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the `RCB` Call Report data includes the column `INV_CODE`; the `RCB__INV_CODE` internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-Englihs definitions for each.
 
 To streamline data retrieval and usage, a dedicated function named `get_codes_dict()` has been integrated into the package. This function allows users to load code dictionaries effortlessly by providing only the data name, without the need to specify the exact variable name:
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 # Get codes dictionary information for "RCB" data
-dict <- get_codes_dict("RCB")
+rcb_dict <- get_codes_dict("RCB")
 
 # Access codes dictionary
-dict$codes_dict
+rcb_dict$codes_dict
 
 # Access associated codes variable name
-dict$codes_varname
+rcb_dict$codes_varname
 ```
 
 ## Database
 
-[Ketchbrook Analytics](https://www.ketchbrookanalytics.com/) has created a PostgreSQL database to store data from different periods. The following code could be used to establish a connection to the database:
+[Ketchbrook Analytics](https://www.ketchbrookanalytics.com/) has created a PostgreSQL database to store data from different periods.
 
-```{r eval=FALSE}
+Please, reach out to [info@ketchbrookanalytics.com](mailto:info@ketchbrookanalytics.com?subject=FCA%20Call%20Report%20Database) to request access to database credentials.
+
+Once you are provided with credentials (in the form of a `config.yml` file) to access the SQL database, the following code can be used to establish a connection to the database:
+
+```{r eval = FALSE}
 # Get config
 config <- config::get(config = "user")
 
@@ -111,8 +128,6 @@ conn <- DBI::dbConnect(
   password = config$password
 )
 ```
-
-Please, reach out to [info@ketchbrookanalytics.com](mailto:info@ketchbrookanalytics.com?subject=FCA%20Call%20Report%20Database) to request access to database credentials.
 
 ## Data Structure
 

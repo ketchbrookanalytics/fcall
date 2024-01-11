@@ -4,27 +4,47 @@
 \alias{process_data_file}
 \title{Process a data file using metadata and codes dictionary}
 \usage{
-process_data_file(filepath, metadata, codes_dict = NULL)
+process_data_file(file, metadata, dict = NULL)
 }
 \arguments{
-\item{filepath}{A character string specifying the path to the data file.}
+\item{file}{(String) The path to the data file}
 
-\item{metadata}{A list containing the scenario and variable information obtained
-from the metadata file using \code{\link{process_metadata_file}}.}
+\item{metadata}{A list containing the scenario and variable information
+obtained from the metadata file using \code{\link{process_metadata_file}}.}
 
-\item{codes_dict}{An optional data frame containing codes dictionary information.}
+\item{dict}{(Optional) A data frame containing codes dictionary
+information}
 }
 \value{
-A tibble containing the processed data in a tidy format.
+A tibble containing the processed data in a tidy format
 }
 \description{
-This function reads a data file, applies the provided metadata and codes dictionary,
+\code{process_data_file()} reads a data file, applies the provided metadata and codes dictionary,
 and organizes the data into a tidy format. The column names are determined based on
 the metadata scenario (e.g., "single", "single_multiple", "single_multiple_single").
 }
 \details{
-The function processes the data file according to the metadata scenario.
+\code{process_data_file()} processes the data file according to the metadata scenario.
 It handles cases where variables have multiple occurrences and organizes the data
 into a tidy format with appropriate column names. The function relies on the
 \code{\link{read_data_file}} function for the actual data reading.
+}
+\examples{
+\dontrun{
+
+  path <- tempdir()
+
+  download_data(
+    year = 2022,
+    month = "March",
+    dest = path
+   )
+
+  process_data_file(
+    file = here::here(path, "RCB_Q202203_G20220808.TXT"),
+    metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+    dict = RCB__INV_CODE
+  )
+
+}
 }
