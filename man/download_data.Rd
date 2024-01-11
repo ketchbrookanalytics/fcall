@@ -9,11 +9,11 @@ download_data(year, month, dest, files = NULL)
 \arguments{
 \item{year}{(Integer) The year of the Call Report (e.g., \code{2022})}
 
-\item{month}{(String) The month of the Call Report (e.g., "March"); you may
+\item{month}{(String) The month of the Call Report (e.g., \code{"March"}); you may
 also supply an integer (e.g., \code{3}) representing the month numerically}
 
 \item{dest}{(String) The path to the directory where the data will be
-downloaded (and unzipped)into}
+downloaded (and unzipped) into}
 
 \item{files}{(Optional) Character vector, representing the names of the files
 in the .zip archive to be downloaded; default is \code{NULL}, meaning all files
@@ -31,31 +31,37 @@ FCA publishes Call Report data quarterly. These .zip files are
 typically named "\if{html}{\out{<YYYY>}}March.zip", "\if{html}{\out{<YYYY>}}June.zip", "\if{html}{\out{<YYYY>}}September.zip",
 and "\if{html}{\out{<YYYY>}}December.zip" (where \if{html}{\out{<YYYY>}} represents the 4-digit year).
 Therefore, valid values to the \code{month} argument should be limited to
-\code{c(3, 6, 9, 12)}, unless there is an anomoly in FCA's reporting/publishing.
+\code{c(3, 6, 9, 12)}, unless there is an anomaly in FCA's reporting/publishing.
 Check \url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
 ensure the data is available for the quarter you are interested in.
 }
 \examples{
 \dontrun{
 
-  path <- tempdir()
+  path_1 <- tempfile("fcadata")
 
   download_data(
     year = 2022,
     month = "December",   # using the name of the month
-    dest = path
-   )
+    dest = path_1
+  )
+
+  list.files(path_1)
+
+  path_2 <- tempfile("fcadata")
 
   download_data(
     year = 2023,
     month = 9,   # using the month number (to refer to September)
-    dest = path,
+    dest = path_2,
     # only download the following files
     files = c(
       "D_INST.TXT",
       "INST_Q202309_G20231106.TXT"
     )
   )
+
+  list.files(path_2)
 
 }
 }

@@ -4,10 +4,10 @@
 \alias{process_data}
 \title{Process FCA Call Report data in a specified folder}
 \usage{
-process_data(folder)
+process_data(dir)
 }
 \arguments{
-\item{folder}{(String) The path to a folder containing FCA Call Report .TXT
+\item{dir}{(String) The path to a folder containing FCA Call Report .TXT
 files for a single quarter}
 }
 \value{
@@ -27,15 +27,21 @@ data files are sorted in the same order.
 \examples{
 \dontrun{
 
-  path <- tempdir()
+  path <- tempfile("fcadata")
 
   download_data(
     year = 2022,
     month = "December",
     dest = path
-   )
+  )
 
-  process_data(path)
+  processed_data <- process_data(path)
+
+  # Access "RCB" data
+  processed_data$data$RCB
+
+  # Access "RCB" metadata
+  processed_data$metadata$RCB
 
 }
 }

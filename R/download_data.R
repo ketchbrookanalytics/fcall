@@ -1,10 +1,10 @@
 #' Download data from FCA website
 #'
 #' @param year (Integer) The year of the Call Report (e.g., `2022`)
-#' @param month (String) The month of the Call Report (e.g., "March"); you may
+#' @param month (String) The month of the Call Report (e.g., `"March"`); you may
 #'   also supply an integer (e.g., `3`) representing the month numerically
 #' @param dest (String) The path to the directory where the data will be
-#'   downloaded (and unzipped)into
+#'   downloaded (and unzipped) into
 #' @param files (Optional) Character vector, representing the names of the files
 #'   in the .zip archive to be downloaded; default is `NULL`, meaning all files
 #'   will be downloaded
@@ -13,7 +13,7 @@
 #'   typically named "<YYYY>March.zip", "<YYYY>June.zip", "<YYYY>September.zip",
 #'   and "<YYYY>December.zip" (where <YYYY> represents the 4-digit year).
 #'   Therefore, valid values to the `month` argument should be limited to
-#'   `c(3, 6, 9, 12)`, unless there is an anomoly in FCA's reporting/publishing.
+#'   `c(3, 6, 9, 12)`, unless there is an anomaly in FCA's reporting/publishing.
 #'   Check <https://www.fca.gov/bank-oversight/call-report-data-for-download> to
 #'   ensure the data is available for the quarter you are interested in.
 #'
@@ -25,24 +25,30 @@
 #' @examples
 #' \dontrun{
 #'
-#'   path <- tempdir()
+#'   path_1 <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2022,
 #'     month = "December",   # using the name of the month
-#'     dest = path
-#'    )
+#'     dest = path_1
+#'   )
+#'
+#'   list.files(path_1)
+#'
+#'   path_2 <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2023,
 #'     month = 9,   # using the month number (to refer to September)
-#'     dest = path,
+#'     dest = path_2,
 #'     # only download the following files
 #'     files = c(
 #'       "D_INST.TXT",
 #'       "INST_Q202309_G20231106.TXT"
 #'     )
 #'   )
+#'
+#'   list.files(path_2)
 #'
 #' }
 download_data <- function(year, month, dest, files = NULL) {
@@ -61,7 +67,7 @@ download_data <- function(year, month, dest, files = NULL) {
   # If the `month` argument supplied is not the explicit name of the month...
   if (!month %in% month.name) {
 
-    # Check to see if it is an the vector c(1:12)
+    # Check to see if it is in the vector c(1:12)
     # NOTE: this handles *both* the cases where `month` is the string "3" or the
     # integer `3` (for example)
     if (month %in% paste(1:12)) {

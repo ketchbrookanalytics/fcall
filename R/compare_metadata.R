@@ -15,9 +15,9 @@
 #' and content differences between the metadata files in `dir1` and `dir2`
 #'
 #' @details
-#' The function lists metadata files in each folder, identifies shared metadata
-#' files, and then compares (a) the number of files, (b) file names, (c) file
-#' order, and (d) file content (using the `waldo::compare()` function).
+#' `compare_metadata()` lists metadata files in each folder, identifies shared
+#' metadata files, and then compares (a) the number of files, (b) file names,
+#' (c) file order, and (d) file content (using the `waldo::compare()` function).
 #'
 #' @export
 #'
@@ -25,7 +25,7 @@
 #' \dontrun{
 #'
 #'   # Download data from March 2023
-#'   path_1 <- paste0(tempdir(), "/fca1")
+#'   path_1 <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2023,
@@ -34,7 +34,7 @@
 #'   )
 #'
 #'   # Download data from March 2022
-#'   path_2 <- paste0(tempdir(), "/fca2")
+#'   path_2 <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2022,
@@ -100,9 +100,9 @@ compare_metadata <- function(dir1, dir2) {
 
 #' Compare content of a specific file between two folders
 #'
-#' This function reads the content of a specified file from two folders and compares
-#' the content using the \code{waldo::compare} function. It identifies any differences
-#' in the content and returns the comparison results.
+#' `compare_files_content()` reads the content of a specified file from two folders
+#' and compares the content using the `waldo::compare` function. It identifies any
+#' differences in the content and returns the comparison results.
 #'
 #' @param filename A character string specifying the name of the file to compare.
 #' @param dir1 A character string specifying the path to the first folder.
@@ -110,7 +110,8 @@ compare_metadata <- function(dir1, dir2) {
 #'
 #' @return A list containing information about differences in the content of the specified file.
 #'
-#' @details The function reads the content of the specified file from both folders using
+#' @details
+#' `compare_files_content()` reads the content of the specified file from both folders using
 #' `readLines()` and compares the content using the `waldo::compare()` function.
 compare_files_content <- function(filename, dir1, dir2) {
 

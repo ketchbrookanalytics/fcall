@@ -12,8 +12,7 @@ process_data_file(file, metadata, dict = NULL)
 \item{metadata}{A list containing the scenario and variable information
 obtained from the metadata file using \code{\link{process_metadata_file}}.}
 
-\item{dict}{(Optional) A data frame containing codes dictionary
-information}
+\item{dict}{(Optional) A data frame containing codes dictionary information}
 }
 \value{
 A tibble containing the processed data in a tidy format
@@ -21,7 +20,7 @@ A tibble containing the processed data in a tidy format
 \description{
 \code{process_data_file()} reads a data file, applies the provided metadata and codes dictionary,
 and organizes the data into a tidy format. The column names are determined based on
-the metadata scenario (e.g., "single", "single_multiple", "single_multiple_single").
+the metadata scenario (e.g., \code{"single"}, \code{"single_multiple"}, \code{"single_multiple_single"}).
 }
 \details{
 \code{process_data_file()} processes the data file according to the metadata scenario.
@@ -32,13 +31,13 @@ into a tidy format with appropriate column names. The function relies on the
 \examples{
 \dontrun{
 
-  path <- tempdir()
+  path <- tempfile("fcadata")
 
   download_data(
     year = 2022,
     month = "March",
     dest = path
-   )
+  )
 
   process_data_file(
     file = here::here(path, "RCB_Q202203_G20220808.TXT"),

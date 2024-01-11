@@ -21,15 +21,21 @@
 #' @examples
 #' \dontrun{
 #'
-#'   path <- tempdir()
+#'   path <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2022,
 #'     month = "December",
 #'     dest = path
-#'    )
+#'   )
 #'
-#'   process_data(path)
+#'   processed_data <- process_data(path)
+#'
+#'   # Access "RCB" data
+#'   processed_data$data$RCB
+#'
+#'   # Access "RCB" metadata
+#'   processed_data$metadata$RCB
 #'
 #' }
 process_data <- function(dir) {
@@ -86,8 +92,8 @@ process_data <- function(dir) {
 #'
 #' @param file (String) The path to the metadata file.
 #'
-#' @return A list containing the scenario (e.g., "single", "single_multiple",
-#'   "single_multiple_single") and a tibble with variable information.
+#' @return A list containing the scenario (e.g., `"single"`, `"single_multiple"`,
+#'   `"single_multiple_single"`) and a tibble with variable information.
 #'
 #' @details
 #' `process_metadata_file()` processes metadata files following specific rules
@@ -100,13 +106,13 @@ process_data <- function(dir) {
 #' @examples
 #' \dontrun{
 #'
-#'   path <- tempdir()
+#'   path <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2022,
 #'     month = "December",
 #'     dest = path
-#'    )
+#'   )
 #'
 #'   process_metadata_file(here::here(path, "D_RC1.TXT"))
 #'
@@ -205,13 +211,12 @@ process_metadata_file <- function(file) {
 #'
 #' `process_data_file()` reads a data file, applies the provided metadata and codes dictionary,
 #' and organizes the data into a tidy format. The column names are determined based on
-#' the metadata scenario (e.g., "single", "single_multiple", "single_multiple_single").
+#' the metadata scenario (e.g., `"single"`, `"single_multiple"`, `"single_multiple_single"`).
 #'
 #' @param file (String) The path to the data file
 #' @param metadata A list containing the scenario and variable information
 #'   obtained from the metadata file using \code{\link{process_metadata_file}}.
-#' @param dict (Optional) A data frame containing codes dictionary
-#'   information
+#' @param dict (Optional) A data frame containing codes dictionary information
 #'
 #' @return A tibble containing the processed data in a tidy format
 #'
@@ -226,13 +231,13 @@ process_metadata_file <- function(file) {
 #' @examples
 #' \dontrun{
 #'
-#'   path <- tempdir()
+#'   path <- tempfile("fcadata")
 #'
 #'   download_data(
 #'     year = 2022,
 #'     month = "March",
 #'     dest = path
-#'    )
+#'   )
 #'
 #'   process_data_file(
 #'     file = here::here(path, "RCB_Q202203_G20220808.TXT"),
@@ -326,12 +331,12 @@ process_data_file <- function(file, metadata, dict = NULL) {
 
 }
 
-#' Read and process a data file based on metadata and codes dictionary
+#' Read a data file based on metadata and codes dictionary
 #'
-#' This function reads a data file and processes it based on the provided metadata
+#' `read_data_file()` reads a data file and processes it based on the provided metadata
 #' and codes dictionary. The processing depends on the metadata scenario, which
-#' includes cases like "single," "single_multiple," and "single_multiple_single."
-#' For certain scenarios, the function utilizes \code{read.csv} to infer column
+#' includes cases like `"single"`, `"single_multiple"`, and `"single_multiple_single"`.
+#' For certain scenarios, the function utilizes `read.csv` to infer column
 #' types without explicit specification.
 #'
 #' @param file A character string specifying the path to the data file.
@@ -341,11 +346,12 @@ process_data_file <- function(file, metadata, dict = NULL) {
 #'
 #' @return A tibble containing the processed data.
 #'
-#' @details The function reads the data file and applies necessary processing based
-#' on the metadata scenario. For scenarios like "single" and "single_multiple," it
-#' uses \code{read.csv} for convenient type inference. For "single_multiple_single,"
-#' it reads the file line by line, collapses every (N_CODES + 2) lines, and then reads
-#' the collapsed lines using \code{read.table}.
+#' @details
+#' `read_data_file()` reads the data file and applies necessary processing based
+#' on the metadata scenario. For scenarios like `"single"` and `"single_multiple"`, it
+#' uses `read.csv` for convenient type inference. For `"single_multiple_single"`,
+#' it reads the file line by line, collapses every `(N_CODES + 2)` lines, and then reads
+#' the collapsed lines using `read.table`.
 read_data_file <- function(file, metadata, dict) {
 
   if (metadata$scenario %in% c("single", "single_multiple")) {
@@ -382,28 +388,37 @@ read_data_file <- function(file, metadata, dict) {
 
 #' Retrieve dictionary of lookup codes for a specified dataset name
 #'
-#' This function searches for an internal .rda file in the specified package
+#' `get_codes_dict()` searches for an internal .rda file in the specified package
 #' and retrieves the codes dictionary based on the provided data name and naming
 #' convention. The naming convention is assumed to include the data name followed
-#' by a double underscore "__". If the codes dictionary is found, it is returned;
-#' otherwise, a NULL value is returned.
+#' by a double underscore "__".
 #'
 #' @param data_name A character string specifying the data name to retrieve the
 #'   codes dictionary for.
 #'
-#' @return A list with the codes dictionary (\code{codes_dict}) and the associated
-#' variable name (\code{codes_varname}) if found, otherwise each element will be NULL.
+#' @return A list with the codes dictionary (`codes_dict`) and the associated
+#' variable name (`codes_varname`) if found, otherwise each element will be NULL.
 #'
-#' @details The function uses the provided data name to construct the expected
-#' naming convention and searches for an internal .rda file in the specified package.
-#' If found, it attempts to retrieve the codes dictionary using \code{get} and returns
+#' @details
+#' `get_codes_dict()` uses the provided data name to construct the expected naming
+#' convention and searches for an internal .rda file in the specified package.
+#' If found, it attempts to retrieve the codes dictionary using `get` and returns
 #' it; otherwise, it returns NULL.
 #'
 #' @export
 #'
 #' @examples
-#' get_codes_dict("RCB")
+#' \dontrun{
 #'
+#'   rcb_dict <- get_codes_dict("RCB")
+#'
+#'   # Access codes dictionary
+#'   rcb_dict$codes_dict
+#'
+#'   # Access the name of the variable that stores the codes
+#'   rcb_dict$codes_varname
+#'
+#' }
 get_codes_dict <- function(data_name) {
 
   # Get list of internal .rda files

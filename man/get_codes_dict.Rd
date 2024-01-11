@@ -15,19 +15,27 @@ A list with the codes dictionary (\code{codes_dict}) and the associated
 variable name (\code{codes_varname}) if found, otherwise each element will be NULL.
 }
 \description{
-This function searches for an internal .rda file in the specified package
+\code{get_codes_dict()} searches for an internal .rda file in the specified package
 and retrieves the codes dictionary based on the provided data name and naming
 convention. The naming convention is assumed to include the data name followed
-by a double underscore "__". If the codes dictionary is found, it is returned;
-otherwise, a NULL value is returned.
+by a double underscore "__".
 }
 \details{
-The function uses the provided data name to construct the expected
-naming convention and searches for an internal .rda file in the specified package.
+\code{get_codes_dict()} uses the provided data name to construct the expected naming
+convention and searches for an internal .rda file in the specified package.
 If found, it attempts to retrieve the codes dictionary using \code{get} and returns
 it; otherwise, it returns NULL.
 }
 \examples{
-get_codes_dict("RCB")
+\dontrun{
 
+  rcb_dict <- get_codes_dict("RCB")
+
+  # Access codes dictionary
+  rcb_dict$codes_dict
+
+  # Access the name of the variable that stores the codes
+  rcb_dict$codes_varname
+
+}
 }

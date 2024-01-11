@@ -23,15 +23,15 @@ start with "D_") between two specified folders containing FCA Call Report
 data (from two different quarters).
 }
 \details{
-The function lists metadata files in each folder, identifies shared metadata
-files, and then compares (a) the number of files, (b) file names, (c) file
-order, and (d) file content (using the \code{waldo::compare()} function).
+\code{compare_metadata()} lists metadata files in each folder, identifies shared
+metadata files, and then compares (a) the number of files, (b) file names,
+(c) file order, and (d) file content (using the \code{waldo::compare()} function).
 }
 \examples{
 \dontrun{
 
   # Download data from March 2023
-  path_1 <- paste0(tempdir(), "/fca1")
+  path_1 <- tempfile("fcadata")
 
   download_data(
     year = 2023,
@@ -40,7 +40,7 @@ order, and (d) file content (using the \code{waldo::compare()} function).
   )
 
   # Download data from March 2022
-  path_2 <- paste0(tempdir(), "/fca2")
+  path_2 <- tempfile("fcadata")
 
   download_data(
     year = 2022,

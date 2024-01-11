@@ -17,11 +17,11 @@ compare_files_content(filename, dir1, dir2)
 A list containing information about differences in the content of the specified file.
 }
 \description{
-This function reads the content of a specified file from two folders and compares
-the content using the \code{waldo::compare} function. It identifies any differences
-in the content and returns the comparison results.
+\code{compare_files_content()} reads the content of a specified file from two folders
+and compares the content using the \code{waldo::compare} function. It identifies any
+differences in the content and returns the comparison results.
 }
 \details{
-The function reads the content of the specified file from both folders using
+\code{compare_files_content()} reads the content of the specified file from both folders using
 \code{readLines()} and compares the content using the \code{waldo::compare()} function.
 }

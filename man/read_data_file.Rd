@@ -2,7 +2,7 @@
 % Please edit documentation in R/process_data.R
 \name{read_data_file}
 \alias{read_data_file}
-\title{Read and process a data file based on metadata and codes dictionary}
+\title{Read a data file based on metadata and codes dictionary}
 \usage{
 read_data_file(file, metadata, dict)
 }
@@ -18,16 +18,16 @@ from the metadata file using \code{\link{process_metadata_file}}.}
 A tibble containing the processed data.
 }
 \description{
-This function reads a data file and processes it based on the provided metadata
+\code{read_data_file()} reads a data file and processes it based on the provided metadata
 and codes dictionary. The processing depends on the metadata scenario, which
-includes cases like "single," "single_multiple," and "single_multiple_single."
+includes cases like \code{"single"}, \code{"single_multiple"}, and \code{"single_multiple_single"}.
 For certain scenarios, the function utilizes \code{read.csv} to infer column
 types without explicit specification.
 }
 \details{
-The function reads the data file and applies necessary processing based
-on the metadata scenario. For scenarios like "single" and "single_multiple," it
-uses \code{read.csv} for convenient type inference. For "single_multiple_single,"
-it reads the file line by line, collapses every (N_CODES + 2) lines, and then reads
+\code{read_data_file()} reads the data file and applies necessary processing based
+on the metadata scenario. For scenarios like \code{"single"} and \code{"single_multiple"}, it
+uses \code{read.csv} for convenient type inference. For \code{"single_multiple_single"},
+it reads the file line by line, collapses every \code{(N_CODES + 2)} lines, and then reads
 the collapsed lines using \code{read.table}.
 }

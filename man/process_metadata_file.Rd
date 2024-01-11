@@ -10,8 +10,8 @@ process_metadata_file(file)
 \item{file}{(String) The path to the metadata file.}
 }
 \value{
-A list containing the scenario (e.g., "single", "single_multiple",
-"single_multiple_single") and a tibble with variable information.
+A list containing the scenario (e.g., \code{"single"}, \code{"single_multiple"},
+\code{"single_multiple_single"}) and a tibble with variable information.
 }
 \description{
 \code{process_metadata_file()} reads a metadata file and extracts information
@@ -27,13 +27,13 @@ in variable names.
 \examples{
 \dontrun{
 
-  path <- tempdir()
+  path <- tempfile("fcadata")
 
   download_data(
     year = 2022,
     month = "December",
     dest = path
-   )
+  )
 
   process_metadata_file(here::here(path, "D_RC1.TXT"))
 
