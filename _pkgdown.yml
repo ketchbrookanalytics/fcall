@@ -8,7 +8,7 @@ template:
 navbar:
   structure:
     left:  [intro, reference, news]
-    right: [search]
+    right: [search, github]
 reference:
   - title: "Primary Call Report Data Processing"
     desc: "Primary functions for downloading & parsing Call Report data"

@@ -6,10 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-R package for parsing most Farm Credit Administration (“FCA”) Call
-Report data into
-[tidy](https://tidyr.tidyverse.org/articles/tidy-data.html) R data
-frames.
+R package for parsing Farm Credit Administration (“FCA”) Call Report
+data into [tidy](https://tidyr.tidyverse.org/articles/tidy-data.html) R
+data frames.
 
 ## Installation
 
