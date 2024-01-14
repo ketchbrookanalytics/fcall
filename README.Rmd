@@ -20,6 +20,10 @@ knitr::opts_chunk$set(
 
 R package for parsing Farm Credit Administration ("FCA") Call Report data into [tidy](https://tidyr.tidyverse.org/articles/tidy-data.html) R data frames.
 
+<br>
+
+<img src="man/figures/fcall-example-plot.png" align="center" height="400" alt="Example Plot of FCA Call Report Data" />
+
 ## Installation
 
 You can install {fcall} from [GitHub](https://github.com/) with:
@@ -41,7 +45,7 @@ This package provides 3 utility functions:
 
 1. `download_data()` allows users to programmatically download (and unzip) data from a specific quarter
 2. `process_data()` parses the data from these unzipped *.TXT* files into a list of R data frames containing the Call Report data and file metadata 
-3. `compare_metadata()` compares two sets of Call Report data from different quarters 
+3. `compare_metadata()` compares two sets of Call Report data from different quarters
 
 ### Downloading Data
 
@@ -93,7 +97,7 @@ compare_metadata(
 `fcall` contains with the following internal datasets:
 
 * `file_metadata` contains a short description about each file.
-* The remaining datasets represent a set of "lookup table" dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention `<file>__<column>`, where `file` is the name of the raw data file and `column` is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the `RCB` Call Report data includes the column `INV_CODE`; the `RCB__INV_CODE` internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-Englihs definitions for each.
+* The remaining datasets represent a set of "lookup table" dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention `<file>__<column>`, where `file` is the name of the raw data file and `column` is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the `RCB` Call Report data includes the column `INV_CODE`; the `RCB__INV_CODE` internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-English definitions for each.
 
 To streamline data retrieval and usage, a dedicated function named `get_codes_dict()` has been integrated into the package. This function allows users to load code dictionaries effortlessly by providing only the data name, without the need to specify the exact variable name:
 

@@ -10,6 +10,10 @@ R package for parsing Farm Credit Administration (“FCA”) Call Report
 data into [tidy](https://tidyr.tidyverse.org/articles/tidy-data.html) R
 data frames.
 
+<br>
+
+<img src="man/figures/fcall-example-plot.png" align="center" height="400" alt="Example Plot of FCA Call Report Data" />
+
 ## Installation
 
 You can install {fcall} from [GitHub](https://github.com/) with:
@@ -114,7 +118,7 @@ compare_metadata(
   codes/definition mapping. For example, the `RCB` Call Report data
   includes the column `INV_CODE`; the `RCB__INV_CODE` internal dataset
   in {fcall} provides the mapping between these integer codes and the
-  associated plain-Englihs definitions for each.
+  associated plain-English definitions for each.
 
 To streamline data retrieval and usage, a dedicated function named
 `get_codes_dict()` has been integrated into the package. This function
