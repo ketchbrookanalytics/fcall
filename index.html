@@ -80,6 +80,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 <p>R package for parsing Farm Credit Administration (“FCA”) Call Report data into <a href="https://tidyr.tidyverse.org/articles/tidy-data.html" class="external-link">tidy</a> R data frames.</p>
+<p><br></p>
+<p><img src="reference/figures/fcall-example-plot.png" align="center" height="400" alt="Example Plot of FCA Call Report Data"></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -150,7 +152,7 @@
 <ul>
 <li>
 <code>file_metadata</code> contains a short description about each file.</li>
-<li>The remaining datasets represent a set of “lookup table” dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention <code>&lt;file&gt;__&lt;column&gt;</code>, where <code>file</code> is the name of the raw data file and <code>column</code> is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the <code>RCB</code> Call Report data includes the column <code>INV_CODE</code>; the <code>RCB__INV_CODE</code> internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-Englihs definitions for each.</li>
+<li>The remaining datasets represent a set of “lookup table” dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention <code>&lt;file&gt;__&lt;column&gt;</code>, where <code>file</code> is the name of the raw data file and <code>column</code> is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the <code>RCB</code> Call Report data includes the column <code>INV_CODE</code>; the <code>RCB__INV_CODE</code> internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-English definitions for each.</li>
 </ul>
 <p>To streamline data retrieval and usage, a dedicated function named <code><a href="reference/get_codes_dict.html">get_codes_dict()</a></code> has been integrated into the package. This function allows users to load code dictionaries effortlessly by providing only the data name, without the need to specify the exact variable name:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
