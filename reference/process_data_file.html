@@ -102,8 +102,8 @@ into a tidy format with appropriate column names. The function relies on the
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">process_data_file</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    file <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"RCB_Q202203_G20220808.TXT"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="process_metadata_file.html">process_metadata_file</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"D_RCB.TXT"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"RCB_Q202203_G20220808.TXT"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="process_metadata_file.html">process_metadata_file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"D_RCB.TXT"</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    dict <span class="op">=</span> <span class="va">RCB__INV_CODE</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
