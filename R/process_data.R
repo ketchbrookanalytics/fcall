@@ -13,8 +13,7 @@
 #'
 #' @details
 #' `process_data()` assumes that metadata and data files share a common root
-#' name (characters until the first underscore occurrence) and that metadata and
-#' data files are sorted in the same order.
+#' name (characters until the first underscore occurrence).
 #'
 #' @export
 #'
@@ -46,34 +45,35 @@ process_data <- function(dir) {
   # List metadata files (those that start with D_)
   metadata_files <- files[stringr::str_detect(files, "^D_")]
 
-  # List data files
-  data_files <- setdiff(files, metadata_files)
-
-  # Store file root names (all characters until first underscore occurrence)
-  data_root_names <- sub("^(.*?)_.*$", "\\1", data_files)
+  # Store file root names
+  data_root_names <- metadata_files |>
+    # Remove file extension
+    stringr::str_replace(pattern = "\\.TXT", replacement = "") |>
+    # Remove D_ name convention of metadata files
+    stringr::str_replace(pattern = "^D_", replacement = "") |>
+    # Removal of unneeded characters in RCI* files
+    # These files contain an additional _YEAR that is not match in data filenames
+    stringr::str_replace(pattern = "^(.*?)_.*$", replacement = "\\1")
 
   # Process metadata files
   metadata <- purrr::map(metadata_files, function(metadata_filename) {
-    process_metadata_file(here::here(dir, metadata_filename))
+    process_metadata_file(file.path(dir, metadata_filename))
   })
 
   names(metadata) <- data_root_names
 
-  # Assuming that metadata and data files have the same sorting...
-
   # Process data files
-  data <- purrr::map2(data_files, metadata, function(data_filename, metadata) {
+  data <- purrr::imap(metadata, function(metadata, data_root_name) {
 
-    data_name <- sub("^(.*?)_.*$", "\\1", data_filename)
+    # Get corresponding data file based on name matching
+    data_filename <- files[grepl(pattern = paste0("^", data_root_name, "_"), x = files)]
 
     process_data_file(
-      file = here::here(dir, data_filename),
+      file = file.path(dir, data_filename),
       metadata = metadata,
-      dict = get_codes_dict(data_name)$codes_dict
+      dict = get_codes_dict(data_root_name)$codes_dict
     )
   })
-
-  names(data) <- data_root_names
 
   return(
     list(
@@ -114,7 +114,7 @@ process_data <- function(dir) {
 #'     dest = path
 #'   )
 #'
-#'   process_metadata_file(here::here(path, "D_RC1.TXT"))
+#'   process_metadata_file(file.path(path, "D_RC1.TXT"))
 #'
 #' }
 process_metadata_file <- function(file) {
@@ -240,8 +240,8 @@ process_metadata_file <- function(file) {
 #'   )
 #'
 #'   process_data_file(
-#'     file = here::here(path, "RCB_Q202203_G20220808.TXT"),
-#'     metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+#'     file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+#'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
 #'     dict = RCB__INV_CODE
 #'   )
 #'

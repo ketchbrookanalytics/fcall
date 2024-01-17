@@ -110,7 +110,7 @@ download_data <- function(year, month, dest, files = NULL) {
   )
 
   # Inform user
-  paste0("Files successfully downloaded into ", here::here(dest)) |>
+  paste0("Files successfully downloaded into ", dest) |>
     rlang::inform()
 
 }
