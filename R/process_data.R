@@ -57,7 +57,7 @@ process_data <- function(dir) {
 
   # Process metadata files
   metadata <- purrr::map(metadata_files, function(metadata_filename) {
-    process_metadata_file(here::here(dir, metadata_filename))
+    process_metadata_file(file.path(dir, metadata_filename))
   })
 
   names(metadata) <- data_root_names
@@ -69,7 +69,7 @@ process_data <- function(dir) {
     data_filename <- files[grepl(pattern = paste0("^", data_root_name, "_"), x = files)]
 
     process_data_file(
-      file = here::here(dir, data_filename),
+      file = file.path(dir, data_filename),
       metadata = metadata,
       dict = get_codes_dict(data_root_name)$codes_dict
     )
@@ -114,7 +114,7 @@ process_data <- function(dir) {
 #'     dest = path
 #'   )
 #'
-#'   process_metadata_file(here::here(path, "D_RC1.TXT"))
+#'   process_metadata_file(file.path(path, "D_RC1.TXT"))
 #'
 #' }
 process_metadata_file <- function(file) {
@@ -240,8 +240,8 @@ process_metadata_file <- function(file) {
 #'   )
 #'
 #'   process_data_file(
-#'     file = here::here(path, "RCB_Q202203_G20220808.TXT"),
-#'     metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+#'     file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+#'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
 #'     dict = RCB__INV_CODE
 #'   )
 #'
