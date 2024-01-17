@@ -30,11 +30,11 @@ create_single_table <- function(conn, table_name, vars_info) {
     dplyr::mutate(
       # Single quotes are not supported by default in PostgreSQL
       # Check: https://stackoverflow.com/questions/12316953/insert-text-with-single-quotes-in-postgresql
-      Definition = gsub("'", "''", Definition),
+      Definition = gsub("'", "''", .data$Definition),
       # PostgreSQL is not case sensitive by default. For that reason, the use of " " is needed.
       ColumnCommentSQL = glue::glue("comment on column \"{ table_name }\".\"{ ColumnName }\" is '{ Definition }'")
     ) |>
-    dplyr::pull(ColumnCommentSQL)
+    dplyr::pull("ColumnCommentSQL")
 
   # Add column comments
   purrr::iwalk(columns_comments, function(comment, index) {

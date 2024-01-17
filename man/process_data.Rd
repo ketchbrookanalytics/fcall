@@ -21,8 +21,7 @@ files
 }
 \details{
 \code{process_data()} assumes that metadata and data files share a common root
-name (characters until the first underscore occurrence) and that metadata and
-data files are sorted in the same order.
+name (characters until the first underscore occurrence).
 }
 \examples{
 \dontrun{

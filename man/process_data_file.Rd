@@ -40,8 +40,8 @@ into a tidy format with appropriate column names. The function relies on the
   )
 
   process_data_file(
-    file = here::here(path, "RCB_Q202203_G20220808.TXT"),
-    metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+    file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+    metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
     dict = RCB__INV_CODE
   )
 

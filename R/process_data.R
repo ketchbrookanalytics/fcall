@@ -13,8 +13,7 @@
 #'
 #' @details
 #' `process_data()` assumes that metadata and data files share a common root
-#' name (characters until the first underscore occurrence) and that metadata and
-#' data files are sorted in the same order.
+#' name (characters until the first underscore occurrence).
 #'
 #' @export
 #'
@@ -46,34 +45,35 @@ process_data <- function(dir) {
   # List metadata files (those that start with D_)
   metadata_files <- files[stringr::str_detect(files, "^D_")]
 
-  # List data files
-  data_files <- setdiff(files, metadata_files)
-
-  # Store file root names (all characters until first underscore occurrence)
-  data_root_names <- sub("^(.*?)_.*$", "\\1", data_files)
+  # Store file root names
+  data_root_names <- metadata_files |>
+    # Remove file extension
+    stringr::str_replace(pattern = "\\.TXT", replacement = "") |>
+    # Remove D_ name convention of metadata files
+    stringr::str_replace(pattern = "^D_", replacement = "") |>
+    # Removal of unneeded characters in RCI* files
+    # These files contain an additional _YEAR that is not match in data filenames
+    stringr::str_replace(pattern = "^(.*?)_.*$", replacement = "\\1")
 
   # Process metadata files
   metadata <- purrr::map(metadata_files, function(metadata_filename) {
-    process_metadata_file(here::here(dir, metadata_filename))
+    process_metadata_file(file.path(dir, metadata_filename))
   })
 
   names(metadata) <- data_root_names
 
-  # Assuming that metadata and data files have the same sorting...
-
   # Process data files
-  data <- purrr::map2(data_files, metadata, function(data_filename, metadata) {
+  data <- purrr::imap(metadata, function(metadata, data_root_name) {
 
-    data_name <- sub("^(.*?)_.*$", "\\1", data_filename)
+    # Get corresponding data file based on name matching
+    data_filename <- files[grepl(pattern = paste0("^", data_root_name, "_"), x = files)]
 
     process_data_file(
-      file = here::here(dir, data_filename),
+      file = file.path(dir, data_filename),
       metadata = metadata,
-      dict = get_codes_dict(data_name)$codes_dict
+      dict = get_codes_dict(data_root_name)$codes_dict
     )
   })
-
-  names(data) <- data_root_names
 
   return(
     list(
@@ -101,6 +101,8 @@ process_data <- function(dir) {
 #' details. It detects the scenario based on the occurrence of double asterisks
 #' in variable names.
 #'
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples
@@ -114,7 +116,7 @@ process_data <- function(dir) {
 #'     dest = path
 #'   )
 #'
-#'   process_metadata_file(here::here(path, "D_RC1.TXT"))
+#'   process_metadata_file(file.path(path, "D_RC1.TXT"))
 #'
 #' }
 process_metadata_file <- function(file) {
@@ -165,22 +167,22 @@ process_metadata_file <- function(file) {
     # Separate strings into columns. This is possible because variable names and
     # field type are a single word.
     tidyr::separate(
-      col = value,
+      col = "value",
       into = c("ColumnName", "ColumnType", "DecimalPosition", "Definition"),
       sep = "\\s+",
       extra = "merge"
     ) |>
     dplyr::mutate(
       # Use double asterisks to identify multiple occurrence columns
-      MultipleOccurrenceColumn = stringr::str_detect(ColumnName, "^\\*\\*"),
+      MultipleOccurrenceColumn = stringr::str_detect(.data$ColumnName, "^\\*\\*"),
       # Set the first multiple occurrence column as the code column
-      CodeColumn = cumsum(MultipleOccurrenceColumn) == 1,
+      CodeColumn = cumsum(.data$MultipleOccurrenceColumn) == 1,
       # Clean Definition column by removing white spaces
-      Definition = Definition |>
+      Definition = .data$Definition |>
         stringr::str_replace_all("\\s+", " ") |>
         stringr::str_trim(),
       # Remove double asterisk from variable names
-      ColumnName = stringr::str_replace_all(ColumnName, "\\*\\*", ""),
+      ColumnName = stringr::str_replace_all(.data$ColumnName, "\\*\\*", ""),
       # Express column type as expected in PostgreSQL
       ColumnTypeSQL = dplyr::case_when(
         ColumnType == "Alphanum." ~ "text",
@@ -226,6 +228,8 @@ process_metadata_file <- function(file) {
 #' into a tidy format with appropriate column names. The function relies on the
 #' \code{\link{read_data_file}} function for the actual data reading.
 #'
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples
@@ -240,8 +244,8 @@ process_metadata_file <- function(file) {
 #'   )
 #'
 #'   process_data_file(
-#'     file = here::here(path, "RCB_Q202203_G20220808.TXT"),
-#'     metadata = process_metadata_file(here::here(path, "D_RCB.TXT")),
+#'     file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+#'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
 #'     dict = RCB__INV_CODE
 #'   )
 #'
@@ -257,12 +261,12 @@ process_data_file <- function(file, metadata, dict = NULL) {
   } else {
 
     single_occurrence_columns <- metadata$vars_info |>
-      dplyr::filter(MultipleOccurrenceColumn == FALSE) |>
-      dplyr::pull(ColumnName)
+      dplyr::filter(.data$MultipleOccurrenceColumn == FALSE) |>
+      dplyr::pull("ColumnName")
 
     multiple_occurrence_columns <- metadata$vars_info |>
-      dplyr::filter(MultipleOccurrenceColumn == TRUE) |>
-      dplyr::pull(ColumnName)
+      dplyr::filter(.data$MultipleOccurrenceColumn == TRUE) |>
+      dplyr::pull("ColumnName")
 
     n_codes <- nrow(dict)
 
@@ -292,8 +296,8 @@ process_data_file <- function(file, metadata, dict = NULL) {
         intersect(
           single_occurrence_columns,
           metadata$vars_info |>
-            dplyr::filter(cumsum(CodeColumn) == 0) |>
-            dplyr::pull(ColumnName)
+            dplyr::filter(cumsum(.data$CodeColumn) == 0) |>
+            dplyr::pull("ColumnName")
         ),
 
         # Multiple occurrence columns
@@ -309,8 +313,8 @@ process_data_file <- function(file, metadata, dict = NULL) {
         intersect(
           single_occurrence_columns,
           metadata$vars_info |>
-            dplyr::filter(cumsum(CodeColumn) > 0) |>
-            dplyr::pull(ColumnName)
+            dplyr::filter(cumsum(.data$CodeColumn) > 0) |>
+            dplyr::pull("ColumnName")
         )
       )
 
@@ -320,10 +324,16 @@ process_data_file <- function(file, metadata, dict = NULL) {
 
     data <- data |>
       tidyr::pivot_longer(cols = -dplyr::all_of(single_occurrence_columns)) |>
-      dplyr::mutate(ID = stringr::str_extract(name, "\\d+$"), .after = UNINUM) |>
-      dplyr::mutate(name = stringr::str_replace_all(name, "__\\d+$", "")) |>
-      tidyr::pivot_wider(names_from = name, values_from = value) |>
-      dplyr::select(-ID)
+      dplyr::mutate(
+        ID = stringr::str_extract(.data$name, "\\d+$"),
+        .after = "UNINUM"
+      ) |>
+      dplyr::mutate(name = stringr::str_replace_all(.data$name, "__\\d+$", "")) |>
+      tidyr::pivot_wider(
+        names_from = "name",
+        values_from = "value"
+      ) |>
+      dplyr::select(-"ID")
 
   }
 

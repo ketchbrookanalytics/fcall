@@ -115,8 +115,8 @@ compare_metadata <- function(dir1, dir2) {
 #' `readLines()` and compares the content using the `waldo::compare()` function.
 compare_files_content <- function(filename, dir1, dir2) {
 
-  content1 <- readLines(here::here(dir1, filename), warn = FALSE)
-  content2 <- readLines(here::here(dir2, filename), warn = FALSE)
+  content1 <- readLines(file.path(dir1, filename), warn = FALSE)
+  content2 <- readLines(file.path(dir2, filename), warn = FALSE)
 
   differences <- waldo::compare(content1, content2, max_diffs = Inf)
 

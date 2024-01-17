@@ -35,7 +35,7 @@ in variable names.
     dest = path
   )
 
-  process_metadata_file(here::here(path, "D_RC1.TXT"))
+  process_metadata_file(file.path(path, "D_RC1.TXT"))
 
 }
 }
