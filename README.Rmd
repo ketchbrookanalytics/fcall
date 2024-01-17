@@ -29,8 +29,8 @@ R package for parsing Farm Credit Administration ("FCA") Call Report data into [
 You can install {fcall} from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("ketchbrookanalytics/fcall")
+# install.packages("remotes")
+remotes::install_github("ketchbrookanalytics/fcall")
 ```
 
 ## Background
@@ -44,7 +44,7 @@ Further, some of these datasets are structured in a way that makes data analysis
 This package provides 3 utility functions:
 
 1. `download_data()` allows users to programmatically download (and unzip) data from a specific quarter
-2. `process_data()` parses the data from these unzipped *.TXT* files into a list of R data frames containing the Call Report data and file metadata 
+2. `process_data()` parses the data from these unzipped *.TXT* files into a list of R data frames containing the Call Report data and file metadata
 3. `compare_metadata()` compares two sets of Call Report data from different quarters
 
 ### Downloading Data
@@ -54,8 +54,8 @@ You can download data for a particular period using `download_data()`:
 ``` r
 # Download FCA Call Report data from March 2023
 download_data(
-  year = 2023, 
-  month = 3, 
+  year = 2023,
+  month = 3,
   dest = "path/to/some/folder"
 )
 ```
@@ -71,7 +71,7 @@ data_2023_03 <- process_data(folder = "path/to/some/folder")
 
 You can also use `process_metadata_file()` and `process_data_file()` to process single metadata and data files, respectively.
 
-**Note: `process_data()` has only been tested by the development team on Call Report data from March 2020 to present. Please let us know if you find issues with processing data older than 2020.** 
+**Note: `process_data()` has only been tested by the development team on Call Report data from March 2020 to present. Please let us know if you find issues with processing data older than 2020.**
 
 ### Comparing Metadata from Different Periods
 
@@ -80,8 +80,8 @@ The FCA Call Report data has changed over time, making it difficult to perform a
 ``` r
 # Download data from June 2023
 download_data(
-  year = 2023, 
-  month = 6, 
+  year = 2023,
+  month = 6,
   dest = "path/to/some/other/folder"
 )
 
@@ -135,7 +135,7 @@ conn <- DBI::dbConnect(
 )
 ```
 
-Note that you can connect to the database from any tool you choose (Excel, Power BI, etc.); you are not limited to connecting to the database from R. 
+Note that you can connect to the database from any tool you choose (Excel, Power BI, etc.); you are not limited to connecting to the database from R.
 
 ## Data Structure
 
@@ -205,7 +205,7 @@ In this case, the data in the **data file** does not adhere to "tidy" principles
 * `Code2`
 * `Metric1_Code2`
 * `Metric2_Code2`
-  
+
 The corresponding **metadata file** would likely list the column names as:
 
 * `ColumnA`
@@ -218,6 +218,6 @@ This creates a mismatch between the number of columns identified in the **metada
 
 #### Scenario 3 ("single_multiple_single")
 
-This is the most complex scenario, currently applicable to only one data file (*RCR7*). Unlike Scenario 2, there is an additional set of single-occurrence columns that follow a set of multiple-occurrence columns. For each observation in the **data file**, there is a row that contains comma-separated values of variables that belong to the first set of single-occurrence columns, followed by a row for each class of the 'code' variable with comma-separated values of multiple-occurrence variables, and finally, a row that contains comma-separated values of the remaining single-occurrence columns. 
+This is the most complex scenario, currently applicable to only one data file (*RCR7*). Unlike Scenario 2, there is an additional set of single-occurrence columns that follow a set of multiple-occurrence columns. For each observation in the **data file**, there is a row that contains comma-separated values of variables that belong to the first set of single-occurrence columns, followed by a row for each class of the 'code' variable with comma-separated values of multiple-occurrence variables, and finally, a row that contains comma-separated values of the remaining single-occurrence columns.
 
 In this case, the initial step of reading the data involves concatenating lines corresponding to the same observation (using loops). Once the data is read, the processing is similar to Scenario 2, except when naming the columns it is necessary to consider that the repeating columns are in the middle of the dataset. After naming the columns, the processing is the same as in Scenario 2. The resulting dataset differs from the metadata file in that it places all single-occurrence columns at the beginning.

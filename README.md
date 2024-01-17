@@ -19,8 +19,8 @@ data frames.
 You can install {fcall} from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("ketchbrookanalytics/fcall")
+# install.packages("remotes")
+remotes::install_github("ketchbrookanalytics/fcall")
 ```
 
 ## Background
@@ -58,8 +58,8 @@ You can download data for a particular period using `download_data()`:
 ``` r
 # Download FCA Call Report data from March 2023
 download_data(
-  year = 2023, 
-  month = 3, 
+  year = 2023,
+  month = 3,
   dest = "path/to/some/folder"
 )
 ```
@@ -92,8 +92,8 @@ definitions) between two sets of FCA Call Report data.
 ``` r
 # Download data from June 2023
 download_data(
-  year = 2023, 
-  month = 6, 
+  year = 2023,
+  month = 6,
   dest = "path/to/some/other/folder"
 )
 
