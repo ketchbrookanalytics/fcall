@@ -66,7 +66,7 @@ You can parse the data from the downloaded *.TXT* files into tidy R data frames 
 
 ``` r
 # Process data from March 2023
-data_2023_03 <- process_data(folder = "path/to/some/folder")
+data_2023_03 <- process_data(dir = "path/to/some/folder")
 ```
 
 You can also use `process_metadata_file()` and `process_data_file()` to process single metadata and data files, respectively.

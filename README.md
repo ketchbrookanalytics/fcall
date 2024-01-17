@@ -71,7 +71,7 @@ frames using `process_data()`:
 
 ``` r
 # Process data from March 2023
-data_2023_03 <- process_data(folder = "path/to/some/folder")
+data_2023_03 <- process_data(dir = "path/to/some/folder")
 ```
 
 You can also use `process_metadata_file()` and `process_data_file()` to
