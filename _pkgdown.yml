@@ -7,7 +7,7 @@ template:
   theme: breeze-light
 navbar:
   structure:
-    left:  [intro, reference, news]
+    left:  [intro, reference, articles, news]
     right: [search, github]
 reference:
   - title: "Primary Call Report Data Processing"
