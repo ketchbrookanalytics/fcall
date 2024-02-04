@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 URL: https://ketchbrookanalytics.github.io/fcall/, https://github.com/ketchbrookanalytics/fcall
 BugReports: https://github.com/ketchbrookanalytics/fcall/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 Imports: 
     DBI,
     dplyr,
