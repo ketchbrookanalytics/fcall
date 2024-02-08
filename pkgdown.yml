@@ -3,7 +3,9 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   database: database.html
-last_built: 2024-02-04T05:14Z
+  data-structure: data-structure.html
+  getting-started: getting-started.html
+last_built: 2024-02-08T15:21Z
 urls:
   reference: https://ketchbrookanalytics.github.io/fcall/reference
   article: https://ketchbrookanalytics.github.io/fcall/articles

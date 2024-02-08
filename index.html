@@ -54,6 +54,8 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/database.html">Database</a>
+    <a class="dropdown-item" href="articles/data-structure.html">Data Structure</a>
+    <a class="dropdown-item" href="articles/getting-started.html">Getting Started</a>
   </div>
 </li>
 <li class="nav-item">
@@ -111,177 +113,18 @@
 <li>
 <code><a href="reference/compare_metadata.html">compare_metadata()</a></code> compares two sets of Call Report data from different quarters</li>
 </ol>
-<div class="section level3">
-<h3 id="downloading-data">Downloading Data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
-</h3>
-<p>You can download data for a particular period using <code><a href="reference/download_data.html">download_data()</a></code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download FCA Call Report data from March 2023</span></span>
-<span><span class="fu"><a href="reference/download_data.html">download_data</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">2023</span>,</span>
-<span>  month <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>  dest <span class="op">=</span> <span class="st">"path/to/some/folder"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="process-files">Process Files<a class="anchor" aria-label="anchor" href="#process-files"></a>
-</h3>
-<p>You can parse the data from the downloaded <em>.TXT</em> files into tidy R data frames using <code><a href="reference/process_data.html">process_data()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Process data from March 2023</span></span>
-<span><span class="va">data_2023_03</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/process_data.html">process_data</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"path/to/some/folder"</span><span class="op">)</span></span></code></pre></div>
-<p>You can also use <code><a href="reference/process_metadata_file.html">process_metadata_file()</a></code> and <code><a href="reference/process_data_file.html">process_data_file()</a></code> to process single metadata and data files, respectively.</p>
-<p><strong>Note: <code><a href="reference/process_data.html">process_data()</a></code> has only been tested by the development team on Call Report data from March 2020 to present. Please let us know if you find issues with processing data older than 2020.</strong></p>
-</div>
-<div class="section level3">
-<h3 id="comparing-metadata-from-different-periods">Comparing Metadata from Different Periods<a class="anchor" aria-label="anchor" href="#comparing-metadata-from-different-periods"></a>
-</h3>
-<p>The FCA Call Report data has changed over time, making it difficult to perform analysis across multiple periods. To ensure that such comparisons can be made safely, the <code><a href="reference/compare_metadata.html">compare_metadata()</a></code> returns differences in the data structure (files, column names, and column definitions) between two sets of FCA Call Report data.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download data from June 2023</span></span>
-<span><span class="fu"><a href="reference/download_data.html">download_data</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">2023</span>,</span>
-<span>  month <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>  dest <span class="op">=</span> <span class="st">"path/to/some/other/folder"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Compare metadata files from March and June 2023</span></span>
-<span><span class="fu"><a href="reference/compare_metadata.html">compare_metadata</a></span><span class="op">(</span></span>
-<span>  dir1 <span class="op">=</span> <span class="st">"path/to/some/folder"</span>,   <span class="co"># where we downloaded the March 2023 data</span></span>
-<span>  dir2 <span class="op">=</span> <span class="st">"path/to/some/other/folder"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="internal-datasets">Internal Datasets<a class="anchor" aria-label="anchor" href="#internal-datasets"></a>
-</h3>
-<p><code>fcall</code> contains with the following internal datasets:</p>
-<ul>
-<li>
-<code>file_metadata</code> contains a short description about each file.</li>
-<li>The remaining datasets represent a set of “lookup table” dictionaries for the mapping between integer codes in the raw data and their plain-English description in the associated metadata. These datasets follow the naming convention <code>&lt;file&gt;__&lt;column&gt;</code>, where <code>file</code> is the name of the raw data file and <code>column</code> is the name of the column in the associated metadata file for which the dataset provides the codes/definition mapping. For example, the <code>RCB</code> Call Report data includes the column <code>INV_CODE</code>; the <code>RCB__INV_CODE</code> internal dataset in {fcall} provides the mapping between these integer codes and the associated plain-English definitions for each.</li>
-</ul>
-<p>To streamline data retrieval and usage, a dedicated function named <code><a href="reference/get_codes_dict.html">get_codes_dict()</a></code> has been integrated into the package. This function allows users to load code dictionaries effortlessly by providing only the data name, without the need to specify the exact variable name:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get codes dictionary information for "RCB" data</span></span>
-<span><span class="va">rcb_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_codes_dict.html">get_codes_dict</a></span><span class="op">(</span><span class="st">"RCB"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Access codes dictionary</span></span>
-<span><span class="va">rcb_dict</span><span class="op">$</span><span class="va">codes_dict</span></span>
-<span></span>
-<span><span class="co"># Access associated codes variable name</span></span>
-<span><span class="va">rcb_dict</span><span class="op">$</span><span class="va">codes_varname</span></span></code></pre></div>
-</div>
+<p>Check out the <a href="https://ketchbrookanalytics.github.io/fcall/articles/getting-started.html">Getting Started</a> vignette to learn more about these three core functions.</p>
 </div>
 <div class="section level2">
 <h2 id="database">Database<a class="anchor" aria-label="anchor" href="#database"></a>
 </h2>
 <p><a href="https://www.ketchbrookanalytics.com/" class="external-link">Ketchbrook Analytics</a> has also created a PostgreSQL database to store historical FCA Call Report data in a traditional, relational schema that aligns with the output data frame structure resulting from running <code><a href="reference/process_data.html">process_data()</a></code>. This database allows users to execute SQL queries to easily analyze Call Report data across multiple quarters.</p>
-<p>Please, reach out to <a href="mailto:info@ketchbrookanalytics.com?subject=FCA%20Call%20Report%20Database">info@ketchbrookanalytics.com</a> if you would like access to this database.</p>
-<p>Once you are provided with credentials (in the form of a <code>config.yml</code> file) to access the SQL database, the following code can be used to establish a connection to the database from R:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get config</span></span>
-<span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu">config</span><span class="fu">::</span><span class="fu">get</span><span class="op">(</span>config <span class="op">=</span> <span class="st">"user"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Connect to database</span></span>
-<span><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">dbConnect</a></span><span class="op">(</span></span>
-<span>  drv <span class="op">=</span> <span class="fu">RPostgres</span><span class="fu">::</span><span class="fu">Postgres</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  dbname <span class="op">=</span> <span class="va">config</span><span class="op">$</span><span class="va">database</span>,</span>
-<span>  host <span class="op">=</span> <span class="va">config</span><span class="op">$</span><span class="va">host</span>,</span>
-<span>  port <span class="op">=</span> <span class="va">config</span><span class="op">$</span><span class="va">port</span>,</span>
-<span>  user <span class="op">=</span> <span class="va">config</span><span class="op">$</span><span class="va">username</span>,</span>
-<span>  password <span class="op">=</span> <span class="va">config</span><span class="op">$</span><span class="va">password</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p>Note that you can connect to the database from any tool you choose (Excel, Power BI, etc.); you are not limited to connecting to the database from R.</p>
-</div>
-<div class="section level2">
-<h2 id="data-structure">Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"></a>
-</h2>
-<p>The information about each dataset is spread across two files, a <strong>metadata file</strong> and a <strong>data file</strong>:</p>
-<ol style="list-style-type: decimal">
-<li>The <strong>metadata file</strong> contains information about the columns in the <strong>data file</strong>, as well as lookup table(s) for translating integer codes found in certain columns of the <strong>data file</strong> into plain-English descriptions (if applicable)</li>
-<li>The <strong>data file</strong> contains the actual raw, comma-separated Call Report data, without headers</li>
-</ol>
-<p>Metadata file names start with “D_”. We can use the file naming conventions to link each <strong>metadata file</strong> with its corresponding <strong>data file</strong>.</p>
-<div class="section level3">
-<h3 id="metadata-files">Metadata Files<a class="anchor" aria-label="anchor" href="#metadata-files"></a>
-</h3>
-<p>Each metadata file, in essence, contains the following information about the variables in the corresponding data file:</p>
-<ul>
-<li>Variable name</li>
-<li>Field type</li>
-<li>Decimal positions</li>
-<li>Variable description</li>
-</ul>
-<p>Metadata is stored by FCA in a way that is not straightforward to process:</p>
-<ul>
-<li>Each metadata file has a description header that can span across multiple lines</li>
-<li>Information about a variable is not stored in a single line, as variable descriptions can span across multiple lines (in an inconsistent way)</li>
-<li>Some metadata files have variable names that are preceded by two asterisks (**). These asterisks are used to denote multiple-occurrence columns and the first of them corresponds to a variable that stores codes. Files with multiple-occurrence columns end with a NOTE that can span across multiple lines.</li>
-</ul>
-<p>Nevertheless, there are some features of metadata files that come in handy:</p>
-<ul>
-<li>Variable names are a single word (i.e., variable names are not separated by spaces)</li>
-<li>Field type is either “Numeric” or “Alphanum.” and is always placed after a variable name</li>
-<li>Decimal position is a single-digit integer that is always placed after field type.</li>
-</ul>
-<p>These features allow us to use regular expressions to process metadata files.</p>
+<p>Please reach out to <a href="mailto:info@ketchbrookanalytics.com?subject=FCA%20Call%20Report%20Database">info@ketchbrookanalytics.com</a> if you would like access to this database.</p>
 <div class="section level4">
-<h4 id="metadata-file-scenarios">Metadata File Scenarios<a class="anchor" aria-label="anchor" href="#metadata-file-scenarios"></a>
+<h4 id="database-users">Database Users<a class="anchor" aria-label="anchor" href="#database-users"></a>
 </h4>
-<p>For the purposes of parsing files to create tidy data frames, the metadata files are classified into the following unique scenarios:</p>
-<ul>
-<li>Scenario 1: All variables are single-occurrence (i.e., no variable is preceded by two asterisks). This scenario is referred to as “single”.</li>
-<li>Scenario 2: A set of single-occurrence variables is followed by a set of multiple-occurrence variables. This scenario will be referred as “single_multiple”.</li>
-<li>Scenario 3: A set of single-occurrence variables followed by a set of multiple-occurrence variables is followed by a second set of single-occurrence variables. This scenario will be referred as “single_multiple_single”.</li>
-</ul>
-<p>This classification is important because the corresponding data file will have a different structure depending on the scenario.</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="data-files">Data Files<a class="anchor" aria-label="anchor" href="#data-files"></a>
-</h3>
-<p>In general terms, the processing workflow of data files involves:</p>
-<ol style="list-style-type: decimal">
-<li>Reading data</li>
-<li>Applying column names</li>
-<li>Performing pivot operations (if necessary)</li>
-</ol>
-<p>Specific pivot operations depend on the <a href="#metadata-file-scenarios">scenario</a> of the corresponding metadata file</p>
-<div class="section level4">
-<h4 id="scenario-1-single">Scenario 1 (“single”)<a class="anchor" aria-label="anchor" href="#scenario-1-single"></a>
-</h4>
-<p>This is the simplest scenario. The data in the data file is already in the expected format, and the only task is to apply the column names specified in the metadata file.</p>
-</div>
-<div class="section level4">
-<h4 id="scenario-2-single_multiple">Scenario 2 (“single_multiple”)<a class="anchor" aria-label="anchor" href="#scenario-2-single_multiple"></a>
-</h4>
-<p>In this case, the data in the <strong>data file</strong> does not adhere to “tidy” principles. The multiple-occurrence columns are repeated for each class within the “code” variable. To help clarify the previous statement, consider a <strong>data file</strong> has following (mock) column names:</p>
-<ul>
-<li><code>ColumnA</code></li>
-<li><code>ColumnB</code></li>
-<li><code>Code1</code></li>
-<li><code>Metric1_Code1</code></li>
-<li><code>Metric2_Code1</code></li>
-<li><code>Code2</code></li>
-<li><code>Metric1_Code2</code></li>
-<li><code>Metric2_Code2</code></li>
-</ul>
-<p>The corresponding <strong>metadata file</strong> would likely list the column names as:</p>
-<ul>
-<li><code>ColumnA</code></li>
-<li><code>ColumnB</code></li>
-<li><code>Code</code></li>
-<li><code>Metric1</code></li>
-<li><code>Metric2</code></li>
-</ul>
-<p>This creates a mismatch between the number of columns identified in the <strong>metadata file</strong> (5) and the number of columns in the corresponding <strong>data file</strong> (8). To properly apply column names to the <strong>data file</strong>, the total number of distinct codes in the <code>Code</code> column must be determined. Once the column names have been appropriately applied to the <strong>data file</strong>, we complete the data processing by applying both long and wide pivots.</p>
-</div>
-<div class="section level4">
-<h4 id="scenario-3-single_multiple_single">Scenario 3 (“single_multiple_single”)<a class="anchor" aria-label="anchor" href="#scenario-3-single_multiple_single"></a>
-</h4>
-<p>This is the most complex scenario, currently applicable to only one data file (<em>RCR7</em>). Unlike Scenario 2, there is an additional set of single-occurrence columns that follow a set of multiple-occurrence columns. For each observation in the <strong>data file</strong>, there is a row that contains comma-separated values of variables that belong to the first set of single-occurrence columns, followed by a row for each class of the ‘code’ variable with comma-separated values of multiple-occurrence variables, and finally, a row that contains comma-separated values of the remaining single-occurrence columns.</p>
-<p>In this case, the initial step of reading the data involves concatenating lines corresponding to the same observation (using loops). Once the data is read, the processing is similar to Scenario 2, except when naming the columns it is necessary to consider that the repeating columns are in the middle of the dataset. After naming the columns, the processing is the same as in Scenario 2. The resulting dataset differs from the metadata file in that it places all single-occurrence columns at the beginning.</p>
-</div>
+<p><a href="https://agwestfc.com" target="_blank" class="external-link"> <img src="reference/figures/agwest_logo.png" align="left" width="225" alt=""></a></p>
+<p><br><br><br></p>
 </div>
 </div>
 </div>
