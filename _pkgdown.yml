@@ -9,6 +9,19 @@ navbar:
   structure:
     left:  [intro, reference, articles, news]
     right: [search, github]
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Package Information
+      - text: Getting Started
+        href: getting-started.html
+      - text: Data Structure
+        href: data-structure.html
+      - text: -------
+      - text: Database
+      - text: "Connecting to the Database (via ODBC)"
+        href: articles/database.html
 reference:
   - title: "Primary Call Report Data Processing"
     desc: "Primary functions for downloading & parsing Call Report data"
