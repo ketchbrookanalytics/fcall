@@ -15,9 +15,9 @@ navbar:
       menu:
       - text: Package Information
       - text: Getting Started
-        href: getting-started.html
+        href: articles/getting-started.html
       - text: Data Structure
-        href: data-structure.html
+        href: articles/data-structure.html
       - text: -------
       - text: Database
       - text: "Connecting to the Database (via ODBC)"
