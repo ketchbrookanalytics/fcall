@@ -70,8 +70,14 @@ if you would like access to this database.
 
 #### Database Users
 
+<div>
+
 <a href="https://agwestfc.com" target="_blank">
-<img src="man/figures/agwest_logo.png" align="left" width="225" alt="" />
-</a>
+<img src="man/figures/agwest_logo.png" width="225" alt="" /> </a>
+<span style="padding-right:50px"> </span>
+<a href="https://www.greenstonefcs.com/" target="_blank">
+<img src="man/figures/greenstone_logo.jpg" width="225" alt="" /> </a>
+
+</div>
 
 <br> <br> <br>
