@@ -73,10 +73,14 @@ if you would like access to this database.
 <div>
 
 <a href="https://agwestfc.com" target="_blank">
-<img src="man/figures/agwest_logo.png" width="225" alt="" /> </a>
-<span style="padding-right:50px"> </span>
+<img src="man/figures/agwest_logo.png" width="225" alt="AgWest Farm Credit" />
+</a> <span style="padding-right:50px"> </span>
 <a href="https://www.greenstonefcs.com/" target="_blank">
-<img src="man/figures/greenstone_logo.jpg" width="225" alt="" /> </a>
+<img src="man/figures/greenstone_logo.jpg" width="225" alt="GreenStone Farm Credit Services" />
+</a> <span style="padding-right:50px"> </span>
+<a href="https://highplainsfarmcredit.com/" target="_blank">
+<img src="man/figures/highplains_logo.png" width="225" alt="High Plains Farm Credit" />
+</a>
 
 </div>
 
