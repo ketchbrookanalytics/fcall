@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fcall <img src="man/figures/logo.png" align="right" height="125" alt="" />
+# fcall <a href="https://ketchbrookanalytics.github.io/fcall/"><img src="man/figures/logo.png" align="right" height="275" alt="fcall website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
