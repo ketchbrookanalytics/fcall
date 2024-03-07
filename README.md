@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fcall <img src="man/figures/logo.png" align="right" height="125" alt="" />
+# fcall <a href="https://ketchbrookanalytics.github.io/fcall/"><img src="man/figures/logo.png" align="right" height="275" alt="fcall website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -71,17 +71,21 @@ if you would like access to this database.
 #### Database Users
 
 <div>
-
+<div style="display: flex; justify-content: space-evenly;">
+<p style="display: flex; align-items:center">
 <a href="https://agwestfc.com" target="_blank">
-<img src="man/figures/agwest_logo.png" width="225" alt="AgWest Farm Credit" />
-</a> <span style="padding-right:50px"> </span>
-<a href="https://www.greenstonefcs.com/" target="_blank">
-<img src="man/figures/greenstone_logo.jpg" width="225" alt="GreenStone Farm Credit Services" />
-</a> <span style="padding-right:50px"> </span>
-<a href="https://highplainsfarmcredit.com/" target="_blank">
-<img src="man/figures/highplains_logo.png" width="225" alt="High Plains Farm Credit" />
+<img src="man/figures/agwest_logo.png" width="220" alt="AgWest Farm Credit"/>
 </a>
-
+</p>
+<p style="display: flex; align-items:center">
+<a href="https://www.greenstonefcs.com/" target="_blank">
+<img src="man/figures/greenstone_logo.jpg" width="220" alt="GreenStone Farm Credit Services"/>
+</a>
+</p>
+<p style="display: flex; align-items:center">
+<a href="https://highplainsfarmcredit.com/" target="_blank">
+<img src="man/figures/highplains_logo.png" width="220" alt="High Plains Farm Credit"/>
+</a>
+</p>
 </div>
-
-<br> <br> <br>
+</div>
