@@ -88,4 +88,11 @@ if you would like access to this database.
 </a>
 </p>
 </div>
+<div style="display: flex; justify-content: space-evenly;">
+<p style="display: flex; align-items:center">
+<a href="https://www.cobank.com/" target="_blank">
+<img src="man/figures/cobank_logo.jpg" width="220" alt="CoBank"/>
+</a>
+</p>
+</div>
 </div>
