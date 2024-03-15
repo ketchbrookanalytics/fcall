@@ -63,7 +63,8 @@ logos_data <- tibble::tribble(
   1, 220, "agwest_logo.png", "AgWest Farm Credit", "https://agwestfc.com", 
   1, 220, "greenstone_logo.jpg", "GreenStone Farm Credit Services", "https://www.greenstonefcs.com/", 
   1, 220, "highplains_logo.png", "High Plains Farm Credit", "https://highplainsfarmcredit.com/",
-  2, 220, "cobank_logo.jpg", "CoBank", "https://www.cobank.com/"
+  2, 220, "cobank_logo.jpg", "CoBank", "https://www.cobank.com/",
+  2, 220, "fci_logo.jpg", "Farm Credit Illinois", "https://www.farmcreditil.com/"
 )
 
 lines <- logos_data$line |> unique() |> sort()

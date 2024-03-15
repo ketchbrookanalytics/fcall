@@ -94,5 +94,10 @@ if you would like access to this database.
 <img src="man/figures/cobank_logo.jpg" width="220" alt="CoBank"/>
 </a>
 </p>
+<p style="display: flex; align-items:center">
+<a href="https://www.farmcreditil.com/" target="_blank">
+<img src="man/figures/fci_logo.jpg" width="220" alt="Farm Credit Illinois"/>
+</a>
+</p>
 </div>
 </div>
