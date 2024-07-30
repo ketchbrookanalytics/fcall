@@ -10,7 +10,7 @@ The following tutorial serves as a guide to connect Excel (on a Windows operatin
 
 ## 1.0 - Download the psqlodbc Driver
 
-In order to setup an ODBC connection between your local machine and the PostgreSQL database, first download and install the **psqlodbc** driver from [https://www.postgresql.org/ftp/odbc/versions/msi/](https://www.postgresql.org/ftp/odbc/versions/msi/). We recommend downloading the latest version that matches your computer's specifications (e.g., for 64-bit operating systems, download the file that ends in *"-x64.zip"*).
+In order to setup an ODBC connection between your local machine and the PostgreSQL database, first download and install the **psqlodbc** driver from [https://www.postgresql.org/ftp/odbc/releases](https://www.postgresql.org/ftp/odbc/releases). We recommend downloading the latest version that matches your computer's specifications (e.g., for 64-bit operating systems, download the file that ends in *"-x64.zip"*).
 
 ## 2.0 - Add an ODBC Data Source
 
