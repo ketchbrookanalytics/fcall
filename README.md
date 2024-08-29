@@ -99,5 +99,10 @@ if you would like access to this database.
 <img src="man/figures/fci_logo.jpg" width="220" alt="Farm Credit Illinois"/>
 </a>
 </p>
+<p style="display: flex; align-items:center">
+<a href="https://goldenstatefarmcredit.com/" target="_blank">
+<img src="man/figures/golden_state_logo.png" width="220" alt="Golden State Farm Credit"/>
+</a>
+</p>
 </div>
 </div>
