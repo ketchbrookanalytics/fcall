@@ -126,9 +126,8 @@ process_metadata_file <- function(file) {
     readLines(file, warn = FALSE) |>
     # Create a single string by concatenating each line
     paste0(collapse = " ") |>
-    # Encode object.
-    # Some characters in files where throwing an error due to its encoding.
-    utf8::utf8_encode() |>
+    # Convert encoding
+    iconv(from = "windows-1252", to = "utf-8") |>
     # Replace tabs with single space.
     # This is necessary because tabs do not separate words as needed.
     stringr::str_replace_all("\\\\t", " ") |>
