@@ -105,4 +105,11 @@ if you would like access to this database.
 </a>
 </p>
 </div>
+<div style="display: flex; justify-content: space-evenly;">
+<p style="display: flex; align-items:center">
+<a href="https://www.horizonfc.com/" target="_blank">
+<img src="man/figures/horizon_logo.png" width="220" alt="Horizon Farm Credit"/>
+</a>
+</p>
+</div>
 </div>
