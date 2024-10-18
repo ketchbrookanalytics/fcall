@@ -4,6 +4,8 @@
 # fcall <a href="https://ketchbrookanalytics.github.io/fcall/"><img src="man/figures/logo.png" align="right" height="275" alt="fcall website" /></a>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ketchbrookanalytics/fcall/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ketchbrookanalytics/fcall/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 R package for parsing Farm Credit Administration (“FCA”) Call Report
