@@ -111,5 +111,10 @@ if you would like access to this database.
 <img src="man/figures/horizon_logo.png" width="220" alt="Horizon Farm Credit"/>
 </a>
 </p>
+<p style="display: flex; align-items:center">
+<a href="https://www.capitalfarmcredit.com/" target="_blank">
+<img src="man/figures/capital_logo.png" width="220" alt="Capital Farm Credit"/>
+</a>
+</p>
 </div>
 </div>
