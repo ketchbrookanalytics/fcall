@@ -29,13 +29,11 @@ append_single_data <- function(conn, table, data, period) {
   message(glue::glue("Step 2/2: Adding { period } data to { table }"))
 
   # Append rows from period
-  DBI::dbWriteTable(
+  n_added <- DBI::dbAppendTable(
     conn = conn,
     name = table,
     value = data |>
-      dplyr::mutate(DATA_PERIOD = period),
-    append = TRUE,
-    row.names = FALSE
+      dplyr::mutate(DATA_PERIOD = period)
   )
 
   # Inform user
