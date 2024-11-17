@@ -19,7 +19,8 @@ append_single_data <- function(conn, table, data, period) {
   # Inform user
   message(glue::glue("Step 1/2: Removing { period } data from { table }"))
 
-  DBI::dbSendQuery(
+  # Remove any rows that already exist in the table for the period
+  n_dropped <- DBI::dbExecute(
     conn = conn,
     statement = delete_statement
   )
