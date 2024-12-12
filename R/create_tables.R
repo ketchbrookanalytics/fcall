@@ -54,8 +54,10 @@ create_single_table <- function(conn, table_name, vars_info) {
 #' @noRd
 add_user_read_access <- function(conn, username) {
 
+  username <- DBI::SQL(username)
+
   stmt <- glue::glue_sql(
-    "GRANT SELECT ON ALL TABLES IN SCHEMA public TO {username};",
+    'GRANT SELECT ON ALL TABLES IN SCHEMA public TO "{username}";',
     .con = conn
   )
 
