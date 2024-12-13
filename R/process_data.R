@@ -37,6 +37,15 @@
 #'   processed_data$metadata$RCB
 process_data <- function(dir) {
 
+  # Throw an error if the directory doesn't exist (instead of returning an
+  # empty list object)
+  if (!fs::dir_exists(dir)) {
+
+    glue::glue("Directory {glue::double_quote(dir)} does not exist.") |>
+      rlang::abort()
+
+  }
+
   # If `process_data_all()` throws an error, add a message about the bad 2024
   # files from FCA
   tryCatch(
