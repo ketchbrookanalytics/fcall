@@ -17,6 +17,7 @@ BugReports: https://github.com/ketchbrookanalytics/fcall/issues
 Depends: 
     R (>= 3.5.0)
 Imports: 
+    cli,
     DBI,
     dplyr,
     glue,
