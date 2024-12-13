@@ -35,11 +35,12 @@
 #'
 #'   # Access "RCB" metadata
 #'   processed_data$metadata$RCB
+#' }
 process_data <- function(dir) {
 
   # Throw an error if the directory doesn't exist (instead of returning an
   # empty list object)
-  if (!fs::dir_exists(dir)) {
+  if (!dir.exists(dir)) {
 
     glue::glue("Directory {glue::double_quote(dir)} does not exist.") |>
       rlang::abort()
