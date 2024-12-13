@@ -1,0 +1,31 @@
+         FILE LAYOUT FOR Schedule RI-E.1 – Changes in Allowances for Credit Losses 
+                                               
+                                      
+       VARIABLE    FIELD  DEC.     
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code      
+           DIST  Numeric     0  District Code   
+          ASSOC  Numeric     0  Association Code  
+          MONTH  Numeric     0  Month of Report             
+           YEAR  Numeric     0  Year of Report             
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+   **   ACLCode  Numeric     0  Code for Allowances for Credit Losses 
+				10  Allowances for Credit Losses, beginning of period.
+                20  Net increase (or decrease (-)) resulting from provision for credit losses (current period)
+				30  Less: Charge-offs:
+                40  Less: Write-downs arising from transfer of financial assets
+				50  Recoveries
+                60  Other
+				70  Allowances for credit losses, end of period
+				   
+          
+    ** ACLLoanLease   Numeric    0  Loans,Leases, etc. (1)
+   ** ACLHTMDebtSec   Numeric    0  Held-to-Maturity Debt Securities  
+   ** ACLAFSDebtSec   Numeric    0  Available-for-Sale Debt Securities
+                                    
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH ACLCode VALUE.
+			 
+(1) includes loans, sales contracts, notes, and leases

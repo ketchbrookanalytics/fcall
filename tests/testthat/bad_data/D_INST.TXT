@@ -1,0 +1,21 @@
+                     FILE LAYOUT FOR INSTITUTION INFORMATION
+                             DATA DELIMITED BY COMMAS
+                ALPHANUMERIC VALUES ARE ENCLOSED IN DOUBLE QUOTES
+                                    
+                                    
+         VARIABLE    FIELD  DEC.        
+             NAME    TYPE   POS.  VARIABLE DESCRIPTION 
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code
+             DIST  Numeric     0  District Code
+            ASSOC  Numeric     0  Association Code
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, district, and Association
+                                   codes concatenated
+        SHORTNAME  Alphanum.   0  Institution short name
+        MAIL_ADDR  Alphanum.   0  Mailing address
+      STREET_ADDR  Alphanum.   0  Street address
+             CITY  Alphanum.   0  City name
+            STATE  Alphanum.   0  State name
+              ZIP  Alphanum.   0  Zip code

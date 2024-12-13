@@ -1,0 +1,78 @@
+         FILE LAYOUT FOR SCHEDULE RC-B Debt Securities
+						(excluding investments in FC institutions and
+						diversified investment funds)  
+                                               
+                                      
+       VARIABLE    FIELD  DEC.     
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  -------------  -------  ----  ---------------------                   
+         SYSTEM  Numeric     0  System Code      
+           DIST  Numeric     0  District Code   
+          ASSOC  Numeric     0  Association Code  
+          MONTH  Numeric     0  Month of Report             
+           YEAR  Numeric     0  Year of Report             
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+   **  INV_CODE  Numeric     0  Investment Code for Marketable
+                                 Investments: 
+				10  U.S. Treasury securities
+                15  SBA securities
+				17  Other U.S. Gov’t securities and Agency(excluding MBS)
+				
+                25  Securities fully and unconditionally guaranteed by a
+					GSE (excluding MBS and Farmer Mac securities)
+				29  Municipal securities
+                35  International and multilateral development
+					bank obligations
+					
+				40  Money market instruments:Federal funds sold
+				41  Money market instruments:Negotiable certificates of
+											Deposit
+                60  Money market instruments:Banker acceptances
+                52  Money market instruments:Commercial paper
+                                       
+                50  Money market instruments:Reverse repurchase agreements
+                51  Money market instruments:Other
+
+                62  RMBS fully and unconditionally guaranteed by U.S.  
+					government or its agencies
+				68  RMBS fully and unconditionally guaranteed by GSE
+				64  Non-Agency RMBS
+				69  Other RMBS
+				
+				71  CMBS(excl. Farmer Mac sec.):CMBS fully and unconditionally 
+												guaranteed by U.S. government
+                72  CMBS(excl. Farmer Mac sec.):CMBS fully and unconditionally 
+												guaranteed by GSE
+				73  CMBS(excl. Farmer Mac sec.):Non-Agency CMBS
+                65  CMBS(excl. Farmer Mac sec.):Other CMBS
+				
+				86  Farmer Mac guaranteed sec.:Farm and ranch securities (i.e., AMBS)
+			    87  Farmer Mac guaranteed sec.:Rural utility securities
+                88  Farmer Mac guaranteed sec.:USDA securities
+                66  Farmer Mac guaranteed sec.:Other Farmer Mac debt securities
+
+			    141 ABS(excl. Farmer Mac securities):Credit card receivables
+			    142 ABS(excl. Farmer Mac securities):Home equity loans
+			    143 ABS(excl. Farmer Mac securities):Auto Loans
+			    144 ABS(excl. Farmer Mac securities):Student Loans
+			    145 ABS(excl. Farmer Mac securities):Equipment loans
+			    146 ABS(excl. Farmer Mac securities):Manufactured housing loans
+				95  ABS(excl. Farmer Mac securities):Other ABS
+				
+				81  Other types of debt securities:Domestic debt securities
+				82  Other types of debt securities:Foreign debt securities
+				
+				180 Allowance for Credit Losses on Debt Securities(start collecting on March 2023)
+				
+				99  Total Debt Securities
+				   
+          
+    **     BKVAL   Numeric    0  Amortized cost of Marketable Investments
+    **    MKTVAL   Numeric    0  Fair Value of Marketable Investments  
+ ** BKVALFORSALE   Numeric    0  Available for Sale - Amortized cost
+** MKTVALFORSALE   Numeric    0  Available for Sale - Fair Value
+
+                                    
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH INV_CODE VALUE.
