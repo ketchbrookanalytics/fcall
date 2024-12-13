@@ -1,3 +1,27 @@
+test_that("`process_data()` throws message with bad files from 2024", {
+
+  expect_message(
+    process_data(dir = testthat::test_path("bad_data")),
+    regexp = "Please note there is an outstanding issue with the 2024 files",
+    fixed = FALSE
+
+  )
+
+})
+
+test_that("`process_data()` throws error if directory doesn't exist", {
+
+  expect_error(
+    withr::with_dir(
+      tempdir(),
+      code = {
+        bad_dir <- paste0(getwd(), "/some_nonexistent_dir"); process_data(dir = bad_dir)
+      }
+    ),
+    "does not exist.$"
+  )
+
+})
 
 # Download & process September 2023 Call Report data in a safe, temp environment
 call_report_data <- withr::with_tempfile(
