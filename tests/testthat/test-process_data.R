@@ -4,7 +4,6 @@ test_that("`process_data()` throws message with bad files from 2024", {
     process_data(dir = testthat::test_path("bad_data")),
     regexp = "Please note there is an outstanding issue with the 2024 files",
     fixed = FALSE
-
   )
 
 })
