@@ -1,9 +1,11 @@
 test_that("`process_data()` throws message with bad files from 2024", {
 
-  expect_message(
-    process_data(dir = testthat::test_path("bad_data")),
-    regexp = "Please note there is an outstanding issue with the 2024 files",
-    fixed = FALSE
+  quiet_process_data <- purrr::quietly(process_data)
+
+  out <- quiet_process_data(dir = testthat::test_path("bad_data"))
+
+  expect_true(
+    any(stringr::str_detect(out$messages, "A Note about FCA's 2024 Data"))
   )
 
 })
