@@ -53,6 +53,10 @@ process_data <- function(dir) {
     expr = process_data_all(dir),
     error = function(e) {
 
+      # Show error message without trace (to improve readability)
+      e$trace <- NULL
+      print(e)
+
       cli::cli_h1("A Note about FCA's 2024 Data:")
 
       paste(
@@ -63,11 +67,6 @@ process_data <- function(dir) {
         "files."
       ) |>
         cli::cli_alert_warning()
-
-      cli::cli_h1("Error Message:")
-
-      # Return the actual error message
-      return(e)
 
     }
   )
