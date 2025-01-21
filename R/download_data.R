@@ -8,6 +8,8 @@
 #' @param files (Optional) Character vector, representing the names of the files
 #'   in the .zip archive to be downloaded; default is `NULL`, meaning all files
 #'   will be downloaded
+#' @param quiet (Optional) Logical. Controls whether download progress messages
+#'   are displayed in the console. Defaults to `TRUE`.
 #'
 #' @details FCA publishes Call Report data quarterly. These .zip files are
 #'   typically named "<YYYY>March.zip", "<YYYY>June.zip", "<YYYY>September.zip",
@@ -51,7 +53,7 @@
 #'   list.files(path_2)
 #'
 #' }
-download_data <- function(year, month, dest, files = NULL) {
+download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
 
   # Example valid URL: "https://www.fca.gov/template-fca/bank/2020March.zip"
 
@@ -99,7 +101,8 @@ download_data <- function(year, month, dest, files = NULL) {
   # Download .zip file into temp storage location
   utils::download.file(
     url = url,
-    destfile = temp_path
+    destfile = temp_path,
+    quiet = quiet
   )
 
   # Un-zip the files into the directory defined by the `dest` argument

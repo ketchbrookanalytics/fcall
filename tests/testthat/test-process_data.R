@@ -26,7 +26,10 @@ test_that("`process_data()` throws error if directory doesn't exist", {
 call_report_data <- withr::with_tempfile(
   "call_report_data",
   code = {
-    download_data(2023, 9, call_report_data); process_data(call_report_data)
+    download_data(2023, 9, call_report_data, quiet = TRUE) |>
+      # Suppress "successfully downloaded into..." message
+      suppressMessages()
+    process_data(call_report_data)
   }
 )
 
