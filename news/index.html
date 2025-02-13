@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fcall</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,14 +37,51 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/ketchbrookanalytics/fcall/blob/v0.1.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/ketchbrookanalytics/fcall/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.2" id="fcall-012">fcall 0.1.2<a class="anchor" aria-label="anchor" href="#fcall-012"></a></h2>
+<div class="section level3">
+<h3 id="user-facing-improvements-0-1-2">User-Facing Improvements<a class="anchor" aria-label="anchor" href="#user-facing-improvements-0-1-2"></a></h3>
+<ul><li>Additional context included in the error message users see when 2024 files are passed to <code><a href="../reference/process_data.html">process_data()</a></code>
+</li>
+<li>
+<code><a href="../reference/download_data.html">download_data()</a></code> has a new (logical) <code>quiet</code> argument that controls console messaging during download process</li>
+</ul></div>
+<div class="section level3">
+<h3 id="database-related-0-1-2">Database-Related<a class="anchor" aria-label="anchor" href="#database-related-0-1-2"></a></h3>
+<ul><li>Removed warnings in <code>append_data()</code>
+</li>
+<li>Fixed bug in <code>add_user_read_access()</code>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-0-1-2">Other<a class="anchor" aria-label="anchor" href="#other-0-1-2"></a></h3>
+<ul><li>Added <code>R CMD check</code> GitHub Action for automated package checks</li>
+<li>{fs} has been removed from <code>Imports</code>
+</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.1" id="fcall-011">fcall 0.1.1<a class="anchor" aria-label="anchor" href="#fcall-011"></a></h2>
+<div class="section level3">
+<h3 id="technical-0-1-1">Technical<a class="anchor" aria-label="anchor" href="#technical-0-1-1"></a></h3>
+<ul><li>Fixed encoding issues</li>
+<li>Require R version 3.5.0 or newer</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-0-1-1">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-1-1"></a></h3>
+<ul><li>Added “Database” vignette</li>
+<li>Extracted README sections into vignettes/articles</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="fcall-010">fcall 0.1.0<a class="anchor" aria-label="anchor" href="#fcall-010"></a></h2>
 <ul><li>Initial release</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
