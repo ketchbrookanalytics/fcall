@@ -1,0 +1,38 @@
+                 FILE LAYOUT FOR SCHEDULE RI-B NET GAINS OR LOSSES
+                             DATA DELIMITED BY COMMAS
+                                           
+                                
+         VARIABLE    FIELD  DEC. 
+             NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code
+             DIST  Numeric     0  District Code
+            ASSOC  Numeric     0  Association Code
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, District, and Association 
+                                   codes concatenated
+         GLMKTINV  Numeric     0  Net Gains or Losses on Sales of
+                                   Securities
+       GAINMKTINV  Numeric     0  Gains on Sales of Securities
+       LOSSMKTINV  Numeric     0  Losses on Sales of Securities
+         GLAQPROP  Numeric     0  Net Gains or Losses on Sales of
+                                   Other Property Owned
+      GAINACQPROP  Numeric     0  Gains on Sales of Other Property Owned
+      LOSSACQPROP  Numeric     0  Losses on Sales of Other Property
+                                   Owned
+     NETGLOASSETS  Numeric     0  Net Gains or Losses on Sales of Other
+                                   Assets
+      GAINOASSETS  Numeric     0  Gains on Sales of Other Assets
+      LOSSOASSETS  Numeric     0  Losses on Sales of Other Assets
+       NETGLOTRAN  Numeric     0  Net Gains or Losses on Other
+                                   Transactions
+        GAINOTRAN  Numeric     0  Gains on Other Transactions
+        LOSSOTRAN  Numeric     0  Losses on Other Transactions
+      NETGLASSETS  Numeric     0  Total Gains or Losses
+    NETIMPAIRLOSS  Numeric     0  Impairment on available-for-sale debt securities 
+LoanLeaseSaleNetGain  Numeric     0  Net gains (or losses(-)) on sales of 
+				      loans and leases
+   LoanLeaseSaleGain  Numeric     0  Gains
+   LoanLeaseSaleLoss  Numeric     0  Losses
+   

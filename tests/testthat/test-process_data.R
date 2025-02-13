@@ -1,9 +1,37 @@
+test_that("`process_data()` throws message with bad files from 2024", {
+
+  quiet_process_data <- purrr::quietly(process_data)
+
+  out <- quiet_process_data(dir = testthat::test_path("bad_data"))
+
+  expect_true(
+    any(stringr::str_detect(out$messages, "A Note about FCA's 2024 Data"))
+  )
+
+})
+
+test_that("`process_data()` throws error if directory doesn't exist", {
+
+  expect_error(
+    withr::with_dir(
+      tempdir(),
+      code = {
+        bad_dir <- paste0(getwd(), "/some_nonexistent_dir"); process_data(dir = bad_dir)
+      }
+    ),
+    "does not exist.$"
+  )
+
+})
 
 # Download & process September 2023 Call Report data in a safe, temp environment
 call_report_data <- withr::with_tempfile(
   "call_report_data",
   code = {
-    download_data(2023, 9, call_report_data); process_data(call_report_data)
+    download_data(2023, 9, call_report_data, quiet = TRUE) |>
+      # Suppress "successfully downloaded into..." message
+      suppressMessages()
+    process_data(call_report_data)
   }
 )
 

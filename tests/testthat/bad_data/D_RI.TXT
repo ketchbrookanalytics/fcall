@@ -1,0 +1,73 @@
+ FILE LAYOUT FOR SCHEDULE RI-INCOME AND COMPREHENSIVE INCOME STATEMENT
+                            DATA DELIMITED BY COMMAS
+                                                
+                                        
+       VARIABLE    FIELD  DEC.          
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  -------------  -------  ----  ---------------------
+         SYSTEM  Numeric     0  System Code  
+           DIST  Numeric     0  District Code 
+          ASSOC  Numeric     0  Association Code 
+          MONTH  Numeric     0  Month of Report 
+           YEAR  Numeric     0  Year of Report
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated
+         INTLNS  Numeric     0  Interest income on Loans and Leases    
+   INTNTRECOFCI  Numeric     0  Interest income on notes receivable
+                                 from other FCS institutions
+      INTNTRECO  Numeric     0  Interest income on notes receivable
+                                 from others
+        INTSCON  Numeric     0  Interest on Sales Contracts 
+       INTMKTIN  Numeric     0  Interest and Other Income on securities
+        OINTINC  Numeric     0  Other Interest Income   
+        TINTINC  Numeric     0  Total Interest Income 
+    EXPSYSNTBDS  Numeric     0  Interest Expense on Systemwide Notes
+                                 and Bonds            
+   EXPNTPAYOFCI  Numeric     0  Interest Expense on Notes payable to
+                                 Other FCS institutions
+  EXPOINTBEARDT  Numeric     0  Interest Expense on Other interest-
+                                 bearing debt       
+      TOTINTEXP  Numeric     0  Total Interest Expense
+        NETINTY  Numeric     0  Net Interest Income
+        PROVLNS  Numeric     0  Provisions for credit losses:
+									On loans, sales contracts, notes, and leases
+        PROVOTH  Numeric     0  Provisions for Losses on Other Assets
+         PATDIV  Numeric     0  Patronage,Dividends,etc.,from other
+                                 FC Institutions
+      OPNONINTY  Numeric     0  Operating Income
+       ONONINTY  Numeric     0  Other Noninterest Income
+     TOTNONINTY  Numeric     0  Total Noninterest Income
+    NETGLASSETS  Numeric     0  Net Gains or Losses
+   TOTNONINTEXP  Numeric     0  Total Noninterest Expense
+        BFORTAX  Numeric     0  Income before Income Taxes and 
+                                 Extraordinary Items and Other
+                                 Adjustments
+          TAXES  Numeric     0  Applicable Income Taxes 
+        BFOREXT  Numeric     0  Income before Extraordinary Items and
+                                 Other Adjustments
+        EXTITEM  Numeric     0  Extraordinary Items and Other
+                                 Adjustments                   
+           NETY  Numeric     0  Net Income (or loss (-))  
+    INTDLNASSOC  Numeric     0  Interest income on Direct loans to
+                                 associations
+     INTNONACLN  Numeric     0  Interest on nonaccrual loans
+   EXPNTDLNDIST  Numeric     0  Interest expense on notes 
+                                 payable/direct loans to district bank 
+                                 (ACAs, PCAs, and FLCAs only)
+   UNREALINVSEC  Numeric     0  Unrealized holding gains 
+                                 (or losses(-)) on investment 
+                                 securities
+    MPENLIABADJ  Numeric     0  Minimum pension liability adjustments
+    OCOMPINCADJ  Numeric     0  Other comprehensive income adjustments
+      NOCOMPINC  Numeric     0  Net other comprehensive income 
+                                 (or loss(-))
+        COMPINC  Numeric     0  Comprehensive income (or loss(-))
+ CASHFLOHEDGADJ  Numeric     0  Cash flow hedge adjustments
+  NONTEMPIMPAIR	 numeric     0  Non-credit impairment on securities available-for-sale	
+  				included in earnings
+        PATPAID	 Numeric     0  Patronage on Asset Purchases and Sales - Certain Pool Programs:
+			        Paid
+    PATRECEIVED  Numeric     0  Patronage on Asset Purchases and Sales - Certain Pool Programs:
+				Recieved
+LossProvisionOBSExposure  Numeric     0  Provisions for losses: On off-balance sheet exposures
+	ProvDebtSec  Numeric	0	Provisions for credit losses: On debt securities (start collecting on March 2023)

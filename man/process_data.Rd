@@ -41,6 +41,5 @@ name (characters until the first underscore occurrence).
 
   # Access "RCB" metadata
   processed_data$metadata$RCB
-
 }
 }

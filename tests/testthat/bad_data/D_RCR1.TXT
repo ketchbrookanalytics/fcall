@@ -1,0 +1,58 @@
+            FILE LAYOUT FOR SCHEDULE RC-R.1 SUMMARY - REGULATORY CAPITAL
+                              DATA DELIMITED BY COMMA
+                 
+                               
+                 VARIABLE     FIELD  DEC.               
+                     NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+            --------------  -------  ----  --------------------
+                   SYSTEM   Numeric     0  System Code   
+                     DIST   Numeric     0  District Code
+                    ASSOC   Numeric     0  Association Code
+                    MONTH   Numeric     0  Month of Report
+                     YEAR   Numeric     0  Year of Report
+                   UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+             AvgDailyCET1   Numeric     0  Common Equity Tier 1 Capital (CET1)
+                                    	     Quarterly Average Amount
+     	             CET1   Numeric     0  Common Equity Tier 1 Capital (CET1)
+                                    	     Quarter-End Amount
+              AvgDailyAT1   Numeric     0  Additional Tier 1 Capital (AT1)
+                                    	     Quarterly Average Amount
+     	              AT1   Numeric     0  Additional Tier 1 Capital (AT1)
+                                    	     Quarter-End Amount
+            AvgDailyTier1   Numeric     0  Tier 1 Capital
+                                    	     Quarterly Average Amount
+     	            Tier1   Numeric     0  Tier 1 Capital
+                                    	     Quarter-End Amount
+            AvgDailyTier2   Numeric     0  Tier 2 Capital
+                                    	     Quarterly Average Amount
+     	            Tier2   Numeric     0  Tier 2 Capital
+                                    	     Quarter-End Amount
+        AvgDailyTotRegCap   Numeric     0  Total Regulatory Capital
+                                    	     Quarterly Average Amount
+     	        TotRegCap   Numeric     0  Total Regulatory Capital
+                                    	     Quarter-End Amount
+                 AVPRMCAP   Numeric     0  Permanent Capital
+                                    	     Quarterly Average Amount
+     	         PERMCAPA   Numeric     0  Permanent Capital
+                                    	     Quarter-End Amount
+        AvgDailyRWARegCap   Numeric     0  Risk-weighted assets (RWAs) used for Tier 1/Tier 2 capital ratios
+                                    	     Quarterly Average Amount
+        	RWARegCap   Numeric     0  Risk-weighted assets (RWAs) used for Tier 1/Tier 2 capital ratios
+                                    	     Quarter-End Amount
+       AvgDailyRWAPermCap   Numeric     0  Risk-weighted assets (RWAs) used for permanent capital
+                                    	     Quarterly Average Amount
+     	       RWAPermCap   Numeric     0  Risk-weighted assets (RWAs) used for permanent capital
+                                    	     Quarter-End Amount
+      AvgDailyUREandEquiv   Numeric     0  Unallocated retained earnings (URE) and URE equivalents
+                                    	     Quarterly Average Amount
+     	      UREandEquiv   Numeric     0  Unallocated retained earnings (URE) and URE equivalents
+                                    	     Quarter-End Amount
+       AvgDailyAssetsLvrg   Numeric     0  Total Adjusted Assets for the Leverage Ratio
+                                    	     Quarterly Average Amount
+	       AssetsLvrg   Numeric     0  Total Adjusted Assets for the Leverage Ratio
+                                    	     Quarter-End Amount
+AvgDailyAllowRsrvNotTier2   Numeric     0  Amount of Adjusted Allowances for Credit Losses Not Included in Tier 2 Capital
+                                    	     Quarterly Average Amount
+     	AllowRsrvNotTier2   Numeric     0  Amount of Adjusted Allowances for Credit Losses Not Included in Tier 2 Capital
+                                    	     Quarter-End Amount

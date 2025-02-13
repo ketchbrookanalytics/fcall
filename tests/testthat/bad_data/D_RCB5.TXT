@@ -1,0 +1,148 @@
+            FILE LAYOUT FOR SCHEDULE RC-B.5 Investments Memoranda
+                              DATA DELIMITED BY COMMA
+                 
+                               
+						VARIABLE    FIELD  	 DEC.               
+						 NAME      	TYPE  	 POS.  VARIABLE DESCRIPTION 
+				   --------------   -------  ----  --------------------
+						   SYSTEM   Numeric     0  System Code   
+							 DIST   Numeric     0  District Code
+						    ASSOC   Numeric     0  Association Code
+						    MONTH   Numeric     0  Month of Report
+							 YEAR   Numeric     0  Year of Report
+						   UNINUM   Numeric     0  System, District, and Association
+													codes concatenated
+		AvgDailyBankInv35Pct30Day   Numeric     0  Investment Regulatory Limits (Banks only):
+													Investments subject to the 35% regulatory limit (615.5132)
+													(30-day average daily balance)
+			 AvgDailyBankTotLoans   Numeric     0  Investment Regulatory Limits (Banks only):
+													Total loans as defined by 615.5131 (quarterly average daily balance)
+			 BankInvPctOfTotLoans   Numeric     4  Investment Regulatory Limits (Banks only):
+													Investments as a percentage of total loans 
+													(item 1(a) divided by 1(b))
+				 BankLrgstObligor   Numeric     0  Investment Regulatory Limits (Banks only):
+													Largest concentration to one obligor (excluding investments fully
+													guaranteed by the U.S. government or GSE) (quarter-end)
+   BankLrgstObligorPctOfTotRegCap   Numeric     4  Investment Regulatory Limits (Banks only):
+													Obligor exposure as a percentage of total regulatory capital
+													(item 1(d) divided by RC-R.1, item 5(a))
+		   TotInvestmentsRegLimit   Numeric     0  Investment Regulatory Limits (Banks only):
+													Total investments volume, as adjusted to measure asset class and
+													GSE-MBS concentration limits (quarter-end)
+		   BankLrgstConcnAssetCls   Numeric     0  Investment Regulatory Limits (Banks only):
+													Largest concentration in one asset class (excluding money market
+													securities and investments fully guaranteed by U.S. government
+													or GSE) (quarter-end)
+BankLrgstConcnAssetClsPctOfTotInv   Numeric     4  Investment Regulatory Limits (Banks only):
+													Largest percentage portfolio concentration in one asset class
+													(item 1(g) divided by 1(f))
+				     BankMBSByGSE   Numeric     0  Investment Regulatory Limits (Banks only):
+													MBS guaranteed by a GSE (excluding Farmer Mac securities)
+													(quarter-end)
+		  BankMBSByGSEPctOfTotInv   Numeric     4  Investment Regulatory Limits (Banks only):
+													Percentage portfolio concentration in MBS guaranteed by a GSE
+													(item 1(i) divided by 1(f))
+				    AssocInv10Pct   Numeric     0  Investment Regulatory Limits (Associations only):
+													Investments subject to the 10% regulatory limit (615.5140(b)(4))
+				  AssocLoans10Pct   Numeric     0  Investment Regulatory Limits (Associations only):
+													Loans subject to the 10% regulatory limit (615.5140(b)(4))
+		    AvgDailyAssocTotLoans   Numeric     0  Investment Regulatory Limits (Associations only):
+													Total adjusted loans as defined by 615.5140(b)(4) 
+													(90-day average daily balance)
+		    AssocInvPctOfTotLoans   Numeric     4  Investment Regulatory Limits (Associations only):
+													Investments as a percentage of total loans 
+													(sum of items 2(a) and 2(b) divided by 2(c))
+		    BankPledgedSecurities   Numeric     0  Investment purposes (Banks only):
+													Pledged securities
+	  BankSecsLiquidityRsrvBuffer   Numeric     0  Investment purposes (Banks only):
+													Securities included in the liquidity reserve and 
+													supplemental liquidity buffer
+ BankSecsRemvdLiquidityRsrvBuffer   Numeric     0  Investment purposes (Banks only):
+													Securities removed from the liquidity reserve and supplemental
+													liquidity buffer due to noncompliance with 615.5143(a) or (b)
+	 BankSecsRemvdLiquidityBuffer   Numeric     0  Investment purposes (Banks only):
+													Securities removed from supplemental liquidity buffer due to
+													noncompliance with 615.5134(e)
+		  BankSecuritiesHeldOther   Numeric     0  Investment purposes (Banks only):
+													Securities held for other purposes
+				TotBankSecurities   Numeric     0  Investment purposes (Banks only):Total
+	   IneligibleInvWhenPurchased   Numeric     0  Ineligible Investment:
+													Investments determined to be ineligible when purchased 
+													as defined by 615.5143(a)
+	   IneligibleInvAfterPurchase   Numeric     0  Ineligible Investment:
+													Investments that became ineligible after purchase 
+													as defined by 614.5143(b)
+					 DebtSec5140e   Numeric     0  Investments and loans approved by FCA under 615.5140(e):
+													Debt securities
+				   EquitySec5140e   Numeric     0  Investments and loans approved by FCA under 615.5140(e):
+													Equity securities
+					   Loans5140e   Numeric     0  Investments and loans approved by FCA under 615.5140(e):
+													Loans
+			USDADebtSecsFarmerMac   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Debt securities: 
+													    Issued or guaranteed by Farmer Mac	
+				USDADebtSecsOther   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Debt securities: 
+													    Other securitizations	
+			 USDALoanPurch5140Amt   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Loans purchased under investment authorities in regulation 615.5140: 
+													    Amount outstanding
+		USDALoanPurch5140AmtPurch   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Loans purchased under investment authorities in regulation 615.5140: 
+													    Amount purchased during quarter
+			 USDALoanPurch5140Nbr   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Loans purchased under investment authorities in regulation 615.5140: 
+													    Number outstanding
+		USDALoanPurch5140NbrPurch   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Loans purchased under investment authorities in regulation 615.5140: 
+													    Number purchased during quarter
+				 USDAPremiumAdded   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts: 
+													    Premiums added during quarter (net of discounts)	
+			 USDAPremiumAmortized   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts: 
+													    Premiums amortized during quarter (net of discounts)
+		   USDAUnamortizedPremium   Numeric     0  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts: 
+													    Unamortized premiums outstanding (net of discounts)
+		    USDAAvgPricePaidPurch   Numeric     2  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Average price paid on purchases during quarter 
+		      USDAProjAvgRORPurch   Numeric     4  USDA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Projected average internal rate of return on purchases during quarter 													    
+					  SBADebtSecs   Numeric     0  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Debt securities
+				 SBALoanPurch5140   Numeric     0  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Loans purchased under investment authorities in regulation 615.5140													  
+				  SBAPremiumAdded   Numeric     0  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts
+													    Premiums added during quarter (net of discounts)
+			  SBAPremiumAmortized   Numeric     0  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts
+													    Premiums amortized during quarter (net of discounts)
+			SBAUnamortizedPremium   Numeric     0  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Price premiums/discounts
+													    Unamortized premiums outstanding (net of discounts)
+			 SBAAvgPricePaidPurch   Numeric     2  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Average price paid on purchases during quarter
+			   SBAProjAvgRORPurch   Numeric     4  SBA Guaranteed Financial Instruments Purchased Under Regulatory 
+													Investment Authorities:
+													  Projected average internal rate of return on purchases during quarter													  
+														
+														

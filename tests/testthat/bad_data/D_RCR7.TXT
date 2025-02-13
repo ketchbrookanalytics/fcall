@@ -1,0 +1,72 @@
+               FILE LAYOUT FOR SCHEDULE RC-R.7 RISK-WEIGHTED ASSESTS
+                                DATA DELIMITED BY COMMA
+                 
+                               
+                   VARIABLE     FIELD  DEC.               
+                       NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+              --------------  -------  ----  --------------------
+                     SYSTEM   Numeric     0  System Code   
+                       DIST   Numeric     0  District Code
+                      ASSOC   Numeric     0  Association Code
+                      MONTH   Numeric     0  Month of Report
+                       YEAR   Numeric     0  Year of Report
+                     UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+  **             RegCapCode   Numeric     0  Regulatory Capital Code for risk-weighted assets:
+					      100  Cash and cash balances due from depository institutions or Federal Reserve
+					      210  Federal funds sold
+					      220  Securities purchased under agreement to resell
+					      310  Securities Held-to-Maturity
+					      320  Securities Available-for-Sale
+					      410  On-balance sheet securitization exposures Held-to-Maturity
+					      420  On-balance sheet securitization Available-for-Sale
+					      430  On-balance sheet securitization All other
+					      510  Loans and leases, net of unearned income Retail exposures
+					      520  Loans and leases, net of unearned income Wholesale exposures
+					      600  Loans & Leases Held for Sale
+					      700  All other assets
+					      800  Total On-Balance Sheet Exposures
+					      900  Financial standby letters of credit
+					      1000 Performance standby letters of credit and transaction-related contingent items
+					      1110 Commercial and similar letters of credit Original maturity of 14 months or less
+					      1120 Commercial and similar letters of credit Original maturity exceeding 14 months
+					      1200 Repo-styled transactions
+					      1310 Unused commitments Original maturity of 14 months or less
+					      1320 Unused commitments Original maturity exceeding 14 months
+					      1330 Unused commitments Original Wholesale exposures
+					      1400 Over-the-counter derivatives
+					      1500 Centrally cleared derivatives
+					      1600 Unsettled Transactions
+					      1700 All other off-balance sheet exposures
+					      1800 Total Off-Balance Sheet Exposures
+					      1900 Total On- and Off-Balance Sheet Exposures
+					      2000 Risk Weight Factor
+					      2100 Risk Weighted Assets before deductions
+  ** AvgDailyCreditExposure   Numeric     0  Exposure Amount
+  **	   CreditConvFactor   Numeric     4  Credit Conversion Factors (CCFs)
+  **	        CreditEquil   Numeric     0  Credit Equivalents
+  **		     RW0Pct   Numeric     0  0%
+  **		     RW2Pct   Numeric     0  2%
+  **		     RW4Pct   Numeric     0  4%
+  **		    RW10Pct   Numeric     0  10%
+  **		    RW20Pct   Numeric     0  20%
+  **		    RW50Pct   Numeric     0  50%
+  **	           RW100Pct   Numeric     0  100%
+  **               RW150Pct   Numeric     0  150%
+  ** 	           RW600Pct   Numeric     0  600%
+  **	           RW625Pct   Numeric     0  625%
+  **	        RW937pt5Pct   Numeric     0  937.5%
+  **	          RW1250Pct   Numeric     0  1250%
+  **	         RWSSFACalc   Numeric     0  SSFA Calculation
+  **	      RWGrossUpCalc   Numeric     0  Gross-up Calculation
+          AvgDailyRWABfrDed   Numeric     0  Total Risk Weighted Assets before deductions
+    AvgDailySysEquityInvest   Numeric     0  Add: Intra-System Equity Investments and Other Adjustments under § 628.22(b)
+												(Sch. RC-R.4, line 6(f)+6(g)+6(h)+6(i)-6(j)+9(a)+17(a)) 
+       AvgDailyTotDedRegCap   Numeric     0  Less: Total Deductions from Regulatory Capital
+     AvgDailyRWABfrAllowDed   Numeric     0  Total Risk Weighted Assets before adjusted allowances for credit losses (AACL) deduction
+  AvgDailyAllowRsrvNotTier2   Numeric     0  Less: Amount of AACL not included in Tier 2 Capital
+          AvgDailyRWARegCap   Numeric     0  Total Risk Weighted Assets used for Tier 1/Tier 2 capital ratios
+         AvgDailyRWAPermCap   Numeric     0  Total Risk Weighted Assets used for permanent capital ratio
+
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH RegCapCode VALUE.

@@ -1,0 +1,38 @@
+            FILE LAYOUT FOR SCHEDULE RC-R.3 COMMON COOPERATIVE EQUITIES
+                              DATA DELIMITED BY COMMA
+                 
+                               
+                 VARIABLE     FIELD  DEC.               
+                     NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+            --------------  -------  ----  --------------------
+                   SYSTEM   Numeric     0  System Code   
+                     DIST   Numeric     0  District Code
+                    ASSOC   Numeric     0  Association Code
+                    MONTH   Numeric     0  Month of Report
+                     YEAR   Numeric     0  Year of Report
+                   UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+  **           RegCapCode   Numeric     0  Regulatory Capital Code for Common Cooperative Equities:
+					    100	Purchased Statutory  Required Stock
+					    210	Purchased Other Required Stock < 5 years
+					    220	Purchased Other Required Stock >= 5 years but < 7 years
+					    230	Purchased Other Required Stock >= 7 years
+					    310	Allocated Stock < 5 years
+					    320	Allocated Stock >= 5 years but < 7 years
+					    330	Allocated Stock >= 7 years
+					    410	Qualified Allocated Surplus < 5 years
+					    420	Qualified Allocated Surplus >= 5 years but < 7 years
+					    430	Qualified Allocated Surplus >= 7 years
+					    510	Nonqualified Allocated Surplus < 5 years
+					    520	Nonqualified Allocated Surplus >= 5 years but < 7 years
+					    530	Nonqualified Allocated Surplus >= 7 years
+					    540	Not subject to redemption or revolvement
+					    600	Total Common Cooperative Equities
+  **      AvgDailyCCECET1   Numeric     0  Amount included in CET1
+  **     AvgDailyCCETier2   Numeric     0  Amount included in CET2
+  ** AvgDailyCCETotRegCap   Numeric     0  Amount included in Total Regulatory Capital
+  **   AvgDailyCCEPermCap   Numeric     0  Amount included in Permanent Capital
+
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH RegCapCode VALUE.
+

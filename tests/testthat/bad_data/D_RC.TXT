@@ -1,0 +1,95 @@
+                     FILE LAYOUT FOR SCHEDULE RC-BALANCE SHEET
+                              DATA DELIMITED BY COMMA
+                 
+                               
+         VARIABLE     FIELD  DEC.               
+             NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+    --------------  -------  ----  --------------------
+           SYSTEM   Numeric     0  System Code   
+             DIST   Numeric     0  District Code
+            ASSOC   Numeric     0  Association Code
+            MONTH   Numeric     0  Month of Report
+             YEAR   Numeric     0  Year of Report
+           UNINUM   Numeric     0  System, District, and Association
+                                    codes concatenated
+             CASH   Numeric     0  Cash
+           ACTREC   Numeric     0  Accounts Receivable
+           ACRLNS   Numeric     0  Accrual Loans and Leases net of
+                                    unearned income and unapplied
+                                    loan payments
+        NTRECOFCI   Numeric     0  Loans, notes, sales, contracts, and
+                                    leases: Notes receivable from other
+                                    FCS institutions
+           ONTREC   Numeric     0  Loans, notes, sales, contracts, and
+                                  leases: Other notes receivable
+          ACRSCON   Numeric     0  Loans, notes, sales, contracts, and
+                                    leases: Accrual Sales Contracts
+           NONACR   Numeric     0  Loans, notes, sales, contracts, and
+                                    leases: Nonaccrual Loans 
+         ALLNLOSS   Numeric     0  Loans, notes, sales, contracts, and
+                                  leases: Allowance for credit losses on loans, etc.
+         NETLOANS   Numeric     0  Loans, notes, sales, contracts, and
+                                    leases: Net Loans 
+         AIRLOANS   Numeric     0  Accrued Interest Receivable on Loans
+                                    and Leases  
+     AIRNTRECOFCI   Numeric     0  Accrued Interest Receivable on Notes
+                                    receivable from other FCS Institutions
+        AIRONTREC   Numeric     0  Accrued Interest Receivable on Other
+                                    Notes receivable
+          AIRSCON   Numeric     0  Accrued Interest Receivable on Sales
+                                    Contracts
+         AIRMKTIN   Numeric     0  Accrued Interest Receivable on
+                                    Securities
+            AIREC   Numeric     0  Total Accrued Interest Receivable
+          NAQPROP   Numeric     0  Other Property Owned 
+         FIXASSET   Numeric     0  Premises and Other Fixed Assets
+          OASSETS   Numeric     0  Other Assets 
+           ASSETS   Numeric     0  Total Assets   
+       SYSNTBDSOS   Numeric     0  Interest bearing liabilities:
+                                    Systemwide notes and bonds outstanding
+        NTPAYOFCI   Numeric     0  Interest bearing liabilities:
+                                    Notes payable to other FCS
+       OINTBEARDT   Numeric     0  Interest bearing liabilities:
+                                    Other interest-bearing debt 
+           ACTPAY   Numeric     0  Accounts Payable
+    AIPSYSNTBDSOS   Numeric     0  Accrued interest payable on: Systemwide
+                                    notes and bonds outstanding
+     AIPNTPAYOFCI   Numeric     0  Accrued interest payable on: Notes
+                                    payable to other FCS institutions
+    AIPOINTBEARDT   Numeric     0  Accrued Interest Payable on Other
+                                    interest-bearing debt      
+            AIPAY   Numeric     0  Total Accrued Interest Payable 
+           OLIABS   Numeric     0  Other Liabilities    
+            LIABS   Numeric     0  Total Liabilities 
+          NETWRTH   Numeric     0  Total Net Worth
+         TOTLICAP   Numeric     0  Total Liabilities and Net Worth
+       ACNOCOMINC   Numeric     0  Accumulated other comprehensive income (net)
+        LNADJFVAL   Numeric     0  Loans, notes, sales, contracts, and
+                                    leases: Loan adjustment for fair value
+        DTADJFVAL   Numeric     0  Interest bearing liabilities:
+                                    Debt adjustment for fair value
+   TOTINTBEARLIAB   Numeric     0  Interest bearing liabilities:
+                                    Total interest bearing liabilities 
+    AIRDERIVATIVE   Numeric     0  Accrued interest receivable: Derivatives
+   IBLSUBNOTEBOND   Numeric     0  Interest bearing liabilities: 
+                                    Subordinated notes and bonds
+   AIPSUBNOTEBOND   Numeric     0  Accrued interest payable on: 
+                                    Subordinated notes and bonds
+    AIPDERIVATIVE   Numeric     0  Accrued interest payable on: Derivatives
+    LoanLeaseHeld   Numeric     0  Loans and leases held for sale
+CreditLossReserve   Numeric     0  Reserve for credit losses on off-balance
+									sheet exposures
+      TERMPERFSTK   Numeric     0  Interest bearing liabilities:
+									Limited-life (term) preferred stock
+AccrdIntPayTermPrefStk Numeric  0  Accrued interest payable on:
+									Limited-life (term) preferred stock
+		 CapStock   Numeric     0  Capital stock
+ PerpetualPrefStk   Numeric     0  Perpetual Preferred stock
+		   PAIDIN  	Numeric     0  Paid-in capital
+	 AllocSurplus   Numeric     0  Allocated Surplus
+		 UNRETERN   Numeric     0  Unallocated retained earnings
+TotInvDebtSecurities Numeric    0  Debt securities, net of allowance for credit losses 
+TotInvEquityFCSI 	 Numeric    0  Equity investments in System institutions 
+									and Farmer Mac
+TotInvEquityNonFCSI	 Numeric    0  Equity investments in non-System institutions
+TotInvestments		 Numeric    0  Total Investments
