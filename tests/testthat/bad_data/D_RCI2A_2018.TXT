@@ -1,0 +1,23 @@
+           FILE LAYOUT FOR SCHEDULE RC-I.2 Off-Balance Sheet Derivative Contracts: Credit Derivative Contracts Section         
+                             DATA DELIMITED BY COMMAS
+                                              
+                       
+					  VARIABLE    FIELD  DEC.                                          
+						  NAME     TYPE  POS.  VARIABLE DESCRIPTION                    
+				 -------------  -------  ----  ---------------------                   
+						SYSTEM  Numeric     0  System Code                             
+						  DIST  Numeric     0  District Code                           
+						 ASSOC  Numeric     0  Association Code                        
+						 MONTH  Numeric     0  Month of Report            
+						  YEAR  Numeric     0  Year of Report        
+						UNINUM  Numeric     0  System, District, and Association codes concatenated
+
+			  CreditDerivNVCDS  Numeric     0  Credit Derivatives (Notional) (purchased protection): Credit default swaps 
+                                 
+            CreditDerivNVOther  Numeric     0  Credit Derivatives (Notional) (purchased protection): Other credit derivatives
+                                 
+            CreditDerivNVTotal  Numeric     0  Credit Derivatives (Notional) (purchased protection): Total credit derivatives 
+
+	  CreditDerivNVNotRskMtgnt  Numeric     0  Credit derivatives included in 1(c) that are not recognized as a credit risk mitigant 
+
+		   

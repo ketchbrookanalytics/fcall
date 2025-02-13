@@ -1,0 +1,109 @@
+            FILE LAYOUT FOR SCHEDULE RC-R.4 Tier 1/Tier 2 Numerator
+                              DATA DELIMITED BY COMMA
+                 
+                              
+                 VARIABLE     FIELD  DEC.               
+                     NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+            --------------  -------  ----  --------------------
+                   SYSTEM   Numeric     0  System Code   
+                     DIST   Numeric     0  District Code
+                    ASSOC   Numeric     0  Association Code
+                    MONTH   Numeric     0  Month of Report
+                     YEAR   Numeric     0  Year of Report
+                   UNINUM   Numeric     0  System, District, and Association
+                                    	     codes concatenated
+       AvgDailyTotCCECET1   Numeric     0  Qualifying common cooperative equity (CCE) included in CET1
+        AvgDailyPaidInCap   Numeric     0  Paid-in capital (includes Additional Paid-In-Capital “APIC”)
+              AvgDailyURE   Numeric     0  Unallocated retained earnings (URE)
+        AvgDailyOtherCET1   Numeric     0  Other CET1 capital items approved by FCA
+    AvgDailyTotCET1BfrDed   Numeric     0  Total CET1 before deductions 
+         AvgDailyGoodwill   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Goodwill net of associated deferred tax liabilities (DTLs)
+ AvgDailyIntangibleAssets   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Intangible assets other than mortgage servicing assets, 
+                                    	     net of associated DTLs
+      AvgDailyDTACarryFwd   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Deferred tax assets (DTAs) that arise from net operating 
+                                    	     losses and tax credit carryforward, net of any related valuation
+                                    	     allowances and net of DTLs
+AvgDailyGainSecuritzation   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: After-tax gain-on-sale in connection with securitization 
+                                    	     exposure, net of associated DTLs
+  AvgDailyDBPensionAssets   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Defined benefit pension fund assets, net of associated DTLs.
+                                    	     (Unless FCA has given permission to risk weight).
+ AvgDailyAllocInvFCSICET1   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Amount of allocated investments in other System institutions. 
+                                    	     Only the institution who allocated the equities may include those 
+                                    	     equities in its CET1
+ AvgDailyPurchInvFCSICET1   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Amount of purchased investments in other System institutions 
+                                    	     using the corresponding deduction approach (CDA)
+     AvgDailyInsufCapCET1   Numeric     0 CET1 deductions and Adjustments
+                                    	     Less: CDA deductions applied to CET1 capital due to insufficient 
+                                    	     amounts of AT1 and Tier 2 capital to cover AT1 and Tier 2 deductions
+     AvgDailyOtherDedCET1   Numeric     0  CET1 deductions and Adjustments
+                                    	     Less: Other deductions required by FCA
+       AvgDailyTotDedCET1   Numeric     0  CET1 deductions and Adjustments
+                                    	     Total deductions for CET1 capital (stopped collecting as of March 2022 quarter)
+	     AvgDailyCET1   Numeric     0  Common Equity Tier 1 Capital (CET1)
+       AvgDailyPrefStkAT1   Numeric     0  Additional Tier 1 Capital (AT1)
+                                    	     Noncumulative perpetual preferred stock
+         AvgDailyOtherAT1   Numeric     0  Additional Tier 1 Capital (AT1)
+                                    	     Other AT1 capital items and related surplus approved by FCA
+     AvgDailyTotAT1BfrDed   Numeric     0  Additional Tier 1 Capital (AT1)
+                                    	     AT1 capital before deductions
+    AvgDailyAT1InsufTier2   Numeric     0  AT1 deductions
+                                    	     Less: CDA deductions applied to AT1 capital due to insufficient 
+                                    	     amounts of Tier 2 capital to cover Tier 2 deductions
+        AvgDailyAT1Excess   Numeric     0  AT1 deductions
+                                    	     Less: Excess above third party capital limits
+      AvgDailyOtherDedAT1   Numeric     0  AT1 deductions
+                                    	     Less: Other deductions required by FCA
+ 	AvgDailyTotDedAT1   Numeric     0  AT1 deductions
+                                    	     Total deductions for AT1 Capital
+              AvgDailyAT1   Numeric     0  Total AT1 Capital
+            AvgDailyTier1   Numeric     0  Total Tier 1 Capital
+      AvgDailyTotCCETier2   Numeric     0  CCEs included in Tier 2 Capital
+AvgDailyCumulativePrefStk   Numeric     0  Other preferred stock and subordinated debt
+                                    	     Cumulative perpetual preferred stock
+     AvgDailyTermStkGT5Yr   Numeric     0  Other preferred stock and subordinated debt
+                                    	     Limited-life preferred stock = 5 years at issuance
+     AvgDailySubDebtGT5Yr   Numeric     0  Other preferred stock and subordinated debt
+                                    	     Subordinated debt = 5 years at issuance
+AvgDailyTotPrefStkSubDebt   Numeric     0  Other preferred stock and subordinated debt
+                                    	     Total other preferred stock and subordinated debt
+           AvgDailyALLoss   Numeric     0  Amount of adjusted allowances for credit losses included in Tier 2 capital
+                                    	     Adjusted allowances for credit losses, excluding reserves 
+											 for unfunded commitments
+       AvgDailyCrLossRsrv   Numeric     0  Amount of adjusted allowances for credit losses included in Tier 2 capital
+                                    	     Reserve for credit losses on off-balance sheet credit exposures
+    AvgDailyALLCrLossRsrv   Numeric     0  Amount of adjusted allowances for credit losses included in Tier 2 capital
+                                    	     Total adjusted allowance
+ AvgDailyMaxALLCrLossRsrv   Numeric     0  Amount of adjusted allowances for credit losses included in Tier 2 capital
+                                    	     Risk-weighted assets multiplied by 0.0125
+AvgDailyALLossCrLossTier2   Numeric     0  Amount of adjusted allowances for credit losses included in Tier 2 capital
+                                    	     Amount included in Tier 2 capital
+    AvgDailyOtherTier2Add   Numeric     0  Other Tier 2 capital items approved by FCA
+   AvgDailyTier2CapBfrDed   Numeric     0  Tier 2 capital before deductions
+AvgDailyPurchInvFCSITier2   Numeric     0  Tier 2 deductions
+                                    	     Less: Amount of purchased investments in other System institutions 
+                                    	     using the CDA
+      AvgDailyExcessTier2   Numeric     0  Tier 2 deductions
+                                    	     Less: Excess above third party capital limits
+    AvgDailyOtherDedTier2   Numeric     0  Tier 2 deductions
+                                    	     Less: Other deductions required by FCA
+      AvgDailyTotDedTier2   Numeric     0  Tier 2 deductions
+                                    	     Total deductions for Tier 2 capital
+ AvgDailyTermStkSubDebtPO   Numeric     0  Less: Phased-out amount of limited life preferred stock and 
+                                    	     subordinated debt
+            AvgDailyTier2   Numeric     0  Total Tier 2 capital
+        AvgDailyTotRegCap   Numeric     0  Total Regulatory Capital
+     AvgDailyTotDedRegCap   Numeric     0  Total deductions from regulatory capital
+	 AvgDailyAdjPatDivRec	Numeric     0  CET1 deductions and Adjustments
+											 Less: Adjustments for patronage or dividend accrued receivables per § 628.22(b)
+	 AvgDailyAdjPatDivPay	Numeric     0  CET1 deductions and Adjustments
+											 Plus: Adjustments for patronage or dividend accrued payables per § 628.22(b)
+	AvgDailyTotDedAdjCet1	Numeric     0  CET1 deductions and Adjustments
+											 Total deductions & adjustments for CET1 capital (sum of items 6a thru 6i minus 6j plus 6k) 
+											

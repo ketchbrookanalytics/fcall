@@ -35,9 +35,48 @@
 #'
 #'   # Access "RCB" metadata
 #'   processed_data$metadata$RCB
-#'
 #' }
 process_data <- function(dir) {
+
+  # Throw an error if the directory doesn't exist (instead of returning an
+  # empty list object)
+  if (!dir.exists(dir)) {
+
+    glue::glue("Directory {glue::double_quote(dir)} does not exist.") |>
+      rlang::abort()
+
+  }
+
+  # If `process_data_all()` throws an error, add a message about the bad 2024
+  # files from FCA
+  tryCatch(
+    expr = process_data_all(dir),
+    error = function(e) {
+
+      # Show error message without trace (to improve readability)
+      e$trace <- NULL
+      print(e)
+
+      cli::cli_h1("A Note about FCA's 2024 Data:")
+
+      paste(
+        "Please note there is an outstanding issue with the 2024 files posted",
+        "by FCA. If you are trying to process 2024 data, please refer to",
+        "{.url https://github.com/ketchbrookanalytics/fcall/issues/23}",
+        "for more information and solutions while FCA works on fixing the",
+        "files."
+      ) |>
+        cli::cli_alert_warning()
+
+    }
+  )
+
+}
+
+#' Main function for processing files into a list of R data frames.
+#' Used by `process_data()`.
+#' @noRd
+process_data_all <- function(dir) {
 
   # List all files in folder
   files <- list.files(dir)
@@ -205,8 +244,6 @@ process_metadata_file <- function(file) {
   )
 
 }
-
-
 
 #' Process a data file using metadata and codes dictionary
 #'

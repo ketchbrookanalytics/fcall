@@ -1,0 +1,42 @@
+            FILE LAYOUT FOR SCHEDULE RC-B.4 Equity Securities
+                              DATA DELIMITED BY COMMA
+                 
+                               
+					VARIABLE    FIELD  	DEC.               
+					NAME      	TYPE  	POS.  VARIABLE DESCRIPTION 
+			  --------------  -------  ----  --------------------
+					  SYSTEM   Numeric     0  System Code   
+					    DIST   Numeric     0  District Code
+					   ASSOC   Numeric     0  Association Code
+					   MONTH   Numeric     0  Month of Report
+						YEAR   Numeric     0  Year of Report
+					  UNINUM   Numeric     0  System, District, and Association
+												codes concatenated
+   InvEquityAssocInBankPurch   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Association invest. in district bank 
+												(Assoc. only):Purchased
+   InvEquityAssocInBankAlloc   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Association invest. in district bank 
+												(Assoc. only):Allocated
+	    InvEquityBankInAssoc   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Bank invest. in district associations (Banks only)
+	   InvEquityFarmerMacStk   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Farmer Mac stock
+	      InvEquityFCSIOther   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Other
+            TotInvEquityFCSI   Numeric     0  Equity Invest in Sys. Inst. & Farmer Mac:
+												Total equity invest. in System inst. and Farmer Mac
+												
+	    InvEquityNonFCSIRBIC   Numeric     0  Equity Investments in non-System Institutions:
+												Rural business investment companies organized 
+												under 7 U.S.C.2009cc et seq
+		InvEquityNonFCSIUBEs   Numeric     0  Equity Investments in non-System Institutions:
+												Unincorporated business entities authorized under 611.1150
+  InvEquityNonFCSICaptiveIns   Numeric     0  Equity Investments in non-System Institutions: 
+												FCS Association Captive Insurance Company
+	 InvEquityNonFCSInvFunds   Numeric     0  Equity Investments in non-System Institutions: 
+												Diversified investment funds
+       InvEquityNonFCSIOther   Numeric     0  Equity Investments in non-System Institutions:
+												Other
+         TotInvEquityNonFCSI   Numeric     0  Equity Investments in non-System Institutions:
+												Total equity investments in non-System institutions

@@ -4,7 +4,7 @@
 \alias{download_data}
 \title{Download data from FCA website}
 \usage{
-download_data(year, month, dest, files = NULL)
+download_data(year, month, dest, files = NULL, quiet = FALSE)
 }
 \arguments{
 \item{year}{(Integer) The year of the Call Report (e.g., \code{2022})}
@@ -18,6 +18,9 @@ downloaded (and unzipped) into}
 \item{files}{(Optional) Character vector, representing the names of the files
 in the .zip archive to be downloaded; default is \code{NULL}, meaning all files
 will be downloaded}
+
+\item{quiet}{(Optional) Logical. Controls whether download progress messages
+are displayed in the console. Defaults to \code{TRUE}.}
 }
 \value{
 Console message informing the user where the data was successfully

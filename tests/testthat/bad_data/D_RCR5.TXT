@@ -1,0 +1,38 @@
+           FILE LAYOUT FOR SCHEDULE RC-R.5 Miscellaneous Tier 1/Tier2 Calculations
+                                  DATA DELIMITED BY COMMA
+                 
+                              
+                 	 VARIABLE     FIELD  DEC.               
+                     	     NAME      TYPE  POS.  VARIABLE DESCRIPTION 
+            	    --------------  -------  ----  --------------------
+                   	   SYSTEM   Numeric     0  System Code   
+                     	     DIST   Numeric     0  District Code
+                    	    ASSOC   Numeric     0  Association Code
+                    	    MONTH   Numeric     0  Month of Report
+                     	     YEAR   Numeric     0  Year of Report
+                   	   UNINUM   Numeric     0  System, District, and Association
+                                    	     	     codes concatenated
+		   AvgDailyAssets   Numeric     0  Total Average Assets for the Leverage Ratio
+                                    	     	     Average total assets
+	       AvgDailyCET1AT1Ded   Numeric     0  Total Average Assets for the Leverage Ratio
+                                    	     	     Less: Deductions from CET1 and AT1 capital 
+													 (Sch. RC-R.4, sum of items 6a through 6i, and 9d) 
+	     AvgDailyOtherAdjLvrg   Numeric     0  Total Average Assets for the Leverage Ratio
+                                    	     	     Less: Other adjustments required by FCA
+	       AvgDailyAssetsLvrg   Numeric     0  Total Average Assets for the Leverage Ratio
+                                    	     	     Total average assets for Leverage Ratio
+	        AvgDailyPaidInCap   Numeric     0  URE and URE equivalents
+                                    	     	     Paid-in-Capital (includes APIC)
+		      AvgDailyURE   Numeric     0  URE and URE equivalents
+                                    	     	     URE
+AvgDailyNQASNotSubj2RetireCCECET1   Numeric     0  URE and URE equivalents
+                                    	     	     Nonqualified allocated surplus not subject 
+                                    	     	     to retirement
+	  AvgDailyAllocEquityFCSI   Numeric     0  URE and URE equivalents
+                                    	     	     Less: Amount of equities that are allocated 
+                                    	     	     to other System institutions
+	   AvgDailyCertainCET1Ded   Numeric     0  URE and URE equivalents
+                                    	     	     Less: Deductions & adjustments from CET1 capital 
+													 (RC-R4 item 6l) 
+	      AvgDailyUREandEquiv   Numeric     0  URE and URE equivalents
+                                    	     	     Total URE and URE equivalents

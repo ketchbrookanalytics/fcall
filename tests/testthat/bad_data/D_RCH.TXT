@@ -1,0 +1,21 @@
+             FILE LAYOUT FOR SCHEDULE RC-H RECONCILEMENT OF NET WORTH
+       	                    DATA DELIMITED BY COMMAS
+                   
+                         
+       VARIABLE    FIELD  DEC.                                          
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION                    
+  -------------   -------  ----  ---------------------
+         SYSTEM   Numeric     0  System Code 
+           DIST   Numeric     0  District Code
+          ASSOC   Numeric     0  Association Code
+          MONTH   Numeric     0  Month of Report
+           YEAR   Numeric     0  Year of Report
+         UNINUM   Numeric     0  System, District, and Association   
+                                  codes concatenated             
+     ACNOCOMINC   Numeric     0  Total accumulated other comprehensive
+     UNREALGAIN   Numeric     0	 Net unrealized gains (or losses) on securities
+								   available-for-sale 				
+      OTHIMPSEC   Numeric     0	 Non-credit related impairment on securities available-for-sale
+     PENSIONADJ   Numeric     0	 Minimum pension liability adjustments
+   CASHHEDGEADJ   Numeric     0	 Cash flow hedge adjustments
+      OTHINCADJ   Numeric     0	 Other comprehensive income adjustments

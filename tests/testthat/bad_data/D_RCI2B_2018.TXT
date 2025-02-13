@@ -1,0 +1,53 @@
+				FILE LAYOUT FOR SCHEDULE RC-I.2 Off-Balance Sheet Derivative Contracts: Derivative Contracts (exclude credit derivatives) Section
+								 DATA DELIMITED BY COMMAS
+													   
+										
+		   VARIABLE    FIELD  DEC.      
+			   NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+	  -------------  -------  ----  ---------------------
+			 SYSTEM  Numeric     0  System Code
+			   DIST  Numeric     0  District Code 
+			  ASSOC  Numeric     0  Association Code 
+			  MONTH  Numeric     0  Month of Report
+			   YEAR  Numeric     0  Year of Report
+			 UNINUM  Numeric     0  System, District, and Association codes concatenated               
+	   ** DerivCode  Numeric     0  Code Derivative Contracts (exclude credit derivatives):
+	   
+									 10  Cleared Derivatives (Notional): Swap contracts
+									 20  Cleared Derivatives (Notional): Option contracts – purchased
+									 30  Cleared Derivatives (Notional): Option contracts – written (sold)
+									 40  Cleared Derivatives (Notional): Futures contracts
+									 50  Cleared Derivatives (Notional): Total cleared derivative contracts
+									 
+									 60  Non-cleared Derivatives (Notional): Swap contracts
+									 70  Non-cleared Derivatives (Notional): Option contracts – purchased
+									 80  Non-cleared Derivatives (Notional): Option contracts – written (sold)
+									 90  Non-cleared Derivatives (Notional): Forward contracts
+									 100 Non-cleared Derivatives (Notional): Total non-cleared derivative contracts
+									 
+									 110 Total Derivative Contracts (Notional) (sum of 3(e)and 4(e)
+									 120 Derivatives included in Line 5 that are on behalf of customers (Notional)
+									 
+									 130 Cleared Derivatives (Fair Value): Swap contracts
+									 140 Cleared Derivatives (Fair Value): Option contracts – purchased
+									 150 Cleared Derivatives (Fair Value): Option contracts – written (sold)
+									 160 Cleared Derivatives (Fair Value): Futures contracts
+									 170 Cleared Derivatives (Fair Value): Total cleared derivative contracts
+									 
+									 180 Non-cleared Derivatives (Fair Value): Swap contracts
+									 190 Non-cleared Derivatives (Fair Value): Option contracts – purchased
+									 200 Non-cleared Derivatives (Fair Value): Option contracts – written (sold)
+									 210 Non-cleared Derivatives (Fair Value): Forward contracts
+									 220 Non-cleared Derivatives (Fair Value): Total non-cleared derivative contracts
+									 
+									 230 Total derivative contracts (Fair Value – sum of 7(e) and 8(e) 
+								 
+  **    DerivIntRate  Numeric     0  Interest Rate
+
+  **     	 DerivFX  Numeric     0  Foreign Exchange
+
+  **      DerivOther  Numeric     0  Other
+
+            
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH DerivCode CODE.

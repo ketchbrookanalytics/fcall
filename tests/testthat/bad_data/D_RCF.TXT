@@ -1,0 +1,30 @@
+            FILE LAYOUT FOR SCHEDULE RC-F PERFORMANCE OF LOANS, NOTES,
+                           SALES CONTRACTS, AND LEASES
+                             DATA DELIMITED BY COMMAS
+                                                   
+                                    
+       VARIABLE    FIELD  DEC.      
+           NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+  -------------  -------  ----  ---------------------
+         SYSTEM  Numeric     0  System Code
+           DIST  Numeric     0  District Code 
+          ASSOC  Numeric     0  Association Code 
+          MONTH  Numeric     0  Month of Report
+           YEAR  Numeric     0  Year of Report
+         UNINUM  Numeric     0  System, District, and Association
+                                 codes concatenated               
+  ** LOANSTATUS  Numeric     0  Code for Loan Performance Status: 
+                                 10  Accruing
+                                 20  Formally restructured accruing
+                                 54  Nonaccrual: Cash basis
+                                 56  Nonaccrual: Other
+                                 60  Total
+                                 80  Number of Loans
+  **    NOTPDUE  Numeric     0  Not past due or Past Due Less Than
+                                 30 Days
+  **     PDUE30  Numeric     0  Past Due 30 Thru 89 Days
+  **     PDUE90  Numeric     0  Past Due 90 Days or More
+  **    TOTPDUE  Numeric     0  Total
+            
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH LOANSTATUS CODE.

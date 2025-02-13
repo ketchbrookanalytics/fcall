@@ -1,0 +1,38 @@
+				FILE LAYOUT FOR SCHEDULE RC-I.2 Off-Balance Sheet Derivative Contracts: Derivatives by Remaining Maturity (Notional) Section
+								 DATA DELIMITED BY COMMAS
+													   
+										
+		   VARIABLE    FIELD  DEC.      
+			   NAME     TYPE  POS.  VARIABLE DESCRIPTION 
+	  -------------  -------  ----  ---------------------
+			 SYSTEM  Numeric     0  System Code
+			   DIST  Numeric     0  District Code 
+			  ASSOC  Numeric     0  Association Code 
+			  MONTH  Numeric     0  Month of Report
+			   YEAR  Numeric     0  Year of Report
+			 UNINUM  Numeric     0  System, District, and Association codes concatenated               
+	 ** DerivRMCode  Numeric     0  Code for Derivatives by Remaining Maturity (Notional):
+	   
+									 10  Cleared derivatives: Interest rate risk
+									 20  Cleared derivatives: Foreign exchange
+									 30  Cleared derivatives: Credit 
+									 40  Cleared derivatives: Others
+									 50  Cleared derivatives: Total cleared
+									 
+									 60  Non-cleared derivatives: Interest rate risk
+									 70  Non-cleared derivatives: Foreign exchange
+									 80  Non-cleared derivatives: Credit 
+									 90  Non-cleared derivatives: Others
+									 100 Non-cleared derivatives: Total non-cleared
+									 
+									 110 Total derivative contracts (sum 12(e)+ 13(e)
+								 
+     ** DerivRMLE1Yr  Numeric     0  Remaining Maturity: <= 1 year
+
+** DerivRMGT1YrLE5Yr  Numeric     0  Remaining Maturity: > 1 but <= 5 years
+
+     ** DerivRMGT5Yr  Numeric     0  Remaining Maturity: > 5 years
+
+            
+  **  NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE
+             VARIABLES.  THERE IS ONE OCCURENCE FOR EACH DerivRMCode CODE.

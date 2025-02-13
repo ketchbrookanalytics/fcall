@@ -1,0 +1,85 @@
+              FILE LAYOUT FOR SCHEDULE RI-E.2 ANALYSIS OF ALLOWANCE FOR
+                 CREDIT LOSSES-LOANS, NOTES, SALES CONTRACTS, AND LEASES
+                              DATA DELIMITED BY COMMAS      
+                                                      
+                               
+         VARIABLE    FIELD  DEC.        
+             NAME     TYPE  POS.  VARIABLE DESCRIPTION     
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code
+             DIST  Numeric     0  District Code
+            ASSOC  Numeric     0  Association Code
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, District, Association 
+                                   codes concatenated
+   ALLNALLOSSBBAL  Numeric     0  Allowance for credit losses on loans, etc.
+                                   beginning of period
+          PROVLNS  Numeric     0  Net Increase or Decrease from
+                                   Provision for Loan Loss
+        CHGOFFLNS  Numeric     0  Loans Charged Off
+       LNSLOSSREV  Numeric     0  Recoveries for credit losses on loans, etc.
+      OTHADDSSUBS  Numeric     0  Other allowance for credit losses on Loans,etc.
+         ALLNLOSS  Numeric     0  Allowance for credit losses on loans, etc.
+									end of period
+         CHGOFFRE  Numeric     0  Loans Charged Off - 
+                                   Production Agriculture: Real estate mortgage
+     CHGOFFPROINT  Numeric     0  Loans Charged Off - 
+                                   Production Agriculture: production and 
+                                   intermediate term
+      CHGOFFAGBUS  Numeric     0  Loans Charged Off - Agribusiness
+       CHGOFFCOMM  Numeric     0  Loans Charged Off - Communication
+      CHGOFFENERG  Numeric     0  Loans Charged Off - Energy
+       CHGOFFWATW  Numeric     0  Loans Charged Off - Water/waste disposal
+      CHGOFFRURRE  Numeric     0  Loans Charged Off - rural residence real estate
+      CHGOFFINTNL  Numeric     0  Loans Charged Off - International
+      CHGOFFLESRC  Numeric     0  Loans Charged Off - Lease receivables
+            RECRE  Numeric     0  Recoveries - 
+                                   Production Agriculture: Real estate mortgage
+        RECPROINT  Numeric     0  Recoveries - 
+                                   Production Agriculture: production and 
+                                   intermediate term
+         RECAGBUS  Numeric     0  Recoveries - Agribusiness
+          RECCOMM  Numeric     0  Recoveries - Communication
+         RECENERG  Numeric     0  Recoveries - Energy
+          RECWATW  Numeric     0  Recoveries - Water/waste disposal
+         RECRURRE  Numeric     0  Recoveries - rural residence real estate
+         RECINTNL  Numeric     0  Recoveries - International
+         RECLESRC  Numeric     0  Recoveries - Lease receivables
+        CHGOFFDLN  Numeric     0  Charge-offs net of recoveries on direct
+                                   loans to associations
+      CHGOFFLNOFI  Numeric     0  Charge-offs net of recoveries on discounted
+                                   loans to OFIs
+             ALRE  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE: 
+                                   Production Agriculture: 
+								   Real estate mortgage loans
+         ALPROINT  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Production Agriculture: 
+									production and intermediate term loans
+          ALAGBUS  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Agribusiness loans
+           ALCOMM  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Communication loans
+          ALENERG  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Energy loans
+           ALWATW  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Water/waste disposal loans
+          ALRURRE  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									rural residence real estate loans
+          ALINTNL  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									International loans
+          ALLESRC  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Lease receivables loans
+            ALDLN  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Direct loans to associations (FCBs and ACBs only)
+          ALLNOFI  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE: 
+									Discounted loans to OFIs (FCBs and ACBs only)
+       ALTYPTOTAL  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Allowance for credit losses on loans, etc.
+									end of period
+	    CHGOFFOTH  Numeric     0  Other loans, etc. charged off
+	       RECOTH  Numeric     0  Other recoveries
+	        ALOTH  Numeric     0  ALLOWANCE FOR CREDIT LOSSES BY LOAN TYPE:
+									Other allowance
+
+

@@ -1,0 +1,22 @@
+                  FILE LAYOUT FOR SCHEDULE RI-A OPERATING INCOME
+                             DATA DELIMITED BY COMMAS 
+                                           
+                                    
+         VARIABLE    FIELD  DEC.            
+             NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code   
+             DIST  Numeric     0  District Code  
+            ASSOC  Numeric     0  Association Code 
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, District, and Association
+                                   codes concatenated
+       FINRELSERV  Numeric     0  Financially Related Services
+            COMPY  Numeric     0  Compensation Income
+             FEEY  Numeric     0  Fee Income
+           MINRLY  Numeric     0  Mineral Income
+       FINASSISTY  Numeric     0  Financial Assistance Received
+         ACQPROPY  Numeric     0  Income from Other Property Owned
+           OOPERY  Numeric     0  Other Operating Income
+        OPNONINTY  Numeric     0  Total Operating Income

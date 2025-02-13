@@ -1,0 +1,21 @@
+             FILE LAYOUT FOR SCHEDULE RI-C.1 OTHER NONINTEREST EXPENSES
+                              DATA DELIMITED BY COMMAS     
+                                                
+                                 
+         VARIABLE    FIELD  DEC.      
+             NAME     TYPE  POS.  VARIABLE DESCRIPTION
+  ---------------  -------  ----  --------------------------------------
+           SYSTEM  Numeric     0  System Code
+             DIST  Numeric     0  District Code
+            ASSOC  Numeric     0  Association Code 
+            MONTH  Numeric     0  Month of Report
+             YEAR  Numeric     0  Year of Report
+           UNINUM  Numeric     0  System, District, and Association 
+                                   codes concatenated
+        EXPFINASS  Numeric     0  Financial Assistance Provided
+         EXPFACDT  Numeric     0  Financial Assistance Corporation
+                                   Debt Expense
+       EXPACQPROP  Numeric     0  Other Property Owned Expense
+   MISCONONINTEXP  Numeric     0  Miscellaneous Other Noninterest 
+                                   Expense
+       ONONINTEXP  Numeric     0  Total Other Noninterest Expense

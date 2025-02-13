@@ -16,28 +16,28 @@ append_single_data <- function(conn, table, data, period) {
       where \"DATA_PERIOD\" = '{ period }'
   ")
 
-  # Inform user
-  message(glue::glue("Step 1/2: Removing { period } data from { table }"))
+  cli::cli_inform("Table: { table }")
 
-  DBI::dbSendQuery(
+  # Remove any rows that already exist in the table for the period
+  n_dropped <- DBI::dbExecute(
     conn = conn,
     statement = delete_statement
   )
 
-  # Inform user
-  message(glue::glue("Step 2/2: Adding { period } data to { table }"))
+  cli::pluralize("Removed { n_dropped } row{?s}") |>
+    cli::cli_alert_danger()
 
   # Append rows from period
-  DBI::dbWriteTable(
+  n_added <- DBI::dbAppendTable(
     conn = conn,
     name = table,
     value = data |>
-      dplyr::mutate(DATA_PERIOD = period),
-    append = TRUE,
-    row.names = FALSE
+      dplyr::mutate(DATA_PERIOD = period)
   )
 
-  # Inform user
-  message(glue::glue("{ period } data added to { table }"))
+  cli::pluralize("Added { n_added } row{?s}") |>
+    cli::cli_alert_success()
+
+  cli::cli_rule()
 
 }
