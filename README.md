@@ -118,5 +118,10 @@ if you would like access to this database.
 <img src="man/figures/capital_logo.png" width="220" alt="Capital Farm Credit"/>
 </a>
 </p>
+<p style="display: flex; align-items:center">
+<a href="https://www.farmcreditloans.com/" target="_blank">
+<img src="man/figures/western_oklahoma_logo.png" width="220" alt="Farm Credit of Western Oklahoma"/>
+</a>
+</p>
 </div>
 </div>
