@@ -68,7 +68,9 @@ logos_data <- tibble::tribble(
   2, 220, "fci_logo.jpg", "Farm Credit Illinois", "https://www.farmcreditil.com/",
   2, 220, "golden_state_logo.png", "Golden State Farm Credit", "https://goldenstatefarmcredit.com/",
   3, 220, "horizon_logo.png", "Horizon Farm Credit", "https://www.horizonfc.com/",
-  3, 220, "capital_logo.png", "Capital Farm Credit", "https://www.capitalfarmcredit.com/"
+  3, 220, "capital_logo.png", "Capital Farm Credit", "https://www.capitalfarmcredit.com/",
+  3, 220, "western_oklahoma_logo.png", "Farm Credit of Western Oklahoma", "https://www.farmcreditloans.com/",
+  4, 100, "agtexas_logo.png", "AgTexas Farm Credit Services", "https://agtexas.com/"
 )
 
 lines <- logos_data$line |> unique() |> sort()
@@ -90,7 +92,7 @@ purrr::map(lines, function(line_number) {
           )
         ) 
       ) |> 
-        htmltools::tagAppendAttributes(style = "display: flex; align-items:center")
+        htmltools::tagAppendAttributes(style = "display: flex; align-items:center; width: 220px; justify-content: center;")
     
     }) |> 
     do.call(htmltools::div, args = _) |> 
