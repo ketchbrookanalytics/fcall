@@ -1,3 +1,11 @@
+# fcall 0.1.3
+
+* Initial release attempt on CRAN
+* Removes use of `get()` in `get_codes_dict()`, removing need to call `library(fcall)` before calling `get_codes_dict()`
+* Requires R 4.1 or newer (due to base pipe)
+* Updates year in `LICENSE`
+* Removes internal database-related functions
+
 # fcall 0.1.2
 
 ## User-Facing Improvements
