@@ -10,4 +10,5 @@ config.yml
 ^docs$
 ^pkgdown$
 ^\.github$
+^\.devcontainer$
 ^vignettes/articles$

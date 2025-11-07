@@ -1,0 +1,30 @@
+{
+    "name": "fcall R package",
+    "image": "rocker/r-ver:4",
+
+    "features": {
+
+        // https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+            "packages": "cli, devtools, dplyr, github::nx10/httpgd, glue, languageserver, purrr, rlang, stringr, tibble, tidyr, utf8, utils, usethis, waldo",
+            "installSystemRequirements": true
+        }
+
+    },
+
+    "postCreateCommand": "apt-get update && apt-get install -y qpdf",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "REditorSupport.r",
+                "RDebugger.r-debugger"
+            ],
+            "settings": {
+                "editor.rulers": [80],
+                "r.bracketedPaste": true,
+                "r.plot.useHttpgd": true
+            }
+        }
+    }
+}
