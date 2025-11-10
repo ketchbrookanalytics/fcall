@@ -8,9 +8,12 @@ Authors@R: c(
            role = "aut"),
     person("Ketchbrook Analytics", role = c("cph", "fnd"))
   )
-Description: R package for parsing most Farm Credit Administration ("FCA") Call
-    Report data into R data frames. FCA publishes call report data at
-    [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
+Description: Description: Parses financial condition and performance data (Call
+    Reports) for institutions in the United States Farm Credit System. Contains functions for
+    downloading files from the Farm Credit Administration ('FCA') Call Report
+    archive website and reading the files into tidy data frame format.
+    The archive website can be found at
+    <https://www.fca.gov/bank-oversight/call-report-data-for-download>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
