@@ -31,8 +31,8 @@ Download data from FCA website
 }
 \details{
 FCA publishes Call Report data quarterly. These .zip files are
-typically named "\if{html}{\out{<YYYY>}}March.zip", "\if{html}{\out{<YYYY>}}June.zip", "\if{html}{\out{<YYYY>}}September.zip",
-and "\if{html}{\out{<YYYY>}}December.zip" (where \if{html}{\out{<YYYY>}} represents the 4-digit year).
+typically named "\code{YYYY}March.zip", "\code{YYYY}June.zip", "\code{YYYY}September.zip"
+and "\code{YYYY}December.zip" (where \code{YYYY} represents the 4-digit year).
 Therefore, valid values to the \code{month} argument should be limited to
 \code{c(3, 6, 9, 12)}, unless there is an anomaly in FCA's reporting/publishing.
 Check \url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
