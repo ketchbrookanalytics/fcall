@@ -1,0 +1,141 @@
+# Data Structure
+
+The information about each dataset is spread across two files, a
+**metadata file** and a **data file**:
+
+1.  The **metadata file** contains information about the columns in the
+    **data file**, as well as lookup table(s) for translating integer
+    codes found in certain columns of the **data file** into
+    plain-English descriptions (if applicable)
+2.  The **data file** contains the actual raw, comma-separated Call
+    Report data, without headers
+
+Metadata file names start with “D\_”. We can use the file naming
+conventions to link each **metadata file** with its corresponding **data
+file**.
+
+### Metadata Files
+
+Each metadata file, in essence, contains the following information about
+the variables in the corresponding data file:
+
+- Variable name
+- Field type
+- Decimal positions
+- Variable description
+
+Metadata is stored by FCA in a way that is not straightforward to
+process:
+
+- Each metadata file has a description header that can span across
+  multiple lines
+- Information about a variable is not stored in a single line, as
+  variable descriptions can span across multiple lines (in an
+  inconsistent way)
+- Some metadata files have variable names that are preceded by two
+  asterisks (\*\*). These asterisks are used to denote
+  multiple-occurrence columns and the first of them corresponds to a
+  variable that stores codes. Files with multiple-occurrence columns end
+  with a NOTE that can span across multiple lines.
+
+Nevertheless, there are some features of metadata files that come in
+handy:
+
+- Variable names are a single word (i.e., variable names are not
+  separated by spaces)
+- Field type is either “Numeric” or “Alphanum.” and is always placed
+  after a variable name
+- Decimal position is a single-digit integer that is always placed after
+  field type.
+
+These features allow us to use regular expressions to process metadata
+files.
+
+#### Metadata File Scenarios
+
+For the purposes of parsing files to create tidy data frames, the
+metadata files are classified into the following unique scenarios:
+
+- Scenario 1: All variables are single-occurrence (i.e., no variable is
+  preceded by two asterisks). This scenario is referred to as “single”.
+- Scenario 2: A set of single-occurrence variables is followed by a set
+  of multiple-occurrence variables. This scenario will be referred as
+  “single_multiple”.
+- Scenario 3: A set of single-occurrence variables followed by a set of
+  multiple-occurrence variables is followed by a second set of
+  single-occurrence variables. This scenario will be referred as
+  “single_multiple_single”.
+
+This classification is important because the corresponding data file
+will have a different structure depending on the scenario.
+
+### Data Files
+
+In general terms, the processing workflow of data files involves:
+
+1.  Reading data
+2.  Applying column names
+3.  Performing pivot operations (if necessary)
+
+Specific pivot operations depend on the
+[scenario](#metadata-file-scenarios) of the corresponding metadata file
+
+#### Scenario 1 (“single”)
+
+This is the simplest scenario. The data in the data file is already in
+the expected format, and the only task is to apply the column names
+specified in the metadata file.
+
+#### Scenario 2 (“single_multiple”)
+
+In this case, the data in the **data file** does not adhere to “tidy”
+principles. The multiple-occurrence columns are repeated for each class
+within the “code” variable. To help clarify the previous statement,
+consider a **data file** has following (mock) column names:
+
+- `ColumnA`
+- `ColumnB`
+- `Code1`
+- `Metric1_Code1`
+- `Metric2_Code1`
+- `Code2`
+- `Metric1_Code2`
+- `Metric2_Code2`
+
+The corresponding **metadata file** would likely list the column names
+as:
+
+- `ColumnA`
+- `ColumnB`
+- `Code`
+- `Metric1`
+- `Metric2`
+
+This creates a mismatch between the number of columns identified in the
+**metadata file** (5) and the number of columns in the corresponding
+**data file** (8). To properly apply column names to the **data file**,
+the total number of distinct codes in the `Code` column must be
+determined. Once the column names have been appropriately applied to the
+**data file**, we complete the data processing by applying both long and
+wide pivots.
+
+#### Scenario 3 (“single_multiple_single”)
+
+This is the most complex scenario, currently applicable to only one data
+file (*RCR7*). Unlike Scenario 2, there is an additional set of
+single-occurrence columns that follow a set of multiple-occurrence
+columns. For each observation in the **data file**, there is a row that
+contains comma-separated values of variables that belong to the first
+set of single-occurrence columns, followed by a row for each class of
+the ‘code’ variable with comma-separated values of multiple-occurrence
+variables, and finally, a row that contains comma-separated values of
+the remaining single-occurrence columns.
+
+In this case, the initial step of reading the data involves
+concatenating lines corresponding to the same observation (using loops).
+Once the data is read, the processing is similar to Scenario 2, except
+when naming the columns it is necessary to consider that the repeating
+columns are in the middle of the dataset. After naming the columns, the
+processing is the same as in Scenario 2. The resulting dataset differs
+from the metadata file in that it places all single-occurrence columns
+at the beginning.

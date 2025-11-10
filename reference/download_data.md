@@ -1,0 +1,84 @@
+# Download data from FCA website
+
+Download data from FCA website
+
+## Usage
+
+``` r
+download_data(year, month, dest, files = NULL, quiet = FALSE)
+```
+
+## Arguments
+
+- year:
+
+  (Integer) The year of the Call Report (e.g., `2022`)
+
+- month:
+
+  (String) The month of the Call Report (e.g., `"March"`); you may also
+  supply an integer (e.g., `3`) representing the month numerically
+
+- dest:
+
+  (String) The path to the directory where the data will be downloaded
+  (and unzipped) into
+
+- files:
+
+  (Optional) Character vector, representing the names of the files in
+  the .zip archive to be downloaded; default is `NULL`, meaning all
+  files will be downloaded
+
+- quiet:
+
+  (Optional) Logical. Controls whether download progress messages are
+  displayed in the console. Defaults to `TRUE`.
+
+## Value
+
+Console message informing the user where the data was successfully
+downloaded (and unzipped) into
+
+## Details
+
+FCA publishes Call Report data quarterly. These .zip files are typically
+named "March.zip", "June.zip", "September.zip", and "December.zip"
+(where represents the 4-digit year). Therefore, valid values to the
+`month` argument should be limited to `c(3, 6, 9, 12)`, unless there is
+an anomaly in FCA's reporting/publishing. Check
+<https://www.fca.gov/bank-oversight/call-report-data-for-download> to
+ensure the data is available for the quarter you are interested in.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+
+  path_1 <- tempfile("fcadata")
+
+  download_data(
+    year = 2022,
+    month = "December",   # using the name of the month
+    dest = path_1
+  )
+
+  list.files(path_1)
+
+  path_2 <- tempfile("fcadata")
+
+  download_data(
+    year = 2023,
+    month = 9,   # using the month number (to refer to September)
+    dest = path_2,
+    # only download the following files
+    files = c(
+      "D_INST.TXT",
+      "INST_Q202309_G20231106.TXT"
+    )
+  )
+
+  list.files(path_2)
+
+} # }
+```
