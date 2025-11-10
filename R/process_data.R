@@ -484,7 +484,10 @@ get_codes_dict <- function(data_name) {
   # Get corresponding information when data has codes
   if (length(codes_dict_name) > 0) {
 
-    codes_dict <- get(codes_dict_name)
+    # Load the data into a temporary environment and retrieve it
+    temp_env <- new.env()
+    utils::data(list = codes_dict_name, package = "fcall", envir = temp_env)
+    codes_dict <- temp_env[[codes_dict_name]]
 
     codes_varname <- gsub(
       pattern = ".*__",
