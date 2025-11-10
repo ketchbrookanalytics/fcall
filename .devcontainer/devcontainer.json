@@ -6,7 +6,7 @@
 
         // https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-            "packages": "cli, devtools, dplyr, github::nx10/httpgd, glue, languageserver, purrr, rlang, stringr, tibble, tidyr, utf8, utils, usethis, waldo",
+            "packages": "cli, devtools, dplyr, github::nx10/httpgd, httr, glue, languageserver, purrr, rlang, stringr, tibble, tidyr, utf8, utils, usethis, waldo",
             "installSystemRequirements": true
         }
 

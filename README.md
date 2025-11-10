@@ -18,11 +18,13 @@ data frames.
 
 ## Installation
 
-You can install {fcall} from [GitHub](https://github.com/) with:
+{fcall} can be installed from CRAN using `install.packages("fcall")`.
+Alternatively, you can install the development version from GitHub using
+{pak} like so:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("ketchbrookanalytics/fcall")
+# install.packages("pak")
+pak::pak("ketchbrookanalytics/fcall")
 ```
 
 ## Background
@@ -30,8 +32,8 @@ remotes::install_github("ketchbrookanalytics/fcall")
 FCA publishes Call Report data on a quarterly basis at
 <https://www.fca.gov/bank-oversight/call-report-data-for-download>.
 
-As of September 2023, this data represents a set of 72 *.TXT* files.
-These files represent 36 datasets. The files prefixed with “D\_” contain
+As of June 2025, this data represents a set of 72 *.TXT* files. These
+files represent 36 datasets. The files prefixed with “D\_” contain
 *metadata* (the column names, data types, etc.) of the associated file
 containing the raw, header-less comma-separated data. For example, the
 file that starts with *“D_INST”* contains the metadata for the file that

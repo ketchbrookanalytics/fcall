@@ -27,18 +27,18 @@ R package for parsing Farm Credit Administration ("FCA") Call Report data into [
 
 ## Installation
 
-You can install {fcall} from [GitHub](https://github.com/) with:
+{fcall} can be installed from CRAN using `install.packages("fcall")`. Alternatively, you can install the development version from GitHub using {pak} like so:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("ketchbrookanalytics/fcall")
+# install.packages("pak")
+pak::pak("ketchbrookanalytics/fcall")
 ```
 
 ## Background
 
 FCA publishes Call Report data on a quarterly basis at [https://www.fca.gov/bank-oversight/call-report-data-for-download](https://www.fca.gov/bank-oversight/call-report-data-for-download).
 
-As of September 2023, this data represents a set of 72 *.TXT* files. These files represent 36 datasets. The files prefixed with "D_" contain *metadata* (the column names, data types, etc.) of the associated file containing the raw, header-less comma-separated data. For example, the file that starts with *"D_INST"* contains the metadata for the file that starts with *"INST_"*.
+As of June 2025, this data represents a set of 72 *.TXT* files. These files represent 36 datasets. The files prefixed with "D_" contain *metadata* (the column names, data types, etc.) of the associated file containing the raw, header-less comma-separated data. For example, the file that starts with *"D_INST"* contains the metadata for the file that starts with *"INST_"*.
 
 Further, some of these datasets are structured in a way that makes data analysis difficult. In these cases, we chose to pivot the data to make it more analysis-friendly. See [Metadata File Scenarios](#metadata-file-scenarios) for a more in-depth discussion of when and how this pivoting took place.
 
@@ -60,9 +60,9 @@ Please reach out to [info@ketchbrookanalytics.com](mailto:info@ketchbrookanalyti
 
 ```{r echo=FALSE}
 logos_data <- tibble::tribble(
-  ~line, ~width, ~src, ~alt, ~href, 
-  1, 220, "agwest_logo.png", "AgWest Farm Credit", "https://agwestfc.com", 
-  1, 220, "greenstone_logo.jpg", "GreenStone Farm Credit Services", "https://www.greenstonefcs.com/", 
+  ~line, ~width, ~src, ~alt, ~href,
+  1, 220, "agwest_logo.png", "AgWest Farm Credit", "https://agwestfc.com",
+  1, 220, "greenstone_logo.jpg", "GreenStone Farm Credit Services", "https://www.greenstonefcs.com/",
   1, 220, "highplains_logo.png", "High Plains Farm Credit", "https://highplainsfarmcredit.com/",
   2, 220, "cobank_logo.jpg", "CoBank", "https://www.cobank.com/",
   2, 220, "fci_logo.jpg", "Farm Credit Illinois", "https://www.farmcreditil.com/",
@@ -78,10 +78,10 @@ lines <- logos_data$line |> unique() |> sort()
 
 ```{r echo=FALSE}
 purrr::map(lines, function(line_number) {
-  logos_data |> 
-    dplyr::filter(line == line_number) |> 
+  logos_data |>
+    dplyr::filter(line == line_number) |>
     purrr::pmap(function(line, width, src, alt, href) {
-      
+
       htmltools::p(
         htmltools::a(
          href = href, target="_blank",
@@ -90,13 +90,13 @@ purrr::map(lines, function(line_number) {
            width = width,
             alt = alt
           )
-        ) 
-      ) |> 
+        )
+      ) |>
         htmltools::tagAppendAttributes(style = "display: flex; align-items:center; width: 220px; justify-content: center;")
-    
-    }) |> 
-    do.call(htmltools::div, args = _) |> 
+
+    }) |>
+    do.call(htmltools::div, args = _) |>
     htmltools::tagAppendAttributes(style = "display: flex; justify-content: space-evenly;")
-}) |> 
+}) |>
   do.call(htmltools::div, args = _)
 ```
