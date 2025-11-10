@@ -12,8 +12,8 @@
 #'   are displayed in the console. Defaults to `TRUE`.
 #'
 #' @details FCA publishes Call Report data quarterly. These .zip files are
-#'   typically named "<YYYY>March.zip", "<YYYY>June.zip", "<YYYY>September.zip",
-#'   and "<YYYY>December.zip" (where <YYYY> represents the 4-digit year).
+#'   typically named "`YYYY`March.zip", "`YYYY`June.zip", "`YYYY`September.zip"
+#'   and "`YYYY`December.zip" (where `YYYY` represents the 4-digit year).
 #'   Therefore, valid values to the `month` argument should be limited to
 #'   `c(3, 6, 9, 12)`, unless there is an anomaly in FCA's reporting/publishing.
 #'   Check <https://www.fca.gov/bank-oversight/call-report-data-for-download> to
