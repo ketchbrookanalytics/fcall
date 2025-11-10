@@ -1,5 +1,17 @@
 # Changelog
 
+## fcall 0.1.4
+
+Addresses CRAN comments regarding:
+
+- Use of unquoted “FCA” abbreviation in `DESCRIPTION`
+- Potential bad hyperlinks in README
+  - Database Users section was moved to a {pkgdown} Article to avoid any
+    further issues
+- Improper use of hyperlink markdown `< >` characters in
+  [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+  roxygen comments
+
 ## fcall 0.1.3
 
 - Initial release attempt on CRAN

@@ -43,10 +43,11 @@ downloaded (and unzipped) into
 ## Details
 
 FCA publishes Call Report data quarterly. These .zip files are typically
-named "March.zip", "June.zip", "September.zip", and "December.zip"
-(where represents the 4-digit year). Therefore, valid values to the
-`month` argument should be limited to `c(3, 6, 9, 12)`, unless there is
-an anomaly in FCA's reporting/publishing. Check
+named "`YYYY`March.zip", "`YYYY`June.zip", "`YYYY`September.zip" and
+"`YYYY`December.zip" (where `YYYY` represents the 4-digit year).
+Therefore, valid values to the `month` argument should be limited to
+`c(3, 6, 9, 12)`, unless there is an anomaly in FCA's
+reporting/publishing. Check
 <https://www.fca.gov/bank-oversight/call-report-data-for-download> to
 ensure the data is available for the quarter you are interested in.
 
