@@ -8,7 +8,7 @@ Authors@R: c(
            role = "aut"),
     person("Ketchbrook Analytics", role = c("cph", "fnd"))
   )
-Description: Description: Parses financial condition and performance data (Call
+Description: Parses financial condition and performance data (Call
     Reports) for institutions in the United States Farm Credit System. Contains functions for
     downloading files from the Farm Credit Administration ('FCA') Call Report
     archive website and reading the files into tidy data frame format.
