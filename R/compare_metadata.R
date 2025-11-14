@@ -64,6 +64,8 @@ compare_metadata <- function(dir1, dir2) {
   file_differences <- waldo::compare(
     x = metadata_files1,
     y = metadata_files2,
+    x_arg = "dir1",
+    y_arg = "dir2",
     max_diffs = Inf
   )
 
@@ -120,7 +122,14 @@ compare_files_content <- function(filename, dir1, dir2) {
   content2 <- readLines(file.path(dir2, filename), warn = FALSE) |>
     iconv(from = "windows-1252", to = "utf-8")
 
-  differences <- waldo::compare(content1, content2, max_diffs = Inf)
+  differences <- waldo::compare(
+    x = content1,
+    y = content2,
+    x_arg = "dir1",
+    y_arg = "dir2",
+    max_diffs = Inf
+  )
+
   return(differences)
 
 }
