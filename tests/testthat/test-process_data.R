@@ -1,11 +1,37 @@
-test_that("`process_data()` throws message with bad files from 2024", {
+download_2024_data_and_test <- function(dir) {
+
+  # Randomly choose a month
+  month <- sample(
+    x = month.name[c(3, 6, 9, 12)],
+    size = 1L
+  )
+
+  download_data(
+    year = 2024,
+    month = month,
+    dest = dir, quiet = TRUE
+  ) |>
+    # Suppress "successfully downloaded into..." message
+    suppressMessages()
 
   quiet_process_data <- purrr::quietly(process_data)
 
-  out <- quiet_process_data(dir = testthat::test_path("bad_data"))
+  out <- quiet_process_data(dir = dir)
+
+  return(out)
+
+}
+
+test_that("`process_data()` throws message with bad files from 2024", {
 
   expect_true(
-    any(stringr::str_detect(out$messages, "A Note about FCA's 2024 Data"))
+    withr::with_tempfile(
+      new = "fcadata2024",
+      code = { download_2024_data_and_test(dir = fcadata2024) }
+    ) |>
+      purrr::pluck("messages") |>
+      stringr::str_detect("A Note about FCA's 2024 Data") |>
+      any()
   )
 
 })
