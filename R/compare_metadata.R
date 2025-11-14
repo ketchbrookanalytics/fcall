@@ -102,19 +102,21 @@ compare_metadata <- function(dir1, dir2) {
 
 #' Compare content of a specific file between two folders
 #'
-#' `compare_files_content()` reads the content of a specified file from two folders
-#' and compares the content using the `waldo::compare` function. It identifies any
-#' differences in the content and returns the comparison results.
+#' `compare_files_content()` reads the content of a specified file from two
+#' folders and compares the content using the `waldo::compare` function. It
+#' identifies any differences in the content and returns the comparison results.
 #'
-#' @param filename A character string specifying the name of the file to compare.
+#' @param filename A character string specifying the name of the file to
+#'   compare.
 #' @param dir1 A character string specifying the path to the first folder.
 #' @param dir2 A character string specifying the path to the second folder.
 #'
-#' @return A list containing information about differences in the content of the specified file.
+#' @return A list containing information about differences in the content of the
+#'   specified file.
 #'
-#' @details
-#' `compare_files_content()` reads the content of the specified file from both folders using
-#' `readLines()` and compares the content using the `waldo::compare()` function.
+#' @details `compare_files_content()` reads the content of the specified file
+#'   from both folders using `readLines()`, and compares the content using the
+#'   `waldo::compare()` function.
 compare_files_content <- function(filename, dir1, dir2) {
 
   content1 <- readLines(file.path(dir1, filename), warn = FALSE) |>
