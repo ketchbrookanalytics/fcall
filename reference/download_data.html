@@ -97,7 +97,7 @@ ensure the data is available for the quarter you are interested in.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">path_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -106,8 +106,44 @@ ensure the data is available for the quarter you are interested in.</p>
 <span class="r-in"><span>    month <span class="op">=</span> <span class="st">"December"</span>,   <span class="co"># using the name of the month</span></span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path_1</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40432ab5f9c7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">path_1</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "D_INST.TXT"                  "D_RC.TXT"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "D_RC1.TXT"                   "D_RCB.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "D_RCB2.TXT"                  "D_RCB3.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "D_RCB4.TXT"                  "D_RCB5.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "D_RCF.TXT"                   "D_RCF1.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "D_RCG.TXT"                   "D_RCH.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "D_RCI1_2018.TXT"             "D_RCI2A_2018.TXT"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "D_RCI2B_2018.TXT"            "D_RCI2C_2018.TXT"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "D_RCI2D_2018.TXT"            "D_RCK.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "D_RCL.TXT"                   "D_RCM.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "D_RCO.TXT"                   "D_RCR1.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "D_RCR2.TXT"                  "D_RCR3.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "D_RCR4.TXT"                  "D_RCR5.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "D_RCR6.TXT"                  "D_RCR7.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "D_RI.TXT"                    "D_RIA.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "D_RIB.TXT"                   "D_RIC.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "D_RIC1.TXT"                  "D_RID.TXT"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "D_RIE.TXT"                   "INST_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "RC1_Q202212_G20250814.TXT"   "RCB2_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "RCB3_Q202212_G20250814.TXT"  "RCB4_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "RCB5_Q202212_G20250814.TXT"  "RCB_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "RCF1_Q202212_G20250814.TXT"  "RCF_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "RCG_Q202212_G20250814.TXT"   "RCH_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "RCI1_Q202212_G20250814.TXT"  "RCI2A_Q202212_G20250814.TXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "RCI2B_Q202212_G20250814.TXT" "RCI2C_Q202212_G20250814.TXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "RCI2D_Q202212_G20250814.TXT" "RCK_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "RCL_Q202212_G20250814.TXT"   "RCM_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "RCO_Q202212_G20250814.TXT"   "RCR1_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "RCR2_Q202212_G20250814.TXT"  "RCR3_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "RCR4_Q202212_G20250814.TXT"  "RCR5_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "RCR6_Q202212_G20250814.TXT"  "RCR7_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "RC_Q202212_G20250814.TXT"    "RIA_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "RIB_Q202212_G20250814.TXT"   "RIC1_Q202212_G20250814.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "RIC_Q202212_G20250814.TXT"   "RID_Q202212_G20250814.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "RIE_Q202212_G20250814.TXT"   "RI_Q202212_G20250814.TXT"   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">path_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -121,10 +157,13 @@ ensure the data is available for the quarter you are interested in.</p>
 <span class="r-in"><span>      <span class="st">"INST_Q202309_G20231106.TXT"</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>requested file not found in the zip file</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata4043486d14c9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">path_2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "D_INST.TXT"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

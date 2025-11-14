@@ -43,7 +43,7 @@ function for the actual data reading.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 
   path <- tempfile("fcadata")
 
@@ -52,12 +52,15 @@ if (FALSE) { # \dontrun{
     month = "March",
     dest = path
   )
+#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata404369547ea2
 
   process_data_file(
     file = file.path(path, "RCB_Q202203_G20220808.TXT"),
     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
     dict = RCB__INV_CODE
   )
+#> Warning: cannot open file '/tmp/RtmpzhZ4et/fcadata404369547ea2/RCB_Q202203_G20220808.TXT': No such file or directory
+#> Error in file(file, "rt"): cannot open the connection
 
-} # }
+# }
 ```

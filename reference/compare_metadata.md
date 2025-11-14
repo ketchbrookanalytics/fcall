@@ -39,7 +39,7 @@ function).
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 
   # Download data from March 2023
   path_1 <- tempfile("fcadata")
@@ -49,6 +49,7 @@ if (FALSE) { # \dontrun{
     month = 3,
     dest = path_1
   )
+#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40435aac38aa
 
   # Download data from March 2022
   path_2 <- tempfile("fcadata")
@@ -58,8 +59,16 @@ if (FALSE) { # \dontrun{
     month = 3,
     dest = path_2
   )
+#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40431a512fea
 
   compare_metadata(path_1, path_2)
+#> $file_differences
+#> `dir1[32:36]`: "D_RIC.TXT" "D_RIC1.TXT" "D_RID.TXT" "D_RIE1.TXT" "D_RIE2.TXT"
+#> `dir2[32:35]`: "D_RIC.TXT" "D_RIC1.TXT" "D_RID.TXT" "D_RIE.TXT"              
+#> 
+#> $content_differences
+#> named list()
+#> 
 
-} # }
+# }
 ```

@@ -34,15 +34,30 @@ dictionary using `get` and returns it; otherwise, it returns NULL.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 
   rcb_dict <- get_codes_dict("RCB")
 
   # Access codes dictionary
   rcb_dict$codes_dict
+#> # A tibble: 35 × 2
+#>     code value                                                                  
+#>    <int> <chr>                                                                  
+#>  1    10 U.S. Treasury securities                                               
+#>  2    15 SBA securities                                                         
+#>  3    17 Other U.S. Gov't securities and Agency(excluding MBS)                  
+#>  4    25 Securities fully and unconditionally guaranteed by a GSE (excluding MB…
+#>  5    29 Municipal securities                                                   
+#>  6    35 International and multilateral development bank obligations            
+#>  7    40 Money market instruments:Federal funds sold                            
+#>  8    41 Money market instruments:Negotiable certificates of Deposit            
+#>  9    60 Money market instruments:Banker acceptances                            
+#> 10    52 Money market instruments:Commercial paper                              
+#> # ℹ 25 more rows
 
   # Access the name of the variable that stores the codes
   rcb_dict$codes_varname
+#> [1] "INV_CODE"
 
-} # }
+# }
 ```

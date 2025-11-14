@@ -31,7 +31,7 @@ double asterisks in variable names.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 
   path <- tempfile("fcadata")
 
@@ -40,8 +40,30 @@ if (FALSE) { # \dontrun{
     month = "December",
     dest = path
   )
+#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata4043321eaaf5
 
   process_metadata_file(file.path(path, "D_RC1.TXT"))
+#> $scenario
+#> [1] "single"
+#> 
+#> $vars_info
+#> # A tibble: 58 × 7
+#>    ColumnName ColumnType DecimalPosition Definition       MultipleOccurrenceCo…¹
+#>    <chr>      <chr>      <chr>           <chr>            <lgl>                 
+#>  1 SYSTEM     Numeric    0               System Code      FALSE                 
+#>  2 DIST       Numeric    0               District Code    FALSE                 
+#>  3 ASSOC      Numeric    0               Association Code FALSE                 
+#>  4 MONTH      Numeric    0               Month of Report  FALSE                 
+#>  5 YEAR       Numeric    0               Year of Report   FALSE                 
+#>  6 UNINUM     Numeric    0               System, Distric… FALSE                 
+#>  7 TYPRE      Numeric    0               Loans - Product… FALSE                 
+#>  8 TYPPROINT  Numeric    0               Loans - Product… FALSE                 
+#>  9 TYPCOOP    Numeric    0               Loans - Agibusi… FALSE                 
+#> 10 TYPPROCMKT Numeric    0               Loans - Agibusi… FALSE                 
+#> # ℹ 48 more rows
+#> # ℹ abbreviated name: ¹​MultipleOccurrenceColumn
+#> # ℹ 2 more variables: CodeColumn <lgl>, ColumnTypeSQL <chr>
+#> 
 
-} # }
+# }
 ```

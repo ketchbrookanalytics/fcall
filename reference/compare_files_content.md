@@ -35,7 +35,7 @@ specified file.
 
 `compare_files_content()` reads the content of the specified file from
 both folders using
-[`readLines()`](https://rdrr.io/r/base/readLines.html) and compares the
+[`readLines()`](https://rdrr.io/r/base/readLines.html), and compares the
 content using the
 [`waldo::compare()`](https://waldo.r-lib.org/reference/compare.html)
 function.

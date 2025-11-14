@@ -83,17 +83,32 @@ it; otherwise, it returns NULL.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">rcb_dict</span> <span class="op">&lt;-</span> <span class="fu">get_codes_dict</span><span class="op">(</span><span class="st">"RCB"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Access codes dictionary</span></span></span>
 <span class="r-in"><span>  <span class="va">rcb_dict</span><span class="op">$</span><span class="va">codes_dict</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 35 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     code value                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>    10 U.S. Treasury securities                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>    15 SBA securities                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>    17 Other U.S. Gov't securities and Agency(excluding MBS)                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>    25 Securities fully and unconditionally guaranteed by a GSE (excluding MB…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>    29 Municipal securities                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>    35 International and multilateral development bank obligations            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>    40 Money market instruments:Federal funds sold                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>    41 Money market instruments:Negotiable certificates of Deposit            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>    60 Money market instruments:Banker acceptances                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    52 Money market instruments:Commercial paper                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Access the name of the variable that stores the codes</span></span></span>
 <span class="r-in"><span>  <span class="va">rcb_dict</span><span class="op">$</span><span class="va">codes_varname</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "INV_CODE"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
