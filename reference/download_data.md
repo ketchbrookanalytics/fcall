@@ -56,14 +56,15 @@ ensure the data is available for the quarter you are interested in.
 ``` r
 # \donttest{
 
-  path_1 <- tempfile("fcadata")
+  path_1 <- tempfile("fcadata1")
+  dir.create(path_1)
 
   download_data(
-    year = 2022,
-    month = "December",   # using the name of the month
+    year = 2025,
+    month = "September",   # using the name of the month
     dest = path_1
   )
-#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40432ab5f9c7
+#> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata118322b9b1977
 
   list.files(path_1)
 #>  [1] "D_INST.TXT"                  "D_RC.TXT"                   
@@ -83,42 +84,43 @@ ensure the data is available for the quarter you are interested in.
 #> [29] "D_RI.TXT"                    "D_RIA.TXT"                  
 #> [31] "D_RIB.TXT"                   "D_RIC.TXT"                  
 #> [33] "D_RIC1.TXT"                  "D_RID.TXT"                  
-#> [35] "D_RIE.TXT"                   "INST_Q202212_G20250814.TXT" 
-#> [37] "RC1_Q202212_G20250814.TXT"   "RCB2_Q202212_G20250814.TXT" 
-#> [39] "RCB3_Q202212_G20250814.TXT"  "RCB4_Q202212_G20250814.TXT" 
-#> [41] "RCB5_Q202212_G20250814.TXT"  "RCB_Q202212_G20250814.TXT"  
-#> [43] "RCF1_Q202212_G20250814.TXT"  "RCF_Q202212_G20250814.TXT"  
-#> [45] "RCG_Q202212_G20250814.TXT"   "RCH_Q202212_G20250814.TXT"  
-#> [47] "RCI1_Q202212_G20250814.TXT"  "RCI2A_Q202212_G20250814.TXT"
-#> [49] "RCI2B_Q202212_G20250814.TXT" "RCI2C_Q202212_G20250814.TXT"
-#> [51] "RCI2D_Q202212_G20250814.TXT" "RCK_Q202212_G20250814.TXT"  
-#> [53] "RCL_Q202212_G20250814.TXT"   "RCM_Q202212_G20250814.TXT"  
-#> [55] "RCO_Q202212_G20250814.TXT"   "RCR1_Q202212_G20250814.TXT" 
-#> [57] "RCR2_Q202212_G20250814.TXT"  "RCR3_Q202212_G20250814.TXT" 
-#> [59] "RCR4_Q202212_G20250814.TXT"  "RCR5_Q202212_G20250814.TXT" 
-#> [61] "RCR6_Q202212_G20250814.TXT"  "RCR7_Q202212_G20250814.TXT" 
-#> [63] "RC_Q202212_G20250814.TXT"    "RIA_Q202212_G20250814.TXT"  
-#> [65] "RIB_Q202212_G20250814.TXT"   "RIC1_Q202212_G20250814.TXT" 
-#> [67] "RIC_Q202212_G20250814.TXT"   "RID_Q202212_G20250814.TXT"  
-#> [69] "RIE_Q202212_G20250814.TXT"   "RI_Q202212_G20250814.TXT"   
+#> [35] "D_RIE1.TXT"                  "D_RIE2.TXT"                 
+#> [37] "INST_Q202509_G20251112.TXT"  "RC1_Q202509_G20251112.TXT"  
+#> [39] "RCB2_Q202509_G20251112.TXT"  "RCB3_Q202509_G20251112.TXT" 
+#> [41] "RCB4_Q202509_G20251112.TXT"  "RCB5_Q202509_G20251112.TXT" 
+#> [43] "RCB_Q202509_G20251112.TXT"   "RCF1_Q202509_G20251112.TXT" 
+#> [45] "RCF_Q202509_G20251112.TXT"   "RCG_Q202509_G20251112.TXT"  
+#> [47] "RCH_Q202509_G20251112.TXT"   "RCI1_Q202509_G20251112.TXT" 
+#> [49] "RCI2A_Q202509_G20251112.TXT" "RCI2B_Q202509_G20251112.TXT"
+#> [51] "RCI2C_Q202509_G20251112.TXT" "RCI2D_Q202509_G20251112.TXT"
+#> [53] "RCK_Q202509_G20251112.TXT"   "RCL_Q202509_G20251112.TXT"  
+#> [55] "RCM_Q202509_G20251112.TXT"   "RCO_Q202509_G20251112.TXT"  
+#> [57] "RCR1_Q202509_G20251112.TXT"  "RCR2_Q202509_G20251112.TXT" 
+#> [59] "RCR3_Q202509_G20251112.TXT"  "RCR4_Q202509_G20251112.TXT" 
+#> [61] "RCR5_Q202509_G20251112.TXT"  "RCR6_Q202509_G20251112.TXT" 
+#> [63] "RCR7_Q202509_G20251112.TXT"  "RC_Q202509_G20251112.TXT"   
+#> [65] "RIA_Q202509_G20251112.TXT"   "RIB_Q202509_G20251112.TXT"  
+#> [67] "RIC1_Q202509_G20251112.TXT"  "RIC_Q202509_G20251112.TXT"  
+#> [69] "RID_Q202509_G20251112.TXT"   "RIE1_Q202509_G20251112.TXT" 
+#> [71] "RIE2_Q202509_G20251112.TXT"  "RI_Q202509_G20251112.TXT"   
 
-  path_2 <- tempfile("fcadata")
+  path_2 <- tempfile("fcadata2")
+  dir.create(path_2)
 
   download_data(
-    year = 2023,
+    year = 2025,
     month = 9,   # using the month number (to refer to September)
     dest = path_2,
     # only download the following files
     files = c(
       "D_INST.TXT",
-      "INST_Q202309_G20231106.TXT"
+      "INST_Q202509_G20251112.TXT"
     )
   )
-#> Warning: requested file not found in the zip file
-#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata4043486d14c9
+#> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata218327a0f5268
 
   list.files(path_2)
-#> [1] "D_INST.TXT"
+#> [1] "D_INST.TXT"                 "INST_Q202509_G20251112.TXT"
 
 # }
 ```

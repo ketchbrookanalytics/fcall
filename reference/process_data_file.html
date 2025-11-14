@@ -90,21 +90,35 @@ into a tidy format with appropriate column names. The function relies on the
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="download_data.html">download_data</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2022</span>,</span></span>
-<span class="r-in"><span>    month <span class="op">=</span> <span class="st">"March"</span>,</span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2025</span>,</span></span>
+<span class="r-in"><span>    month <span class="op">=</span> <span class="st">"September"</span>,</span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata404369547ea2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata1832562a0f64</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">process_data_file</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"RCB_Q202203_G20220808.TXT"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"RCB_Q202509_G20251112.TXT"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="process_metadata_file.html">process_metadata_file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"D_RCB.TXT"</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    dict <span class="op">=</span> <span class="va">RCB__INV_CODE</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open file '/tmp/RtmpzhZ4et/fcadata404369547ea2/RCB_Q202203_G20220808.TXT': No such file or directory</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in file(file, "rt"):</span> cannot open the connection</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,240 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    SYSTEM  DIST ASSOC MONTH  YEAR UNINUM INV_CODE BKVAL MKTVAL BKVALFORSALE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       10     0      0       <span style="text-decoration: underline;">770</span>093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       15     0      0       <span style="text-decoration: underline;">154</span>555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       17     0      0         <span style="text-decoration: underline;">1</span>917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       25     0      0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       29     0      0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       35     0      0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       40     0      0       <span style="text-decoration: underline;">284</span>976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       41     0      0       <span style="text-decoration: underline;">400</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       50     0      0       <span style="text-decoration: underline;">250</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      6    10     0     9  <span style="text-decoration: underline;">2</span>025 <span style="text-decoration: underline;">610</span>000       51     0      0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,230 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: MKTVALFORSALE &lt;int&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

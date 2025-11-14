@@ -86,33 +86,736 @@ metadata files, and then compares (a) the number of files, (b) file names,
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Download data from March 2023</span></span></span>
-<span class="r-in"><span>  <span class="va">path_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># Download data from September 2025</span></span></span>
+<span class="r-in"><span>  <span class="va">path_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">path_1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="download_data.html">download_data</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2023</span>,</span></span>
-<span class="r-in"><span>    month <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2025</span>,</span></span>
+<span class="r-in"><span>    month <span class="op">=</span> <span class="fl">9</span>,</span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path_1</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40435aac38aa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata1183225b539ac</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Download data from March 2022</span></span></span>
-<span class="r-in"><span>  <span class="va">path_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># Download data from September 2011</span></span></span>
+<span class="r-in"><span>  <span class="va">path_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">path_2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="download_data.html">download_data</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2022</span>,</span></span>
-<span class="r-in"><span>    month <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2011</span>,</span></span>
+<span class="r-in"><span>    month <span class="op">=</span> <span class="fl">9</span>,</span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path_2</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40431a512fea</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata2183225f16c7c</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">compare_metadata</span><span class="op">(</span><span class="va">path_1</span>, <span class="va">path_2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $file_differences</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `dir1[32:36]`: <span style="color: #555555;">"D_RIC.TXT"</span> <span style="color: #555555;">"D_RIC1.TXT"</span> <span style="color: #555555;">"D_RID.TXT"</span> <span style="color: #00BB00;">"D_RIE1.TXT"</span> <span style="color: #00BB00;">"D_RIE2.TXT"</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `dir2[32:35]`: <span style="color: #555555;">"D_RIC.TXT"</span> <span style="color: #555555;">"D_RIC1.TXT"</span> <span style="color: #555555;">"D_RID.TXT"</span> <span style="color: #00BB00;">"D_RIE.TXT"</span>              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      dir1               | dir2             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] <span style="color: #555555;">"D_RC.TXT"</span>         | <span style="color: #555555;">"D_RC.TXT"</span>   [2] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] <span style="color: #555555;">"D_RC1.TXT"</span>        | <span style="color: #555555;">"D_RC1.TXT"</span>  [3] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] <span style="color: #555555;">"D_RCB.TXT"</span>        | <span style="color: #555555;">"D_RCB.TXT"</span>  [4] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] <span style="color: #00BB00;">"D_RCB2.TXT"</span>       - <span style="color: #00BB00;">"D_RCF.TXT"</span>  [5] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] <span style="color: #00BB00;">"D_RCB3.TXT"</span>       - <span style="color: #00BB00;">"D_RCF1.TXT"</span> [6] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] <span style="color: #00BB00;">"D_RCB4.TXT"</span>       - <span style="color: #00BB00;">"D_RCG.TXT"</span>  [7] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] <span style="color: #00BB00;">"D_RCB5.TXT"</span>       - <span style="color: #00BB00;">"D_RCH.TXT"</span>  [8] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] <span style="color: #00BB00;">"D_RCF.TXT"</span>        - <span style="color: #00BB00;">"D_RCI.TXT"</span>  [9] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] <span style="color: #00BB00;">"D_RCF1.TXT"</span>       - <span style="color: #00BB00;">"D_RCK.TXT"</span>  [10]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] <span style="color: #00BB00;">"D_RCG.TXT"</span>        - <span style="color: #00BB00;">"D_RCL.TXT"</span>  [11]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] <span style="color: #00BB00;">"D_RCH.TXT"</span>        - <span style="color: #00BB00;">"D_RCM.TXT"</span>  [12]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] <span style="color: #00BB00;">"D_RCI1_2018.TXT"</span>  - <span style="color: #00BB00;">"D_RCO.TXT"</span>  [13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] <span style="color: #00BB00;">"D_RCI2A_2018.TXT"</span> - <span style="color: #00BB00;">"D_RI.TXT"</span>   [14]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] <span style="color: #00BB00;">"D_RCI2B_2018.TXT"</span> - <span style="color: #00BB00;">"D_RIA.TXT"</span>  [15]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] <span style="color: #00BB00;">"D_RCI2C_2018.TXT"</span> - <span style="color: #00BB00;">"D_RIB.TXT"</span>  [16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] <span style="color: #00BB00;">"D_RCI2D_2018.TXT"</span> - <span style="color: #00BB00;">"D_RIC.TXT"</span>  [17]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] <span style="color: #00BB00;">"D_RCK.TXT"</span>        - <span style="color: #00BB00;">"D_RIC1.TXT"</span> [18]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] <span style="color: #00BB00;">"D_RCL.TXT"</span>        - <span style="color: #00BB00;">"D_RID.TXT"</span>  [19]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] <span style="color: #00BB00;">"D_RCM.TXT"</span>        - <span style="color: #00BB00;">"D_RIE.TXT"</span>  [20]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] <span style="color: #00BB00;">"D_RCO.TXT"</span>        -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] <span style="color: #00BB00;">"D_RCR1.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] <span style="color: #00BB00;">"D_RCR2.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] <span style="color: #00BB00;">"D_RCR3.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] <span style="color: #00BB00;">"D_RCR4.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] <span style="color: #00BB00;">"D_RCR5.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] <span style="color: #00BB00;">"D_RCR6.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] <span style="color: #00BB00;">"D_RCR7.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] <span style="color: #00BB00;">"D_RI.TXT"</span>         -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] <span style="color: #00BB00;">"D_RIA.TXT"</span>        -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] <span style="color: #00BB00;">"D_RIB.TXT"</span>        -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] <span style="color: #00BB00;">"D_RIC.TXT"</span>        -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] <span style="color: #00BB00;">"D_RIC1.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] <span style="color: #00BB00;">"D_RID.TXT"</span>        -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] <span style="color: #00BB00;">"D_RIE1.TXT"</span>       -                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] <span style="color: #00BB00;">"D_RIE2.TXT"</span>       -                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> named list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RC.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[2:95] vs dir2[2:85]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                              DATA DELIMITED BY COMMA"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                 "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         VARIABLE     FIELD  DEC.               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "             NAME      TYPE  POS.  VARIABLE DESCRIPTION "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    --------------  -------  ----  --------------------"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           SYSTEM   Numeric     0  System Code   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "             DIST   Numeric     0  District Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "            ASSOC   Numeric     0  Association Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "            MONTH   Numeric     0  Month of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "             YEAR   Numeric     0  Year of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           UNINUM   Numeric     0  System, District, and Association"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "             CASH   Numeric     0  Cash"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           ACTREC   Numeric     0  Accounts Receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           ACRLNS   Numeric     0  Accrual Loans and Leases net of"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    unearned income and unapplied"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    loan payments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        NTRECOFCI   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    leases: Notes receivable from other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           ONTREC   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                  leases: Other notes receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          ACRSCON   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    leases: Accrual Sales Contracts"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           NONACR   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    leases: Nonaccrual Loans "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         ALLNLOSS   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                  leases: Allowance for credit losses on loans, etc."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         NETLOANS   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    leases: Net Loans "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         AIRLOANS   Numeric     0  Accrued Interest Receivable on Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    and Leases  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "     AIRNTRECOFCI   Numeric     0  Accrued Interest Receivable on Notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    receivable from other FCS Institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        AIRONTREC   Numeric     0  Accrued Interest Receivable on Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Notes receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          AIRSCON   Numeric     0  Accrued Interest Receivable on Sales"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Contracts"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         AIRMKTIN   Numeric     0  Accrued Interest Receivable on"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "            AIREC   Numeric     0  Total Accrued Interest Receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          NAQPROP   Numeric     0  Other Property Owned "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         FIXASSET   Numeric     0  Premises and Other Fixed Assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          OASSETS   Numeric     0  Other Assets "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           ASSETS   Numeric     0  Total Assets   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "       SYSNTBDSOS   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Systemwide notes and bonds outstanding"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        NTPAYOFCI   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Notes payable to other FCS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "       OINTBEARDT   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Other interest-bearing debt "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           ACTPAY   Numeric     0  Accounts Payable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    AIPSYSNTBDSOS   Numeric     0  Accrued interest payable on: Systemwide"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    notes and bonds outstanding"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "     AIPNTPAYOFCI   Numeric     0  Accrued interest payable on: Notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    payable to other FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    AIPOINTBEARDT   Numeric     0  Accrued Interest Payable on Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    interest-bearing debt      "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "            AIPAY   Numeric     0  Total Accrued Interest Payable "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           OLIABS   Numeric     0  Other Liabilities    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "            LIABS   Numeric     0  Total Liabilities "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          NETWRTH   Numeric     0  Total Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         TOTLICAP   Numeric     0  Total Liabilities and Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "       ACNOCOMINC   Numeric     0  Accumulated other comprehensive income (net)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        LNADJFVAL   Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    leases: Loan adjustment for fair value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        DTADJFVAL   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Debt adjustment for fair value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   TOTINTBEARLIAB   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Total interest bearing liabilities "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    AIRDERIVATIVE   Numeric     0  Accrued interest receivable: Derivatives"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   IBLSUBNOTEBOND   Numeric     0  Interest bearing liabilities: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Subordinated notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   AIPSUBNOTEBOND   Numeric     0  Accrued interest payable on: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                    Subordinated notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    AIPDERIVATIVE   Numeric     0  Accrued interest payable on: Derivatives"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    LoanLeaseHeld   Numeric     0  Loans and leases held for sale"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "CreditLossReserve   Numeric     0  Reserve for credit losses on off-balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tsheet exposures"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "      TERMPERFSTK   Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tLimited-life (term) preferred stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "AccrdIntPayTermPrefStk Numeric  0  Accrued interest payable on:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tLimited-life (term) preferred stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t CapStock   Numeric     0  Capital stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- " PerpetualPrefStk   Numeric     0  Perpetual Preferred stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t   PAIDIN  \tNumeric     0  Paid-in capital"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t AllocSurplus   Numeric     0  Allocated Surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t UNRETERN   Numeric     0  Unallocated retained earnings"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "TotInvDebtSecurities Numeric    0  Debt securities, net of allowance for credit losses "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "TotInvEquityFCSI \t Numeric    0  Equity investments in System institutions "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tand Farmer Mac"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "TotInvEquityNonFCSI\t Numeric    0  Equity investments in non-System institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "TotInvestments\t\t Numeric    0  Total Investments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       VARIABLE    FIELD  DEC.               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           NAME     TYPE  POS.  VARIABLE DESCRIPTION "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  -------------- -------  ----  --------------------"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         SYSTEM  Numeric     0  System Code   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           DIST  Numeric     0  District Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          ASSOC  Numeric     0  Association Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          MONTH  Numeric     0  Month of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           YEAR  Numeric     0  Year of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         UNINUM  Numeric     0  System, District, and Association"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           CASH  Numeric     0  Cash"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         MKTINV  Numeric     0  Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         ACTREC  Numeric     0  Accounts Receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         ACRLNS  Numeric     0  Accrual Loans and Leases net of"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 unearned income and unapplied"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 loan payments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      NTRECOFCI  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Notes receivable from other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         ONTREC  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Other notes receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        ACRSCON  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Accrual Sales Contracts"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         NONACR  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Nonaccrual Loans "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       ALLNLOSS  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Allowance for Losses on Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       NETLOANS  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Net Loans "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AIRLOANS  Numeric     0  Accrued Interest Receivable on Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 and Leases  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   AIRNTRECOFCI  Numeric     0  Accrued Interest Receivable on Notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 receivable from other FCS Institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      AIRONTREC  Numeric     0  Accrued Interest Receivable on Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Notes receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        AIRSCON  Numeric     0  Accrued Interest Receivable on Sales"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Contracts"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AIRMKTIN  Numeric     0  Accrued Interest Receivable on"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          AIREC  Numeric     0  Total Accrued Interest Receivable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       INFCINST  Numeric     0  Equity Investments in other FC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        NAQPROP  Numeric     0  Other Property Owned "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       FIXASSET  Numeric     0  Premises and Other Fixed Assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        OASSETS  Numeric     0  Other Assets "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         ASSETS  Numeric     0  Total Assets   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     SYSNTBDSOS  Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Systemwide notes and bonds outstanding"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      NTPAYOFCI  Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Notes payable to other FCS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     OINTBEARDT  Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Other interest-bearing debt "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         ACTPAY  Numeric     0  Accounts Payable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  AIPSYSNTBDSOS  Numeric     0  Accrued interest payable on: Systemwide"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 notes and bonds outstanding"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   AIPNTPAYOFCI  Numeric     0  Accrued interest payable on: Notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 payable to other FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  AIPOINTBEARDT  Numeric     0  Accrued Interest Payable on Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 interest-bearing debt      "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          AIPAY  Numeric     0  Total Accrued Interest Payable "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         OLIABS  Numeric     0  Other Liabilities    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          LIABS  Numeric     0  Total Liabilities "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         CAPSTK  Numeric     0  Capital Stock, Participation"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 certificates and paid-in surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 net of impairment"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         EARNNW  Numeric     0  Earned Surplus Net of Impairment"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        NETWRTH  Numeric     0  Total Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       TOTLICAP  Numeric     0  Total Liabilities and Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     ACNOCOMINC  Numeric     0  Accumulated other comprehensive income (net)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      LNADJFVAL  Numeric     0  Loans, notes, sales, contracts, and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 leases: Loan adjustment for fair value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      DTADJFVAL  Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Debt adjustment for fair value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " TOTINTBEARLIAB  Numeric     0  Interest bearing liabilities:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Total interest bearing liabilities "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  AIRDERIVATIVE  Numeric     0  Accrued interest receivable: Derivatives"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " IBLSUBNOTEBOND  Numeric     0  nterest bearing liabilities: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Subordinated notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " AIPSUBNOTEBOND  Numeric     0  Accrued interest payable on: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Subordinated notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  AIPDERIVATIVE  Numeric     0  Accrued interest payable on: Derivatives"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RC1.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[55:71] vs dir2[55:95]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "  AMTLNBKRUPTCY   Numeric     0  Total amount of loans in bankruptcy"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "AMTLNFORECLOSUR   Numeric     0  Total amount of loans in foreclosure"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "   TAMTBANKFORE   Numeric     0  Total amount of loans in both "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  bankruptcy and foreclosure"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       INFCIPUR   Numeric     0  Association investment in FCS district "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  bank - purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     INFCIALLOC   Numeric     0  Association investment in FCS district "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  bank - allocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  FCIEQAMTCPRMC   Numeric     0  Association investment in FCS district "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  bank - Allocation counted as association"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  permanent capital"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  FCIBKINDASSOC\t  Numeric     0  Bank investment in district "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  associations      "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      FCIINVOBK   Numeric     0  Investment in other FCBs and ACBs"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     FCIINVOFCI   Numeric     0  Investment in other Farm Credit "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  NETASSOCINVBK   Numeric     0  Net association investment in district bank"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   FCIINVNONFCI   Numeric     0  Equity investments in non Farm Credit "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "       FCIBONDS   Numeric     0  Farm Credit investment bonds "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  outstanding"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    TERMPERFSTK   Numeric     0  Term preferred stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    INVFARMNOTE   Numeric     0  Investments in farmers' notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "     NPDIRLNTBK   Numeric     0  Notes payable/direct loan to district "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  bank"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "   FCSICPREMPAY   Numeric     0\t Farm Credit System Insurance "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  Corporation premium payable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t TYPOTH\t  Numeric     0  Other loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "       LMPRIN90   Numeric     0  Deprecated\t\t\t\t "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "          LMAMT   Numeric     0  Deprecated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "           LMNO\t  Numeric     0  Deprecated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       PERMCAPA   Numeric     0  Permanent capital amount (outstanding)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    CORESURPAMT   Numeric     0  Core surplus amount"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     TOTSURPAMT   Numeric     0  Total surplus amount"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       PERMCAPD   Numeric     4  Permanent capital ratio"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  CORESURPRATIO   Numeric     4  Core surplus ratio"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   TOTSURPRATIO   Numeric     4  Total surplus ratio"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   NETCOLLRATIO   Numeric     4  Net collateral ratio"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t TYPOTH\t  Numeric     0  Other loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       LMPRIN90   Numeric     0  Principal portion of obligations maturing"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t  within 90 days"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          LMAMT   Numeric     0  Dollar amount of liquidity at quarter-end"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           LMNO\t  Numeric     0  Number of days liquidity at quarter-end"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "   TYPPROCMKT12\t  Numeric     0  Processing and Marketing Loans:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  Loans made under 613.3010(a)(1) and (a)(2) "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    TYPPROCMKT3   Numeric     0  Processing and Marketing Loans: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[75:91] vs dir2[99:106]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    TYPPROCMKT5   Numeric     0  Processing and Marketing Loans: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                  Loans made under 613.3010(a)(5)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "     TOP10LOANS   Numeric     0  Aggregate amount of institution’s                                  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t 10 largest loan commitments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "NUMLOANSFRMFDIC   Numeric  \t  0  Number of loans outstanding pur"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tchased from the FDIC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "AMTLOANSFRMFDIC   Numeric  0\t Amount of loans outstanding purchased "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tfrom the FDIC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    LLLIMITBASE   Numeric     0  Lending and Leasing Limit Base (Stops collecting as of March 2022)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "LoanLeaseHeldAmortizedCost   Numeric     0  Loans and Leases Held for Sale: Amortized cost   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    LoanLeaseHeldFairValue   Numeric     0  Loans and Leases Held for Sale: Fair value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t TotRegCap\t Numeric     0  Lending and Leasing Limit Base:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t\tTotal regulatory capital (Sch. RC-R.1, item 5b.)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t Excess3rdPartyCap\t Numeric     0  Lending and Leasing Limit Base:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t\tEligible excess third-party capital above regulatory capital limits"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t LendLeaseLimitBaseTRC\t Numeric     0  Lending and Leasing Limit Base:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t\tLending and Leasing Limit Base (sum of items 5a. and 5b.)\t\t\t\t\t\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t  10 largest loan commitments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     NUMLOANSFRMFDIC Numeric  0  Number of loans outstanding pur"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t  chased from the FDIC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     AMTLOANSFRMFDIC Numeric  0\t Amount of loans outstanding purchased "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t  from the FDIC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RCB.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[1:6] vs dir2[1:5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "         FILE LAYOUT FOR SCHEDULE RC-B Debt Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t(excluding investments in FC institutions and"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\tdiversified investment funds)  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         FILE LAYOUT FOR SCHEDULE RC-B MARKETABLE INVESTMENTS BY TYPE"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                              DATA DELIMITED BY COMMAS  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                      "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "       VARIABLE    FIELD  DEC.     "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[15:72] vs dir2[14:81]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "   **  INV_CODE  Numeric     0  Investment Code for Marketable"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 Investments: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t10  U.S. Treasury securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                15  SBA securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t17  Other U.S. Gov’t securities and Agency(excluding MBS)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                25  Securities fully and unconditionally guaranteed by a"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\tGSE (excluding MBS and Farmer Mac securities)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t29  Municipal securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                35  International and multilateral development"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\tbank obligations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t40  Money market instruments:Federal funds sold"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t41  Money market instruments:Negotiable certificates of"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\tDeposit"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                60  Money market instruments:Banker acceptances"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                52  Money market instruments:Commercial paper"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                       "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                50  Money market instruments:Reverse repurchase agreements"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                51  Money market instruments:Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- ""</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                62  RMBS fully and unconditionally guaranteed by U.S.  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\tgovernment or its agencies"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t68  RMBS fully and unconditionally guaranteed by GSE"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t64  Non-Agency RMBS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t69  Other RMBS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t71  CMBS(excl. Farmer Mac sec.):CMBS fully and unconditionally "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t\tguaranteed by U.S. government"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                72  CMBS(excl. Farmer Mac sec.):CMBS fully and unconditionally "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t\tguaranteed by GSE"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t73  CMBS(excl. Farmer Mac sec.):Non-Agency CMBS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                65  CMBS(excl. Farmer Mac sec.):Other CMBS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t86  Farmer Mac guaranteed sec.:Farm and ranch securities (i.e., AMBS)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    87  Farmer Mac guaranteed sec.:Rural utility securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                88  Farmer Mac guaranteed sec.:USDA securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                66  Farmer Mac guaranteed sec.:Other Farmer Mac debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- ""</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    141 ABS(excl. Farmer Mac securities):Credit card receivables"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    142 ABS(excl. Farmer Mac securities):Home equity loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    143 ABS(excl. Farmer Mac securities):Auto Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    144 ABS(excl. Farmer Mac securities):Student Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    145 ABS(excl. Farmer Mac securities):Equipment loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t    146 ABS(excl. Farmer Mac securities):Manufactured housing loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t95  ABS(excl. Farmer Mac securities):Other ABS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t81  Other types of debt securities:Domestic debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t82  Other types of debt securities:Foreign debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t180 Allowance for Credit Losses on Debt Securities(start collecting on March 2023)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t99  Total Debt Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   10  U.S. Treasury securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   11  Other fully insured or guaranteed"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       U.S. Government obligations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   12 Other partially insured or guaranteed "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tobligations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   20  U.S. Government agency securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   22 Other partially insured or guaranteed "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tobligation"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   31  General Municipal obligations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   33 Industrial development revenue bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   34 Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   32  Municipal Revenue Bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   35  International and multilateral"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       Development Bank obligations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   40  Federal funds sold"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   41  Negotiable certificates of"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       Deposit"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   43  Non-callable term Federal funds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       and Euro time deposits"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   50  Securities purchased under"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       resale agreements"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   52  Money market instruments:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       commercial paper"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   60  Banker acceptances"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   62 Fully insured or guaranteed by "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tU.S. Government – NEW TITLE                                "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   64  Non-Agency Mortgage securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   65  Commercial MBS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   66 Agricultural MBS issued or "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tguaranteed by Farmer MAC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   68 Fully insured or guaranteed by US GSA"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   69 Securities partially insured or guaranteed by US Government or GSA"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   70  Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   80  Total"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   81 Domestic debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t           82 Foreign debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   85  Diversified investment funds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   90  Master Notes"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   95 Other structured securities –NEW TITLE"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   100 Pledged securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   141 Credit card receivables"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   142 Home equity loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   143 Auto Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   144 Student Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   145 Equipment loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   146 Manufactured housing loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   150 Securities subject to the 35% "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tregulatory limit"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   151 Securities included in the "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tliquidity reserve"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   152 Securities initially purchased "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tfor the liquidity reserve, "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tbut are no longer \t\t\t\t\teligible to be included in the liquidity reserve"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   153 Other securities that are not "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tincluded in the liquidity reserve"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   154 Cash and securities in liquidity "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\treserve (fair value)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   155 Cash and securities in liquidity "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\treserve, discounted in accordance with § \t\t\t\t\t615.5134"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   156 Principal portion of obligations maturing "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\twithin 90 days"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t   157 Total number days liquidity "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "          "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    **     BKVAL   Numeric    0  Amortized cost of Marketable Investments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    **    MKTVAL   Numeric    0  Fair Value of Marketable Investments  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RCF1.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[26:33] vs dir2[26:33]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 140 Lease receivables"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 145 Direct loans to associations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 150 Discounted loans to OFIs"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t 152 Other loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t 155 Other loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                 155 Total"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 160 Total"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "  **       ACCR  Numeric     0  Accruing Loans"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "  **   ACCRPDUE  Numeric     0  Accruing 90 days or more past due"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "  **    FRMREST  Numeric     0  Formally restructured accruing"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RCG.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[2:35] vs dir2[2:40]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                           DATA DELIMITED BY COMMAS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                            "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                      "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   VARIABLE    FIELD  DEC.     "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t   NAME     TYPE  POS.  VARIABLE DESCRIPTION                    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t---------------  -------  ----  ---------------------                   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t SYSTEM  Numeric     0  System Code    \t       \t                "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t   DIST  Numeric     0  District Code                           "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t  ASSOC  Numeric     0  Association Code                        "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t  MONTH  Numeric     0  Month of Report               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t   YEAR  Numeric     0  Year of Report              "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t UNINUM  Numeric     0  System, District, and Association   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVACRLNS  Numeric     0  Accrual loans, sales contracts, notes,"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\t and leases"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVAIRLNS  Numeric     0  Accrued interest receivable (loans)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t AVGOEARNASSETS  Numeric     0  Other Interest-Earning Assets \t   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVEARNAS  Numeric     0  Total Interest-Earning Assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVNONACB  Numeric     0  Nonaccrual loans - Cash basis"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVNONACO  Numeric     0  Nonaccrual loans - Other  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVAQPROP  Numeric     0  Other property owned"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\tAVASSET  Numeric     0  Total Assets         "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t AVSYSNTBDS  Numeric     0  Systemwide notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\tAVNTPAYOFCI  Numeric     0  Notes payable to other FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t  AVGOBEARLIABS  Numeric     0  Other Interest-Bearing Liabilities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVBEARLI  Numeric     0  Total Interest-Bearing Liabilities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t   AVGLIABS  Numeric     0  Total Liabilities    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\tAVNWRTH  Numeric     0  Total net worth "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\tAvLoanLeaseHeld  Numeric     0  Loans and leases held for sale"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "  AvgDailyInvDebtSecurities\t Numeric     0  Investments: Debt securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- " \t  AvgDailyInvEquityFCSI  Numeric     0  Investments: Equity investments in "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\tSystem institutions and Farmer Mac"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   AvgDailyInvEquityNonFCSI\t Numeric     0  Investments: Equity investments in "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\t\t\tnon-System institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       VARIABLE    FIELD  DEC.     "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           NAME     TYPE  POS.  VARIABLE DESCRIPTION                    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "---------------  -------  ----  ---------------------                   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         SYSTEM  Numeric     0  System Code    \t       \t                "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           DIST  Numeric     0  District Code                           "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          ASSOC  Numeric     0  Association Code                        "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          MONTH  Numeric     0  Month of Report               "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           YEAR  Numeric     0  Year of Report              "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         UNINUM  Numeric     0  System, District, and Association   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVACRLNS  Numeric     0  Accrual loans, sales contracts, notes,"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 and leases"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVAIRLNS  Numeric     0  Accrued interest receivable (loans)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVMKTINV  Numeric     0  Securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " AVGOEARNASSETS  Numeric     0  Other Interest-Earning Assets \t   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVEARNAS  Numeric     0  Total Interest-Earning Assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVNONACB  Numeric     0  Nonaccrual loans - Cash basis"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVNONACO  Numeric     0  Nonaccrual loans - Other  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "          AVGFR  Numeric     0  Formally Restructured Loans "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     AVDLNASSOC  Numeric     0  Direct loans to associations"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    AVNTRECOFCI  Numeric     0  Notes receivable from other FCS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVAQPROP  Numeric     0  Other property owned"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        AVRSKAS  Numeric     0  Risk-adjusted assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        AVASSET  Numeric     0  Total Assets         "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     AVSYSNTBDS  Numeric     0  Systemwide notes and bonds"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    AVNTPAYOFCI  Numeric     0  Notes payable to other FCS institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  AVGOBEARLIABS  Numeric     0  Other Interest-Bearing Liabilities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVBEARLI  Numeric     0  Total Interest-Bearing Liabilities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVGLIABS  Numeric     0  Total Liabilities    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      AVDIRLNBK  Numeric     0  Notes payable/direct loan to district"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 bank"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVPRMCAP  Numeric     0  Permanent capital"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        AVNWRTH  Numeric     0  Total net worth "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVCORSUR  Numeric     0  Core surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       AVTOTSUR  Numeric     0  Total surplus  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RCH.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[11:21] vs dir2[11:43]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "          MONTH   Numeric     0  Month of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "           YEAR   Numeric     0  Year of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "         UNINUM   Numeric     0  System, District, and Association   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                  codes concatenated             "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "     ACNOCOMINC   Numeric     0  Total accumulated other comprehensive"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "     UNREALGAIN   Numeric     0\t Net unrealized gains (or losses) on securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t   available-for-sale \t\t\t\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "      OTHIMPSEC   Numeric     0\t Non-credit related impairment on securities available-for-sale"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "     PENSIONADJ   Numeric     0\t Minimum pension liability adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   CASHHEDGEADJ   Numeric     0\t Cash flow hedge adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "      OTHINCADJ   Numeric     0\t Other comprehensive income adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                  codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           STKP   Numeric     0  Capital Stock - protected"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           STKO   Numeric     0  Capital Stock - other                "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      PARTCERTP   Numeric     0  Participation Certificates - protected"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      PARTCERTO   Numeric     0  Participation Certificates - other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     PREFSTKFAC   Numeric     0  Preferred Stock-FCSFAC"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       PREFSTKO   Numeric     0  Preferred Stock-Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         PAIDIN   Numeric     0  Paid-In Capital, etc."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         CAPSTK   Numeric     0  Total Capital Stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        ALSURPP   Numeric     0  Allocated Surplus-Protected"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        ALSURPO   Numeric     0  Allocated Surplus-Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         EARNNW   Numeric     0  Total Earned Surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        NETWRTH   Numeric     0  Total Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     ACNOCOMINC   Numeric     0  Total accumulated other comprehensive"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      CAPSTKPUR   Numeric     0  Capital Stock - Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    CAPSTKALLOC   Numeric     0  Capital Stock - Allocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    PREFSTKPERP   Numeric     0  Perpetual"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     ALLOCEQOTH   Numeric     0  Allocated equities allotted to others"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     ALLOCEQNCS   Numeric     0  Allocated equities included in core surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       UNRETERN   Numeric     0  Unallocated retained earnings"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "       \t  NQWNA   Numeric     0  Nonqualified written notice of allocation - "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        NQALSUR\t  Numeric     0  Earned Surplus: Nonqualified Allocated Surplus\t\t\t  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t\tunallocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     UNREALGAIN   Numeric     0\t Net unrealized losses (or gains) on securities \t\t\t\tavailable-for-sale that are not other-than \t\t\t\ttemporarily impaired"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      OTHIMPSEC   Numeric     0\t Other-than-temporarily impaired available-for-\t\t\t\tsale securities"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     PENSIONADJ   Numeric     0\t Minimum pension liability adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "   CASHHEDGEADJ   Numeric     0\t Cash flow hedge adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "      OTHINCADJ   Numeric     0\t Other comprehensive income adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "\t\t\t\t     \tIncome\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ ""</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RCO.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[16:22] vs dir2[16:21]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   10  Loan participations: Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   20  Loan participations: Sold"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   30  Similar entity transactions: Acquired"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t       On Interest Held"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   40  Similar entity transactions: Sold"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   50  Lease interest purchases and sales:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                       Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[30:39] vs dir2[29:35]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                       Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "\t\t\t\t  100  Participations in Notes Receivables:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                       Sold\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t  110  Asset Purchases and Sales - Certain Pool Items:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t       Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t  120  Asset Purchases and Sales - Certain Pool Items:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                       Sold"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ ""</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "             "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "**    TRANSWFCI  Numeric     0  Amortized cost"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "** TRANSWNONFCI  Numeric     0  Fair Value"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RI.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[29:36] vs dir2[29:36]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 bearing debt       "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "      TOTINTEXP  Numeric     0  Total Interest Expense"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "        NETINTY  Numeric     0  Net Interest Income"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        PROVLNS  Numeric     0  Provisions for credit losses:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "        PROVLNS  Numeric     0  Provisions for Losses on Loans,Sales"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t\t\t\t\tOn loans, sales contracts, notes, and leases"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                 Contracts,Notes,and Leases"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "        PROVOTH  Numeric     0  Provisions for Losses on Other Assets"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "         PATDIV  Numeric     0  Patronage,Dividends,etc.,from other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 FC Institutions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[63:73] vs dir2[64:67]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                 (or loss(-))"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "        COMPINC  Numeric     0  Comprehensive income (or loss(-))"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  " CASHFLOHEDGADJ  Numeric     0  Cash flow hedge adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "  NONTEMPIMPAIR\t numeric     0  Non-credit impairment on securities available-for-sale\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "  \t\t\t\tincluded in earnings"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        PATPAID\t Numeric     0  Patronage on Asset Purchases and Sales - Certain Pool Programs:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t        Paid"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    PATRECEIVED  Numeric     0  Patronage on Asset Purchases and Sales - Certain Pool Programs:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\tRecieved"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "LossProvisionOBSExposure  Numeric     0  Provisions for losses: On off-balance sheet exposures"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\tProvDebtSec  Numeric\t0\tProvisions for credit losses: On debt securities (start collecting on March 2023)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " NONTEMPIMPAIRN\t numeric     0  Other-than-temporary impairments\t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RIB.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1[30:38] vs dir2[30:33]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "        GAINOTRAN  Numeric     0  Gains on Other Transactions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "        LOSSOTRAN  Numeric     0  Losses on Other Transactions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "      NETGLASSETS  Numeric     0  Total Gains or Losses"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    NETIMPAIRLOSS  Numeric     0  Impairment on available-for-sale debt securities "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "LoanLeaseSaleNetGain  Numeric     0  Net gains (or losses(-)) on sales of "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t      loans and leases"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   LoanLeaseSaleGain  Numeric     0  Gains"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   LoanLeaseSaleLoss  Numeric     0  Losses"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "    NETIMPAIRLOSs  Numeric     0  Net other-than-temporary impairment losses \t"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_differences$D_RID.TXT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dir1 vs dir2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                 FILE LAYOUT FOR SCHEDULE RI-D CHANGES IN NET WORTH"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                 FILE LAYOUT FOR SCHEDULE RI-D CHANGES IN NET WORTH"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                             DATA DELIMITED BY COMMAS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                             DATA DELIMITED BY COMMAS"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "    "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t         VARIABLE    FIELD  DEC.         "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "         VARIABLE    FIELD  DEC.         "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t             NAME     TYPE  POS.  VARIABLE DESCRIPTION"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "             NAME     TYPE  POS.  VARIABLE DESCRIPTION"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t  ---------------  -------  ----  --------------------------------------"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  ---------------  -------  ----  --------------------------------------"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- " \t          SYSTEM  Numeric     0  System Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           SYSTEM  Numeric     0  System Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t             DIST  Numeric     0  District Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "             DIST  Numeric     0  District Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t            ASSOC  Numeric     0  Association Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "            ASSOC  Numeric     0  Association Code"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t            MONTH  Numeric     0  Month of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "            MONTH  Numeric     0  Month of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t             YEAR  Numeric     0  Year of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "             YEAR  Numeric     0  Year of Report"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t           UNINUM  Numeric     0  System, District, and Association "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "           UNINUM  Numeric     0  System, District, and Association "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                   codes concatenated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t     **  CAP_CODE  Numeric     0  Capital Stock Code: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                                   10  Beginning balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                                   25  Prior Period &amp; Accounting Adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                                   35  Net Income"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                                   45  Other Comprehensive Income"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "       \t                                   80  Patronage Distributions"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- " \t   \t                           70  Dividends"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "  \t                                   75  Stock Issued"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                                \t   85  Stock Retired"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                        \t           95  Paid-in Capital Adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "                \t                   105 Allocated Equity Retired"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "        \t                           120 Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t                                   130 Ending balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **        CapStkPurch  Numeric     0  Capital Stock:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Purchased"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **        CAPSTKALLOC  Numeric     0  Capital Stock:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Allocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **        PREFSTKPERP  Numeric     0  Perpetual Preferred Stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Noncumulative"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **           PREFSTKO  Numeric     0  Perpetual Preferred Stock"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **    \t   PAIDIN  Numeric     0  Paid-In Capital"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **     \t    ALSUR  Numeric     0  Allocated Surplus:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Qualified"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **    NQASSubj2Retire  Numeric     0  Allocated Surplus:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Nonqualified Subject To Retirement"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    ** NQASNotSubj2Retire  Numeric     0  Allocated Surplus:"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "\t\t\t\t\t    Nonqualified Not Subject To Retirement"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **           UNRETERN  Numeric     0  Unallocated Retained Earnings"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **         ACNOCOMINC  Numeric     0  Accumulated other comprehensive income (AOCI)"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- "    **\t            TOTNW  Numeric     0  Total Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- ""</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **  CAP_CODE  Numeric     0  Capital Stock Code: "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   10  Beginning balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   20  Prior quarter adjustments"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   30  Amended beginning balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   40  Accum. adjustments acctg. change"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   50  Prior year's adj."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   60  Net income"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   70  Dividents"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   80  Patronage dist."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   90  Other income transfers"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   100 Retirements of cap. stock, part."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       cert. and surplus allocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   110 Issuance of cap. stk. and part."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                       cert."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   115 Issued pref. stk."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   117 Retired pref. stk."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   120 Other"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   130 Ending balance"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **       CAP  Numeric     0  Capital Stock and Participation"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "                                   Certificates"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **    PAIDIN  Numeric     0  Paid-In Capital"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **     ALSUR  Numeric     0  Surplus Allocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **     SURES  Numeric     0  Surplus Reserve"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **    UALSUR  Numeric     0  Earned Surplus Unallocated"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **     TOTNW  Numeric     0  Total Net Worth"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "     **  NONALSUR  Numeric     0  Nonqualified allocated surplus"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ " ** OTHCOMPINCOME  Numeric     0  Accumulated Other Comprehensive Income"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">+ "  "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "                                                   "</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "  ** NOTE:  THE RECORD CONTAINS MULTIPLE OCCURANCES OF THESE"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">  "            VARIABLES.  THERE IS ONE OCCURENCE FOR EACH CAP_CODE VALUE."</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

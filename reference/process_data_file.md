@@ -46,21 +46,35 @@ function for the actual data reading.
 # \donttest{
 
   path <- tempfile("fcadata")
+  dir.create(path)
 
   download_data(
-    year = 2022,
-    month = "March",
+    year = 2025,
+    month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata404369547ea2
+#> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata1832562a0f64
 
   process_data_file(
-    file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+    file = file.path(path, "RCB_Q202509_G20251112.TXT"),
     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
     dict = RCB__INV_CODE
   )
-#> Warning: cannot open file '/tmp/RtmpzhZ4et/fcadata404369547ea2/RCB_Q202203_G20220808.TXT': No such file or directory
-#> Error in file(file, "rt"): cannot open the connection
+#> # A tibble: 2,240 × 11
+#>    SYSTEM  DIST ASSOC MONTH  YEAR UNINUM INV_CODE BKVAL MKTVAL BKVALFORSALE
+#>     <int> <int> <int> <int> <int>  <int>    <int> <int>  <int>        <int>
+#>  1      6    10     0     9  2025 610000       10     0      0       770093
+#>  2      6    10     0     9  2025 610000       15     0      0       154555
+#>  3      6    10     0     9  2025 610000       17     0      0         1917
+#>  4      6    10     0     9  2025 610000       25     0      0            0
+#>  5      6    10     0     9  2025 610000       29     0      0            0
+#>  6      6    10     0     9  2025 610000       35     0      0            0
+#>  7      6    10     0     9  2025 610000       40     0      0       284976
+#>  8      6    10     0     9  2025 610000       41     0      0       400000
+#>  9      6    10     0     9  2025 610000       50     0      0       250000
+#> 10      6    10     0     9  2025 610000       51     0      0            0
+#> # ℹ 2,230 more rows
+#> # ℹ 1 more variable: MKTVALFORSALE <int>
 
 # }
 ```

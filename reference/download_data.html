@@ -99,14 +99,15 @@ ensure the data is available for the quarter you are interested in.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">path_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">path_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">path_1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">download_data</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2022</span>,</span></span>
-<span class="r-in"><span>    month <span class="op">=</span> <span class="st">"December"</span>,   <span class="co"># using the name of the month</span></span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2025</span>,</span></span>
+<span class="r-in"><span>    month <span class="op">=</span> <span class="st">"September"</span>,   <span class="co"># using the name of the month</span></span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path_1</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata40432ab5f9c7</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata118322b9b1977</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">path_1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "D_INST.TXT"                  "D_RC.TXT"                   </span>
@@ -126,42 +127,43 @@ ensure the data is available for the quarter you are interested in.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29] "D_RI.TXT"                    "D_RIA.TXT"                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [31] "D_RIB.TXT"                   "D_RIC.TXT"                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [33] "D_RIC1.TXT"                  "D_RID.TXT"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "D_RIE.TXT"                   "INST_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "RC1_Q202212_G20250814.TXT"   "RCB2_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "RCB3_Q202212_G20250814.TXT"  "RCB4_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "RCB5_Q202212_G20250814.TXT"  "RCB_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "RCF1_Q202212_G20250814.TXT"  "RCF_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "RCG_Q202212_G20250814.TXT"   "RCH_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "RCI1_Q202212_G20250814.TXT"  "RCI2A_Q202212_G20250814.TXT"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "RCI2B_Q202212_G20250814.TXT" "RCI2C_Q202212_G20250814.TXT"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "RCI2D_Q202212_G20250814.TXT" "RCK_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "RCL_Q202212_G20250814.TXT"   "RCM_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "RCO_Q202212_G20250814.TXT"   "RCR1_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "RCR2_Q202212_G20250814.TXT"  "RCR3_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "RCR4_Q202212_G20250814.TXT"  "RCR5_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "RCR6_Q202212_G20250814.TXT"  "RCR7_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "RC_Q202212_G20250814.TXT"    "RIA_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "RIB_Q202212_G20250814.TXT"   "RIC1_Q202212_G20250814.TXT" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "RIC_Q202212_G20250814.TXT"   "RID_Q202212_G20250814.TXT"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "RIE_Q202212_G20250814.TXT"   "RI_Q202212_G20250814.TXT"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "D_RIE1.TXT"                  "D_RIE2.TXT"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "INST_Q202509_G20251112.TXT"  "RC1_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "RCB2_Q202509_G20251112.TXT"  "RCB3_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "RCB4_Q202509_G20251112.TXT"  "RCB5_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "RCB_Q202509_G20251112.TXT"   "RCF1_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "RCF_Q202509_G20251112.TXT"   "RCG_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "RCH_Q202509_G20251112.TXT"   "RCI1_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "RCI2A_Q202509_G20251112.TXT" "RCI2B_Q202509_G20251112.TXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "RCI2C_Q202509_G20251112.TXT" "RCI2D_Q202509_G20251112.TXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "RCK_Q202509_G20251112.TXT"   "RCL_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "RCM_Q202509_G20251112.TXT"   "RCO_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "RCR1_Q202509_G20251112.TXT"  "RCR2_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "RCR3_Q202509_G20251112.TXT"  "RCR4_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "RCR5_Q202509_G20251112.TXT"  "RCR6_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "RCR7_Q202509_G20251112.TXT"  "RC_Q202509_G20251112.TXT"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "RIA_Q202509_G20251112.TXT"   "RIB_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "RIC1_Q202509_G20251112.TXT"  "RIC_Q202509_G20251112.TXT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "RID_Q202509_G20251112.TXT"   "RIE1_Q202509_G20251112.TXT" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [71] "RIE2_Q202509_G20251112.TXT"  "RI_Q202509_G20251112.TXT"   </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">path_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">path_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"fcadata2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">path_2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">download_data</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2023</span>,</span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2025</span>,</span></span>
 <span class="r-in"><span>    month <span class="op">=</span> <span class="fl">9</span>,   <span class="co"># using the month number (to refer to September)</span></span></span>
 <span class="r-in"><span>    dest <span class="op">=</span> <span class="va">path_2</span>,</span></span>
 <span class="r-in"><span>    <span class="co"># only download the following files</span></span></span>
 <span class="r-in"><span>    files <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>      <span class="st">"D_INST.TXT"</span>,</span></span>
-<span class="r-in"><span>      <span class="st">"INST_Q202309_G20231106.TXT"</span></span></span>
+<span class="r-in"><span>      <span class="st">"INST_Q202509_G20251112.TXT"</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>requested file not found in the zip file</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata4043486d14c9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata218327a0f5268</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">path_2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "D_INST.TXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "D_INST.TXT"                 "INST_Q202509_G20251112.TXT"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

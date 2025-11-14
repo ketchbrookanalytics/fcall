@@ -34,13 +34,14 @@ double asterisks in variable names.
 # \donttest{
 
   path <- tempfile("fcadata")
+  dir.create(path)
 
   download_data(
-    year = 2022,
-    month = "December",
+    year = 2025,
+    month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/RtmpzhZ4et/fcadata4043321eaaf5
+#> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata183245758ed
 
   process_metadata_file(file.path(path, "D_RC1.TXT"))
 #> $scenario
