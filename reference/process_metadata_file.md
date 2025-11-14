@@ -41,7 +41,7 @@ double asterisks in variable names.
     month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/Rtmpzv2qre/fcadata183245758ed
+#> Files successfully downloaded into /tmp/RtmpNBmo7f/fcadata406d2729792b
 
   process_metadata_file(file.path(path, "D_RC1.TXT"))
 #> $scenario

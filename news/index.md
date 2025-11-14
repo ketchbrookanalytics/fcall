@@ -1,5 +1,23 @@
 # Changelog
 
+## fcall 0.1.5
+
+Addresses CRAN comments regarding:
+
+- Extra “Description:” text in Description field of `DESCRIPTION`
+- Quoted “FCA” abbreviation in `DESCRIPTION`
+
+### Additional Changes
+
+- Bug fix for downloading data from years before 2015
+- Adds new test for
+  [`compare_metadata()`](https://ketchbrookanalytics.github.io/fcall/reference/compare_metadata.md)
+- Removes embedded files in unit tests (now downloads data on-the-fly)
+- Improves naming conventions in
+  [`compare_metadata()`](https://ketchbrookanalytics.github.io/fcall/reference/compare_metadata.md)
+  output
+- Uses latest files in testing/examples
+
 ## fcall 0.1.4
 
 Addresses CRAN comments regarding:

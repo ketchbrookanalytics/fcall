@@ -109,31 +109,28 @@ of ETL tools available through the Power Query interface.
 
 ## Database Users
 
-[![AgWest Farm
-Credit](reference/figures/agwest_logo.png)](https://agwestfc.com)
+[![AgWest Farm Credit](agwest_logo.png)](https://agwestfc.com)
 
 [![GreenStone Farm Credit
-Services](reference/figures/greenstone_logo.jpg)](https://www.greenstonefcs.com/)
+Services](greenstone_logo.jpg)](https://www.greenstonefcs.com/)
 
 [![High Plains Farm
-Credit](reference/figures/highplains_logo.png)](https://highplainsfarmcredit.com/)
+Credit](highplains_logo.png)](https://highplainsfarmcredit.com/)
 
-[![CoBank](reference/figures/cobank_logo.jpg)](https://www.cobank.com/)
+[![CoBank](cobank_logo.jpg)](https://www.cobank.com/)
 
-[![Farm Credit
-Illinois](reference/figures/fci_logo.jpg)](https://www.farmcreditil.com/)
+[![Farm Credit Illinois](fci_logo.jpg)](https://www.farmcreditil.com/)
 
 [![Golden State Farm
-Credit](reference/figures/golden_state_logo.png)](https://goldenstatefarmcredit.com/)
+Credit](golden_state_logo.png)](https://goldenstatefarmcredit.com/)
 
-[![Horizon Farm
-Credit](reference/figures/horizon_logo.png)](https://www.horizonfc.com/)
+[![Horizon Farm Credit](horizon_logo.png)](https://www.horizonfc.com/)
 
 [![Capital Farm
-Credit](reference/figures/capital_logo.png)](https://www.capitalfarmcredit.com/)
+Credit](capital_logo.png)](https://www.capitalfarmcredit.com/)
 
 [![Farm Credit of Western
-Oklahoma](reference/figures/western_oklahoma_logo.png)](https://www.farmcreditloans.com/)
+Oklahoma](western_oklahoma_logo.png)](https://www.farmcreditloans.com/)
 
 [![AgTexas Farm Credit
-Services](reference/figures/agtexas_logo.png)](https://agtexas.com/)
+Services](agtexas_logo.png)](https://agtexas.com/)
