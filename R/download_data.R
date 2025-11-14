@@ -87,13 +87,37 @@ download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
 
   }
 
-  # Build the URL to the .zip file
-  url <- paste0(
-    "https://www.fca.gov/template-fca/bank/",
-    year,
-    month,
-    ".zip"
-  )
+  # The download URL convention changed in March 2015
+  if (year >= 2015L) {
+
+    # Build the URL to the .zip file
+    url <- paste0(
+      "https://www.fca.gov/template-fca/bank/",
+      year,
+      month,
+      ".zip"
+    )
+
+  } else {
+
+    # Older files use an abbreviated month name convention
+    month <- switch(
+      month,
+      March = "Mar",
+      June = "Jun",
+      September = "Sept",
+      December = "Dec"
+    )
+
+    # Build the URL to the .zip file
+    url <- paste0(
+      "https://www.fca.gov/template-fca/download/CallReportData/",
+      month,
+      year,
+      ".zip"
+    )
+
+  }
 
   # Create temp storage location for .zip file
   temp_path <- tempfile(fileext =  ".zip")
