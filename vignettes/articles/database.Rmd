@@ -104,19 +104,23 @@ purrr::map(lines, function(line_number) {
 
       htmltools::p(
         htmltools::a(
-         href = href, target="_blank",
-         htmltools::img(
-            src = glue::glue("man/figures/{ src }"),
-           width = width,
+          href = href, target = "_blank",
+          htmltools::img(
+            src = glue::glue("{ src }"),
+            width = width,
             alt = alt
           )
         )
       ) |>
-        htmltools::tagAppendAttributes(style = "display: flex; align-items:center; width: 220px; justify-content: center;")
+        htmltools::tagAppendAttributes(
+          style = "display: flex; align-items: center; width: 220px; justify-content: center;"
+        )
 
     }) |>
     do.call(htmltools::div, args = _) |>
-    htmltools::tagAppendAttributes(style = "display: flex; justify-content: space-evenly;")
+    htmltools::tagAppendAttributes(
+      style = "display: flex; justify-content: space-evenly;"
+    )
 }) |>
   do.call(htmltools::div, args = _)
 ```
