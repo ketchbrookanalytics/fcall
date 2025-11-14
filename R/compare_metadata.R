@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #'   # Download data from March 2023
 #'   path_1 <- tempfile("fcadata")

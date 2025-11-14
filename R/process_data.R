@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #'   path <- tempfile("fcadata")
 #'
@@ -145,7 +145,7 @@ process_data_all <- function(dir) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #'   path <- tempfile("fcadata")
 #'
@@ -269,7 +269,7 @@ process_metadata_file <- function(file) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #'   path <- tempfile("fcadata")
 #'
@@ -454,7 +454,7 @@ read_data_file <- function(file, metadata, dict) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #'   rcb_dict <- get_codes_dict("RCB")
 #'

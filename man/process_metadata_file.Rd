@@ -25,7 +25,7 @@ details. It detects the scenario based on the occurrence of double asterisks
 in variable names.
 }
 \examples{
-\dontrun{
+\donttest{
 
   path <- tempfile("fcadata")
 

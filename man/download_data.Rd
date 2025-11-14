@@ -39,7 +39,7 @@ Check \url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
 ensure the data is available for the quarter you are interested in.
 }
 \examples{
-\dontrun{
+\donttest{
 
   path_1 <- tempfile("fcadata")
 

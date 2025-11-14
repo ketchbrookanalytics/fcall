@@ -27,7 +27,7 @@ If found, it attempts to retrieve the codes dictionary using \code{get} and retu
 it; otherwise, it returns NULL.
 }
 \examples{
-\dontrun{
+\donttest{
 
   rcb_dict <- get_codes_dict("RCB")
 

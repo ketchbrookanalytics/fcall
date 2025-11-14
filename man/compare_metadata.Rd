@@ -28,7 +28,7 @@ metadata files, and then compares (a) the number of files, (b) file names,
 (c) file order, and (d) file content (using the \code{waldo::compare()} function).
 }
 \examples{
-\dontrun{
+\donttest{
 
   # Download data from March 2023
   path_1 <- tempfile("fcadata")

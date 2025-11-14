@@ -29,7 +29,7 @@ into a tidy format with appropriate column names. The function relies on the
 \code{\link{read_data_file}} function for the actual data reading.
 }
 \examples{
-\dontrun{
+\donttest{
 
   path <- tempfile("fcadata")
 

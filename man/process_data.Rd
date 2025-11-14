@@ -24,7 +24,7 @@ files
 name (characters until the first underscore occurrence).
 }
 \examples{
-\dontrun{
+\donttest{
 
   path <- tempfile("fcadata")
 
