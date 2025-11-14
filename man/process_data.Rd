@@ -27,10 +27,11 @@ name (characters until the first underscore occurrence).
 \donttest{
 
   path <- tempfile("fcadata")
+  dir.create(path)
 
   download_data(
-    year = 2022,
-    month = "December",
+    year = 2025,
+    month = "September",
     dest = path
   )
 

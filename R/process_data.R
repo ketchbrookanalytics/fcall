@@ -21,10 +21,11 @@
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
+#'   dir.create(path)
 #'
 #'   download_data(
-#'     year = 2022,
-#'     month = "December",
+#'     year = 2025,
+#'     month = "September",
 #'     dest = path
 #'   )
 #'
@@ -148,10 +149,11 @@ process_data_all <- function(dir) {
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
+#'   dir.create(path)
 #'
 #'   download_data(
-#'     year = 2022,
-#'     month = "December",
+#'     year = 2025,
+#'     month = "September",
 #'     dest = path
 #'   )
 #'
@@ -272,15 +274,16 @@ process_metadata_file <- function(file) {
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
+#'   dir.create(path)
 #'
 #'   download_data(
-#'     year = 2022,
-#'     month = "March",
+#'     year = 2025,
+#'     month = "September",
 #'     dest = path
 #'   )
 #'
 #'   process_data_file(
-#'     file = file.path(path, "RCB_Q202203_G20220808.TXT"),
+#'     file = file.path(path, "RCB_Q202509_G20251112.TXT"),
 #'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
 #'     dict = RCB__INV_CODE
 #'   )

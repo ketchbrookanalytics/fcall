@@ -28,10 +28,11 @@ in variable names.
 \donttest{
 
   path <- tempfile("fcadata")
+  dir.create(path)
 
   download_data(
-    year = 2022,
-    month = "December",
+    year = 2025,
+    month = "September",
     dest = path
   )
 

@@ -27,26 +27,28 @@
 #' @examples
 #' \donttest{
 #'
-#'   path_1 <- tempfile("fcadata")
+#'   path_1 <- tempfile("fcadata1")
+#'   dir.create(path_1)
 #'
 #'   download_data(
-#'     year = 2022,
-#'     month = "December",   # using the name of the month
+#'     year = 2025,
+#'     month = "September",   # using the name of the month
 #'     dest = path_1
 #'   )
 #'
 #'   list.files(path_1)
 #'
-#'   path_2 <- tempfile("fcadata")
+#'   path_2 <- tempfile("fcadata2")
+#'   dir.create(path_2)
 #'
 #'   download_data(
-#'     year = 2023,
+#'     year = 2025,
 #'     month = 9,   # using the month number (to refer to September)
 #'     dest = path_2,
 #'     # only download the following files
 #'     files = c(
 #'       "D_INST.TXT",
-#'       "INST_Q202309_G20231106.TXT"
+#'       "INST_Q202509_G20251112.TXT"
 #'     )
 #'   )
 #'

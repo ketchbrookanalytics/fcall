@@ -30,21 +30,23 @@ metadata files, and then compares (a) the number of files, (b) file names,
 \examples{
 \donttest{
 
-  # Download data from March 2023
-  path_1 <- tempfile("fcadata")
+  # Download data from September 2025
+  path_1 <- tempfile("fcadata1")
+  dir.create(path_1)
 
   download_data(
-    year = 2023,
-    month = 3,
+    year = 2025,
+    month = 9,
     dest = path_1
   )
 
-  # Download data from March 2022
-  path_2 <- tempfile("fcadata")
+  # Download data from September 2011
+  path_2 <- tempfile("fcadata2")
+  dir.create(path_2)
 
   download_data(
-    year = 2022,
-    month = 3,
+    year = 2011,
+    month = 9,
     dest = path_2
   )
 
