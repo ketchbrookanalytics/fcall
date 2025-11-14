@@ -121,5 +121,6 @@ compare_files_content <- function(filename, dir1, dir2) {
     iconv(from = "windows-1252", to = "utf-8")
 
   differences <- waldo::compare(content1, content2, max_diffs = Inf)
+  return(differences)
 
 }
