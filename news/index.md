@@ -2,6 +2,8 @@
 
 ## fcall 0.1.5
 
+CRAN release: 2025-11-19
+
 Addresses CRAN comments regarding:
 
 - Extra “Description:” text in Description field of `DESCRIPTION`

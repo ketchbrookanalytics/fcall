@@ -40,7 +40,7 @@ root name (characters until the first underscore occurrence).
     month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/RtmpNBmo7f/fcadata406d77192e1d
+#> Files successfully downloaded into /tmp/RtmpRzwt5d/fcadata1b024bbb2f86
 
   processed_data <- process_data(path)
 
