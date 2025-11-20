@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/ketchbrookanalytics/fcall/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/ketchbrookanalytics/fcall/blob/v0.1.5/DESCRIPTION)
 
 Thomas M, Millanes I (2025). *fcall: Parse Farm Credit Administration
 Call Report Data into Tidy Data Frames*. R package version 0.1.5,
