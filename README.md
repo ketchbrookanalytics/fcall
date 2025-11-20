@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/fcall)](https://CRAN.R-project.org/package=fcall)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/fcall)](https://cran.r-project.org/package=fcall)
 [![R-CMD-check](https://github.com/ketchbrookanalytics/fcall/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ketchbrookanalytics/fcall/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
