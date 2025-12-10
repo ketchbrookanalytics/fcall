@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_data.R
 \name{download_data}
 \alias{download_data}
-\title{Download data from FCA website}
+\title{Download FCA Call Report Data and Unzip}
 \usage{
 download_data(year, month, dest, files = NULL, quiet = FALSE)
 }
@@ -27,7 +27,7 @@ Console message informing the user where the data was successfully
 downloaded (and unzipped) into
 }
 \description{
-Download data from FCA website
+Download FCA Call Report Data and Unzip
 }
 \details{
 FCA publishes Call Report data quarterly. These .zip files are
@@ -37,6 +37,9 @@ Therefore, valid values to the \code{month} argument should be limited to
 \code{c(3, 6, 9, 12)}, unless there is an anomaly in FCA's reporting/publishing.
 Check \url{https://www.fca.gov/bank-oversight/call-report-data-for-download} to
 ensure the data is available for the quarter you are interested in.
+Ketchbrook Analytics downloads these files and stores them in a public AWS
+S3 bucket, which is the location that \code{download_data()} retrieves them
+from.
 }
 \examples{
 \donttest{

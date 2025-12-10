@@ -1,6 +1,6 @@
 Package: fcall
 Title: Parse Farm Credit Administration Call Report Data into Tidy Data Frames
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: c(
     person("Michael", "Thomas", email = "mthomas@ketchbrookanalytics.com",
            role = c("aut", "cre")),
