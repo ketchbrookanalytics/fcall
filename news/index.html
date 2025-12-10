@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fcall</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,9 +37,17 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/ketchbrookanalytics/fcall/blob/v0.1.5/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/ketchbrookanalytics/fcall/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.6" id="fcall-016">fcall 0.1.6<a class="anchor" aria-label="anchor" href="#fcall-016"></a></h2>
+<div class="section level3">
+<h3 id="bug-fix-0-1-6">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-1-6"></a></h3>
+<p>Sometime around 2025-12-08, the Farm Credit Administration (FCA) added a layer to it’s website to “Verify you are a human” before hitting the page where the data can be downloaded via hyperlinks. This caused the <code><a href="../reference/download_data.html">download_data()</a></code> function (which relies on <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">utils::download.file()</a></code>) to fail, including in CRAN checks/builds.</p>
+<p>To remediate this issue, Ketchbrook Analytics has replicated the files on the FCA website (from 2000-present) in a public AWS S3 bucket. <code><a href="../reference/download_data.html">download_data()</a></code> now retrieves files from the public AWS S3 bucket instead of the FCA website directly.</p>
+</div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.5" id="fcall-015">fcall 0.1.5<a class="anchor" aria-label="anchor" href="#fcall-015"></a></h2><p class="text-muted">CRAN release: 2025-11-19</p>
 <p>Addresses CRAN comments regarding:</p>

@@ -1,5 +1,23 @@
 # Changelog
 
+## fcall 0.1.6
+
+### Bug Fix
+
+Sometime around 2025-12-08, the Farm Credit Administration (FCA) added a
+layer to it’s website to “Verify you are a human” before hitting the
+page where the data can be downloaded via hyperlinks. This caused the
+[`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+function (which relies on
+[`utils::download.file()`](https://rdrr.io/r/utils/download.file.html))
+to fail, including in CRAN checks/builds.
+
+To remediate this issue, Ketchbrook Analytics has replicated the files
+on the FCA website (from 2000-present) in a public AWS S3 bucket.
+[`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+now retrieves files from the public AWS S3 bucket instead of the FCA
+website directly.
+
 ## fcall 0.1.5
 
 CRAN release: 2025-11-19

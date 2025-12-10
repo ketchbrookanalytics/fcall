@@ -5,7 +5,7 @@
 Primary functions for downloading & parsing Call Report data
 
 - [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
-  : Download data from FCA website
+  : Download FCA Call Report Data and Unzip
 - [`process_data()`](https://ketchbrookanalytics.github.io/fcall/reference/process_data.md)
   : Process FCA Call Report data in a specified folder
 - [`compare_metadata()`](https://ketchbrookanalytics.github.io/fcall/reference/compare_metadata.md)

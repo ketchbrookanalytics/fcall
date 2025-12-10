@@ -1,6 +1,6 @@
-# Download data from FCA website
+# Download FCA Call Report Data and Unzip
 
-Download data from FCA website
+Download FCA Call Report Data and Unzip
 
 ## Usage
 
@@ -50,6 +50,9 @@ Therefore, valid values to the `month` argument should be limited to
 reporting/publishing. Check
 <https://www.fca.gov/bank-oversight/call-report-data-for-download> to
 ensure the data is available for the quarter you are interested in.
+Ketchbrook Analytics downloads these files and stores them in a public
+AWS S3 bucket, which is the location that `download_data()` retrieves
+them from.
 
 ## Examples
 
@@ -64,7 +67,7 @@ ensure the data is available for the quarter you are interested in.
     month = "September",   # using the name of the month
     dest = path_1
   )
-#> Files successfully downloaded into /tmp/Rtmp0rXpkR/fcadata1181448a1fc00
+#> Files successfully downloaded into /tmp/RtmpIykQip/fcadata11c006ef0cf0d
 
   list.files(path_1)
 #>  [1] "D_INST.TXT"                  "D_RC.TXT"                   
@@ -117,7 +120,7 @@ ensure the data is available for the quarter you are interested in.
       "INST_Q202509_G20251112.TXT"
     )
   )
-#> Files successfully downloaded into /tmp/Rtmp0rXpkR/fcadata218146cf25867
+#> Files successfully downloaded into /tmp/RtmpIykQip/fcadata21c00cf3de33
 
   list.files(path_2)
 #> [1] "D_INST.TXT"                 "INST_Q202509_G20251112.TXT"
