@@ -1,4 +1,4 @@
-#' Download data from FCA website
+#' Download FCA Call Report Data and Unzip
 #'
 #' @param year (Integer) The year of the Call Report (e.g., `2022`)
 #' @param month (String) The month of the Call Report (e.g., `"March"`); you may
@@ -18,6 +18,9 @@
 #'   `c(3, 6, 9, 12)`, unless there is an anomaly in FCA's reporting/publishing.
 #'   Check <https://www.fca.gov/bank-oversight/call-report-data-for-download> to
 #'   ensure the data is available for the quarter you are interested in.
+#'   Ketchbrook Analytics downloads these files and stores them in a public AWS
+#'   S3 bucket, which is the location that `download_data()` retrieves them
+#'   from.
 #'
 #' @return Console message informing the user where the data was successfully
 #'   downloaded (and unzipped) into
@@ -57,7 +60,8 @@
 #' }
 download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
 
-  # Example valid URL: "https://www.fca.gov/template-fca/bank/2020March.zip"
+  # Example valid URL:
+  # "https://fca-call-report-data.s3.us-east-1.amazonaws.com/raw/2020March.zip"
 
   # Ensure only one month & one year are specified
   if (length(year) > 1L) {
@@ -89,12 +93,15 @@ download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
 
   }
 
+  # Define base URL for AWS S3 bucket
+  base_url <- "https://fca-call-report-data.s3.us-east-1.amazonaws.com/raw/"
+
   # The download URL convention changed in March 2015
   if (year >= 2015L) {
 
     # Build the URL to the .zip file
     url <- paste0(
-      "https://www.fca.gov/template-fca/bank/",
+      base_url,
       year,
       month,
       ".zip"
@@ -113,7 +120,7 @@ download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
 
     # Build the URL to the .zip file
     url <- paste0(
-      "https://www.fca.gov/template-fca/download/CallReportData/",
+      base_url,
       month,
       year,
       ".zip"

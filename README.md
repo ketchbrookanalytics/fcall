@@ -35,9 +35,11 @@ pak::pak("ketchbrookanalytics/fcall")
 
 FCA publishes Call Report data on a quarterly basis at
 <https://www.fca.gov/bank-oversight/call-report-data-for-download>.
+Ketchbrook Analytics replicates these files in a public AWS S3 bucket,
+which {fcall} interacts with via its `download_data()` function.
 
-As of June 2025, this data represents a set of 72 *.TXT* files. These
-files represent 36 datasets. The files prefixed with “D\_” contain
+As of September 2025, this data represents a set of 72 *.TXT* files.
+These files represent 36 datasets. The files prefixed with “D\_” contain
 *metadata* (the column names, data types, etc.) of the associated file
 containing the raw, header-less comma-separated data. For example, the
 file that starts with *“D_INST”* contains the metadata for the file that
