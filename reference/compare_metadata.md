@@ -50,7 +50,7 @@ function).
     month = 9,
     dest = path_1
   )
-#> Files successfully downloaded into /tmp/RtmpIykQip/fcadata11c0020a8b60c
+#> Files successfully downloaded into /tmp/Rtmp0H5JIE/fcadata118a2408bde05
 
   # Download data from September 2011
   path_2 <- tempfile("fcadata2")
@@ -61,7 +61,7 @@ function).
     month = 9,
     dest = path_2
   )
-#> Files successfully downloaded into /tmp/RtmpIykQip/fcadata21c0077b3ccfe
+#> Files successfully downloaded into /tmp/Rtmp0H5JIE/fcadata218a26e3e3640
 
   compare_metadata(path_1, path_2)
 #> $file_differences
