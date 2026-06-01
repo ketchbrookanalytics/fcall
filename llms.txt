@@ -16,6 +16,7 @@ Alternatively, you can install the development version from GitHub using
 {pak} like so:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("ketchbrookanalytics/fcall")
 ```

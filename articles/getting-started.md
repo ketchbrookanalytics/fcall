@@ -6,6 +6,7 @@ You can download data for a particular period using
 [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md):
 
 ``` r
+
 library(fcall)
 
 # Download FCA Call Report data from March 2023
@@ -23,6 +24,7 @@ frames using
 [`process_data()`](https://ketchbrookanalytics.github.io/fcall/reference/process_data.md):
 
 ``` r
+
 # Process data from March 2023
 data_2023_03 <- process_data(dir = "path/to/some/folder")
 ```
@@ -49,6 +51,7 @@ returns differences in the data structure (files, column names, and
 column definitions) between two sets of FCA Call Report data.
 
 ``` r
+
 # Download data from June 2023
 download_data(
   year = 2023,
@@ -80,6 +83,7 @@ compare_metadata(
   associated plain-English definitions for each.
 
 ``` r
+
 RCB__INV_CODE |> str()
 #> Classes 'tbl_df', 'tbl' and 'data.frame':    35 obs. of  2 variables:
 #>  $ code : int  10 15 17 25 29 35 40 41 60 52 ...
@@ -93,6 +97,7 @@ dictionaries for a dataset without needing to remember the specific
 column name in the dataset that contains the codes:
 
 ``` r
+
 # Get codes dictionary information for "RCB" data
 get_codes_dict("RCB") |> str()
 #> List of 2

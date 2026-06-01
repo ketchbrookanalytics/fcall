@@ -2,6 +2,8 @@
 
 ## fcall 0.1.6
 
+CRAN release: 2025-12-10
+
 ### Bug Fix
 
 Sometime around 2025-12-08, the Farm Credit Administration (FCA) added a
