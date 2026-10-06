@@ -4,6 +4,9 @@
 
     "features": {
 
+        // Install GitHub CLI
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+
         // https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
             "packages": "cli, devtools, dplyr, httpgd, httr, glue, languageserver, purrr, rlang, stringr, tibble, tidyr, utf8, utils, usethis, waldo",
@@ -12,18 +15,30 @@
 
     },
 
+    // Pass local GitHub CLI and Claude Code credentials to the container
+	"mounts": [
+      "source=${localEnv:USERPROFILE}/.config/gh,target=/root/.config/gh,type=bind,consistency=cached",
+	  "source=${localEnv:USERPROFILE}/.claude,target=/root/.claude,type=bind,consistency=cached"
+    ],
+
     "postCreateCommand": "apt-get update && apt-get install -y qpdf",
 
     "customizations": {
         "vscode": {
             "extensions": [
+                "Anthropic.claude-code",
+				"Posit.air-vscode",
                 "REditorSupport.r",
                 "RDebugger.r-debugger"
             ],
             "settings": {
                 "editor.rulers": [80],
                 "r.bracketedPaste": true,
-                "r.plot.useHttpgd": true
+                "r.plot.useHttpgd": true,
+                "[r]": {
+    			    "editor.formatOnSave": true,
+    			    "editor.defaultFormatter": "Posit.air-vscode"
+    			},
             }
         }
     }
