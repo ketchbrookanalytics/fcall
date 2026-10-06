@@ -22,6 +22,14 @@
 #'   S3 bucket, which is the location that `download_data()` retrieves them
 #'   from.
 #'
+#'   The files in the S3 bucket are identical to those published by FCA, with
+#'   one exception: the `RCR7` data files in the March, June, September and
+#'   December 2024 .zip files have been corrected to add rows that are missing
+#'   from FCA's versions. Without these rows, `process_data()` fails on the
+#'   2024 data. See <https://github.com/ketchbrookanalytics/fcall/issues/23>
+#'   for details. If you need FCA's original 2024 files, download them directly
+#'   from the FCA website.
+#'
 #' @return Console message informing the user where the data was successfully
 #'   downloaded (and unzipped) into
 #'

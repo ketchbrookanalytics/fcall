@@ -40,6 +40,14 @@ ensure the data is available for the quarter you are interested in.
 Ketchbrook Analytics downloads these files and stores them in a public AWS
 S3 bucket, which is the location that \code{download_data()} retrieves them
 from.
+
+The files in the S3 bucket are identical to those published by FCA, with
+one exception: the \code{RCR7} data files in the March, June, September and
+December 2024 .zip files have been corrected to add rows that are missing
+from FCA's versions. Without these rows, \code{process_data()} fails on the
+2024 data. See \url{https://github.com/ketchbrookanalytics/fcall/issues/23}
+for details. If you need FCA's original 2024 files, download them directly
+from the FCA website.
 }
 \examples{
 \donttest{
