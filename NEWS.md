@@ -1,5 +1,10 @@
 # fcall (development version)
 
+## Bug Fix
+
+* `process_data()` no longer prints a note about FCA's 2024 data when it hits an error. The 2024 files in the AWS S3 bucket are now fixed, so the note is out of date. Errors from `process_data()` are now raised as normal errors instead of being printed (#47).
+* Unit tests that download data now skip when there is no internet connection, and on CRAN, per CRAN policy on packages that use Internet resources (#47).
+
 ## Documentation
 
 * The `download_data()` documentation now says that the 2024 `RCR7` data files in the AWS S3 bucket differ from FCA's files. Ketchbrook added the rows that FCA's files are missing (#23, #46).
