@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
@@ -123,7 +123,7 @@ process_data_all <- function(dir) {
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
@@ -251,7 +251,7 @@ process_metadata_file <- function(file) {
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")

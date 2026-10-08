@@ -40,7 +40,7 @@
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path_1 <- tempfile("fcadata1")

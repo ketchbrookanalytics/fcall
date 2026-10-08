@@ -21,7 +21,7 @@
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   # Download data from September 2025
