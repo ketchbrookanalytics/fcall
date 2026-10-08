@@ -3,6 +3,8 @@
 ## Bug Fix
 
 * `process_data()` no longer prints a note about FCA's 2024 data when it hits an error. The 2024 files in the AWS S3 bucket are now fixed, so the note is out of date. Errors from `process_data()` are now raised as normal errors instead of being printed (#47).
+* `download_data()` now fails gracefully, per CRAN policy on packages that use Internet resources. If the data can't be downloaded (e.g., there is no internet connection, the AWS S3 bucket is unavailable, or there is no data for the requested `year` and `month`) or unzipped, `download_data()` prints an informative message and returns `FALSE` (invisibly) instead of throwing an error. It returns `TRUE` (invisibly) on success (#47).
+* Examples that download data now only run when an internet connection is available (#47).
 * Unit tests that download data now skip when there is no internet connection, and on CRAN, per CRAN policy on packages that use Internet resources (#47).
 
 ## Documentation
