@@ -23,8 +23,13 @@ will be downloaded}
 are displayed in the console. Defaults to \code{TRUE}.}
 }
 \value{
-Console message informing the user where the data was successfully
-downloaded (and unzipped) into
+\code{TRUE} (invisibly) if the data was successfully downloaded and
+unzipped, along with a console message informing the user where the
+data was downloaded (and unzipped) into. If the data cannot be
+downloaded (e.g., there is no internet connection, the resource is
+unavailable, or there is no data for the requested \code{year} and \code{month})
+or unzipped, \code{download_data()} returns \code{FALSE} (invisibly) with an
+informative console message, instead of throwing an error.
 }
 \description{
 Download FCA Call Report Data and Unzip
@@ -50,6 +55,7 @@ for details. If you need FCA's original 2024 files, download them directly
 from the FCA website.
 }
 \examples{
+\dontshow{if (requireNamespace("curl", quietly = TRUE) && curl::has_internet()) withAutoprint(\{ # examplesIf}
 \donttest{
 
   path_1 <- tempfile("fcadata1")
@@ -80,4 +86,5 @@ from the FCA website.
   list.files(path_2)
 
 }
+\dontshow{\}) # examplesIf}
 }

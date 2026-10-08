@@ -24,6 +24,7 @@ files
 name (characters until the first underscore occurrence).
 }
 \examples{
+\dontshow{if (requireNamespace("curl", quietly = TRUE) && curl::has_internet()) withAutoprint(\{ # examplesIf}
 \donttest{
 
   path <- tempfile("fcadata")
@@ -43,4 +44,5 @@ name (characters until the first underscore occurrence).
   # Access "RCB" metadata
   processed_data$metadata$RCB
 }
+\dontshow{\}) # examplesIf}
 }

@@ -25,18 +25,23 @@ details. It detects the scenario based on the occurrence of double asterisks
 in variable names.
 }
 \examples{
+\dontshow{if (requireNamespace("curl", quietly = TRUE) && curl::has_internet()) withAutoprint(\{ # examplesIf}
 \donttest{
 
   path <- tempfile("fcadata")
   dir.create(path)
 
-  download_data(
+  # `download_data()` returns `TRUE` if the download was successful
+  downloaded <- download_data(
     year = 2025,
     month = "September",
     dest = path
   )
 
-  process_metadata_file(file.path(path, "D_RC1.TXT"))
+  if (downloaded) {
+    process_metadata_file(file.path(path, "D_RC1.TXT"))
+  }
 
 }
+\dontshow{\}) # examplesIf}
 }
