@@ -12,18 +12,20 @@ test_that("`process_data()` throws error if directory doesn't exist", {
 
 })
 
-# Download & process September 2023 Call Report data in a safe, temp environment
-call_report_data <- withr::with_tempfile(
-  "call_report_data",
-  code = {
-    download_data(2025, 9, call_report_data, quiet = TRUE) |>
-      # Suppress "successfully downloaded into..." message
-      suppressMessages()
-    process_data(call_report_data)
-  }
-)
-
 test_that("`process_data()` was successful", {
+
+  skip_if_offline()
+
+  # Download & process September 2025 Call Report data in a safe, temp environment
+  call_report_data <- withr::with_tempfile(
+    "call_report_data",
+    code = {
+      download_data(2025, 9, call_report_data, quiet = TRUE) |>
+        # Suppress "successfully downloaded into..." message
+        suppressMessages()
+      process_data(call_report_data)
+    }
+  )
 
   # Returns a list
   expect_true(
