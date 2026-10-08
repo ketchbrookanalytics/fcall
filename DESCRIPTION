@@ -20,7 +20,6 @@ LazyData: true
 Depends:
     R (>= 4.1)
 Imports:
-    cli,
     dplyr,
     glue,
     purrr,
