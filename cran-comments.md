@@ -1,7 +1,14 @@
 ## Fix
 
-This is a resubmission of a package that is on CRAN but checks are failing due to a "Verify you are a human" page blocking the URL where `utils::download.file()` (within the package's `download_data()` function) attempts to download a file from. The following changes have been made to remediate this issue:
+This release addresses the CRAN team's email of 2026-10-08 about check failures (<https://cran.r-project.org/web/checks/check_results_fcall.html>) and the CRAN policy on packages that use Internet resources.
 
-* Files to be downloaded via `download_data()` are now hosted in a public AWS S3 bucket
-* `download_data()` now points to the public AWS S3 bucket
-* Documentation has been updated to let users know that the data is now being downloaded from AWS S3 instead of the FCA website directly
+The failing check was a unit test that expected `process_data()` to signal a problem with the 2024 data files. Those files have since been fixed at the source, so the test no longer held. The following changes have been made:
+
+* Removed the failing unit test, and the outdated 2024 message in `process_data()` that it tested for
+* Unit tests that download data now use `testthat::skip_if_offline()`, so they are skipped on CRAN and when no internet connection is available
+* `download_data()` now fails gracefully: if the resource is unavailable or has changed, it returns `FALSE` (invisibly) with an informative message, instead of throwing an error
+* Examples that download data now use `@examplesIf` to run only when an internet connection is available (they remain wrapped in `\donttest{}`), and examples that read downloaded files only do so if the download succeeded
+
+## R CMD check results
+
+0 errors | 0 warnings | 0 notes
