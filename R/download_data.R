@@ -142,7 +142,8 @@ download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
   }
 
   # Create temp storage location for .zip file
-  temp_path <- tempfile(fileext =  ".zip")
+  temp_path <- tempfile(fileext = ".zip")
+  on.exit(unlink(temp_path), add = TRUE)
 
   # Download .zip file into temp storage location
   # NOTE: per CRAN policy, fail gracefully (with an informative message instead
