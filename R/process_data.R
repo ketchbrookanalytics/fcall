@@ -129,13 +129,16 @@ process_data_all <- function(dir) {
 #'   path <- tempfile("fcadata")
 #'   dir.create(path)
 #'
-#'   download_data(
+#'   # `download_data()` returns `TRUE` if the download was successful
+#'   downloaded <- download_data(
 #'     year = 2025,
 #'     month = "September",
 #'     dest = path
 #'   )
 #'
-#'   process_metadata_file(file.path(path, "D_RC1.TXT"))
+#'   if (downloaded) {
+#'     process_metadata_file(file.path(path, "D_RC1.TXT"))
+#'   }
 #'
 #' }
 process_metadata_file <- function(file) {
@@ -254,17 +257,20 @@ process_metadata_file <- function(file) {
 #'   path <- tempfile("fcadata")
 #'   dir.create(path)
 #'
-#'   download_data(
+#'   # `download_data()` returns `TRUE` if the download was successful
+#'   downloaded <- download_data(
 #'     year = 2025,
 #'     month = "September",
 #'     dest = path
 #'   )
 #'
-#'   process_data_file(
-#'     file = file.path(path, "RCB_Q202509_G20251112.TXT"),
-#'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
-#'     dict = RCB__INV_CODE
-#'   )
+#'   if (downloaded) {
+#'     process_data_file(
+#'       file = file.path(path, "RCB_Q202509_G20251112.TXT"),
+#'       metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
+#'       dict = RCB__INV_CODE
+#'     )
+#'   }
 #'
 #' }
 process_data_file <- function(file, metadata, dict = NULL) {
