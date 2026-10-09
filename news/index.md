@@ -1,5 +1,43 @@
 # Changelog
 
+## fcall 0.1.7
+
+### Bug Fix
+
+- [`process_data()`](https://ketchbrookanalytics.github.io/fcall/reference/process_data.md)
+  no longer prints a note about FCA’s 2024 data when it hits an error.
+  The 2024 files in the AWS S3 bucket are now fixed, so the note is out
+  of date. Errors from
+  [`process_data()`](https://ketchbrookanalytics.github.io/fcall/reference/process_data.md)
+  are now raised as normal errors instead of being printed
+  ([\#47](https://github.com/ketchbrookanalytics/fcall/issues/47)).
+- [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+  now fails gracefully, per CRAN policy on packages that use Internet
+  resources. If the data can’t be downloaded (e.g., there is no internet
+  connection, the AWS S3 bucket is unavailable, or there is no data for
+  the requested `year` and `month`) or unzipped,
+  [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+  prints an informative message and returns `FALSE` (invisibly) instead
+  of throwing an error. It returns `TRUE` (invisibly) on success
+  ([\#47](https://github.com/ketchbrookanalytics/fcall/issues/47)).
+- Examples that download data now only run when an internet connection
+  is available
+  ([\#47](https://github.com/ketchbrookanalytics/fcall/issues/47)).
+- Unit tests that download data now skip when there is no internet
+  connection, and on CRAN, per CRAN policy on packages that use Internet
+  resources
+  ([\#47](https://github.com/ketchbrookanalytics/fcall/issues/47)).
+
+### Documentation
+
+- The
+  [`download_data()`](https://ketchbrookanalytics.github.io/fcall/reference/download_data.md)
+  documentation now explains that the 2024 `RCR7` data files in the AWS
+  S3 bucket differ from FCA’s files. Ketchbrook added the rows that
+  FCA’s files are missing
+  ([\#23](https://github.com/ketchbrookanalytics/fcall/issues/23),
+  [\#46](https://github.com/ketchbrookanalytics/fcall/issues/46)).
+
 ## fcall 0.1.6
 
 CRAN release: 2025-12-10

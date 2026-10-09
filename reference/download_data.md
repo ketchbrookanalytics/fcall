@@ -37,8 +37,13 @@ download_data(year, month, dest, files = NULL, quiet = FALSE)
 
 ## Value
 
-Console message informing the user where the data was successfully
-downloaded (and unzipped) into
+`TRUE` (invisibly) if the data was successfully downloaded and unzipped,
+along with a console message informing the user where the data was
+downloaded (and unzipped) into. If the data cannot be downloaded (e.g.,
+there is no internet connection, the resource is unavailable, or there
+is no data for the requested `year` and `month`) or unzipped,
+`download_data()` returns `FALSE` (invisibly) with an informative
+console message, instead of throwing an error.
 
 ## Details
 
@@ -54,6 +59,16 @@ Ketchbrook Analytics downloads these files and stores them in a public
 AWS S3 bucket, which is the location that `download_data()` retrieves
 them from.
 
+The files in the S3 bucket are identical to those published by FCA, with
+one exception: the `RCR7` data files in the March, June, September and
+December 2024 .zip files have been corrected to add rows that are
+missing from FCA's versions. Without these rows,
+[`process_data()`](https://ketchbrookanalytics.github.io/fcall/reference/process_data.md)
+fails on the 2024 data. See
+<https://github.com/ketchbrookanalytics/fcall/issues/23> for details. If
+you need FCA's original 2024 files, download them directly from the FCA
+website.
+
 ## Examples
 
 ``` r
@@ -67,7 +82,7 @@ them from.
     month = "September",   # using the name of the month
     dest = path_1
   )
-#> Files successfully downloaded into /tmp/Rtmp2HiA4w/fcadata13c0542bff2c5
+#> Files successfully downloaded into /tmp/Rtmpz5Pxvy/fcadata13b2f737e50a
 
   list.files(path_1)
 #>  [1] "D_INST.TXT"                  "D_RC.TXT"                   
@@ -120,7 +135,7 @@ them from.
       "INST_Q202509_G20251112.TXT"
     )
   )
-#> Files successfully downloaded into /tmp/Rtmp2HiA4w/fcadata23c056e44237f
+#> Files successfully downloaded into /tmp/Rtmpz5Pxvy/fcadata23b2f30f88cbf
 
   list.files(path_2)
 #> [1] "D_INST.TXT"                 "INST_Q202509_G20251112.TXT"

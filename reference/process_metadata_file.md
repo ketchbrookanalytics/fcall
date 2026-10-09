@@ -36,14 +36,17 @@ double asterisks in variable names.
   path <- tempfile("fcadata")
   dir.create(path)
 
-  download_data(
+  # `download_data()` returns `TRUE` if the download was successful
+  downloaded <- download_data(
     year = 2025,
     month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/Rtmp2HiA4w/fcadata3c051a15e551
+#> Files successfully downloaded into /tmp/Rtmpz5Pxvy/fcadata3b2f2b6a78c3
 
-  process_metadata_file(file.path(path, "D_RC1.TXT"))
+  if (downloaded) {
+    process_metadata_file(file.path(path, "D_RC1.TXT"))
+  }
 #> $scenario
 #> [1] "single"
 #> 

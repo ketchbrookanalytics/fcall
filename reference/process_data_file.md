@@ -48,18 +48,21 @@ function for the actual data reading.
   path <- tempfile("fcadata")
   dir.create(path)
 
-  download_data(
+  # `download_data()` returns `TRUE` if the download was successful
+  downloaded <- download_data(
     year = 2025,
     month = "September",
     dest = path
   )
-#> Files successfully downloaded into /tmp/Rtmp2HiA4w/fcadata3c057e93878e
+#> Files successfully downloaded into /tmp/Rtmpz5Pxvy/fcadata3b2f2fc44d27
 
-  process_data_file(
-    file = file.path(path, "RCB_Q202509_G20251112.TXT"),
-    metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
-    dict = RCB__INV_CODE
-  )
+  if (downloaded) {
+    process_data_file(
+      file = file.path(path, "RCB_Q202509_G20251112.TXT"),
+      metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
+      dict = RCB__INV_CODE
+    )
+  }
 #> # A tibble: 2,240 × 11
 #>    SYSTEM  DIST ASSOC MONTH  YEAR UNINUM INV_CODE BKVAL MKTVAL BKVALFORSALE
 #>     <int> <int> <int> <int> <int>  <int>    <int> <int>  <int>        <int>

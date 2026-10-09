@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fcall</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,22 @@
       <small>Source: <a href="https://github.com/ketchbrookanalytics/fcall/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.7" id="fcall-017">fcall 0.1.7<a class="anchor" aria-label="anchor" href="#fcall-017"></a></h2>
+<div class="section level3">
+<h3 id="bug-fix-0-1-7">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-1-7"></a></h3>
+<ul><li>
+<code><a href="../reference/process_data.html">process_data()</a></code> no longer prints a note about FCA’s 2024 data when it hits an error. The 2024 files in the AWS S3 bucket are now fixed, so the note is out of date. Errors from <code><a href="../reference/process_data.html">process_data()</a></code> are now raised as normal errors instead of being printed (<a href="https://github.com/ketchbrookanalytics/fcall/issues/47" class="external-link">#47</a>).</li>
+<li>
+<code><a href="../reference/download_data.html">download_data()</a></code> now fails gracefully, per CRAN policy on packages that use Internet resources. If the data can’t be downloaded (e.g., there is no internet connection, the AWS S3 bucket is unavailable, or there is no data for the requested <code>year</code> and <code>month</code>) or unzipped, <code><a href="../reference/download_data.html">download_data()</a></code> prints an informative message and returns <code>FALSE</code> (invisibly) instead of throwing an error. It returns <code>TRUE</code> (invisibly) on success (<a href="https://github.com/ketchbrookanalytics/fcall/issues/47" class="external-link">#47</a>).</li>
+<li>Examples that download data now only run when an internet connection is available (<a href="https://github.com/ketchbrookanalytics/fcall/issues/47" class="external-link">#47</a>).</li>
+<li>Unit tests that download data now skip when there is no internet connection, and on CRAN, per CRAN policy on packages that use Internet resources (<a href="https://github.com/ketchbrookanalytics/fcall/issues/47" class="external-link">#47</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-0-1-7">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-1-7"></a></h3>
+<ul><li>The <code><a href="../reference/download_data.html">download_data()</a></code> documentation now explains that the 2024 <code>RCR7</code> data files in the AWS S3 bucket differ from FCA’s files. Ketchbrook added the rows that FCA’s files are missing (<a href="https://github.com/ketchbrookanalytics/fcall/issues/23" class="external-link">#23</a>, <a href="https://github.com/ketchbrookanalytics/fcall/issues/46" class="external-link">#46</a>).</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.6" id="fcall-016">fcall 0.1.6<a class="anchor" aria-label="anchor" href="#fcall-016"></a></h2><p class="text-muted">CRAN release: 2025-12-10</p>
 <div class="section level3">
@@ -134,7 +150,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
