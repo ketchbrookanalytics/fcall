@@ -9,7 +9,7 @@
 
 ## Documentation
 
-* The `download_data()` documentation now says that the 2024 `RCR7` data files in the AWS S3 bucket differ from FCA's files. Ketchbrook added the rows that FCA's files are missing (#23, #46).
+* The `download_data()` documentation now explains that the 2024 `RCR7` data files in the AWS S3 bucket differ from FCA's files. Ketchbrook added the rows that FCA's files are missing (#23, #46).
 
 # fcall 0.1.6
 
