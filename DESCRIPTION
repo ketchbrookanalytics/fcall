@@ -1,6 +1,6 @@
 Package: fcall
 Title: Parse Farm Credit Administration Call Report Data into Tidy Data Frames
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: c(
     person("Michael", "Thomas", email = "mthomas@ketchbrookanalytics.com",
            role = c("aut", "cre")),
@@ -17,11 +17,9 @@ Description: Parses financial condition and performance data (Call Reports) for
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.3
 Depends:
     R (>= 4.1)
 Imports:
-    cli,
     dplyr,
     glue,
     purrr,
@@ -32,6 +30,7 @@ Imports:
     utils,
     waldo
 Suggests:
+    curl,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
@@ -41,3 +40,4 @@ BugReports: https://github.com/ketchbrookanalytics/fcall/issues
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0

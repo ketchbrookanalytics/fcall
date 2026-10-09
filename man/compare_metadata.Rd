@@ -28,6 +28,7 @@ metadata files, and then compares (a) the number of files, (b) file names,
 (c) file order, and (d) file content (using the \code{waldo::compare()} function).
 }
 \examples{
+\dontshow{if (requireNamespace("curl", quietly = TRUE) && curl::has_internet()) withAutoprint(\{ # examplesIf}
 \donttest{
 
   # Download data from September 2025
@@ -53,4 +54,5 @@ metadata files, and then compares (a) the number of files, (b) file names,
   compare_metadata(path_1, path_2)
 
 }
+\dontshow{\}) # examplesIf}
 }

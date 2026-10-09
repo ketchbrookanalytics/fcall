@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
@@ -48,29 +48,7 @@ process_data <- function(dir) {
 
   }
 
-  # If `process_data_all()` throws an error, add a message about the bad 2024
-  # files from FCA
-  tryCatch(
-    expr = process_data_all(dir),
-    error = function(e) {
-
-      # Show error message without trace (to improve readability)
-      e$trace <- NULL
-      print(e)
-
-      cli::cli_h1("A Note about FCA's 2024 Data:")
-
-      paste(
-        "Please note there is an outstanding issue with the 2024 files posted",
-        "by FCA. If you are trying to process 2024 data, please refer to",
-        "{.url https://github.com/ketchbrookanalytics/fcall/issues/23}",
-        "for more information and solutions while FCA works on fixing the",
-        "files."
-      ) |>
-        cli::cli_alert_warning()
-
-    }
-  )
+  process_data_all(dir)
 
 }
 
@@ -145,19 +123,22 @@ process_data_all <- function(dir) {
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
 #'   dir.create(path)
 #'
-#'   download_data(
+#'   # `download_data()` returns `TRUE` if the download was successful
+#'   downloaded <- download_data(
 #'     year = 2025,
 #'     month = "September",
 #'     dest = path
 #'   )
 #'
-#'   process_metadata_file(file.path(path, "D_RC1.TXT"))
+#'   if (downloaded) {
+#'     process_metadata_file(file.path(path, "D_RC1.TXT"))
+#'   }
 #'
 #' }
 process_metadata_file <- function(file) {
@@ -270,23 +251,26 @@ process_metadata_file <- function(file) {
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path <- tempfile("fcadata")
 #'   dir.create(path)
 #'
-#'   download_data(
+#'   # `download_data()` returns `TRUE` if the download was successful
+#'   downloaded <- download_data(
 #'     year = 2025,
 #'     month = "September",
 #'     dest = path
 #'   )
 #'
-#'   process_data_file(
-#'     file = file.path(path, "RCB_Q202509_G20251112.TXT"),
-#'     metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
-#'     dict = RCB__INV_CODE
-#'   )
+#'   if (downloaded) {
+#'     process_data_file(
+#'       file = file.path(path, "RCB_Q202509_G20251112.TXT"),
+#'       metadata = process_metadata_file(file.path(path, "D_RCB.TXT")),
+#'       dict = RCB__INV_CODE
+#'     )
+#'   }
 #'
 #' }
 process_data_file <- function(file, metadata, dict = NULL) {

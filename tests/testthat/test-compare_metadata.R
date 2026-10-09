@@ -25,6 +25,8 @@ metadata_comparison_test <- function(year1, month1, dest1,
 
 test_that("`compare_metadata()` correctly identifies if differences exist", {
 
+  skip_if_offline()
+
   # Compare June 2025 to September 2025
   # We expect no differences across files or content
   diffs <- withr::with_tempdir(

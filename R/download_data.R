@@ -22,12 +22,25 @@
 #'   S3 bucket, which is the location that `download_data()` retrieves them
 #'   from.
 #'
-#' @return Console message informing the user where the data was successfully
-#'   downloaded (and unzipped) into
+#'   The files in the S3 bucket are identical to those published by FCA, with
+#'   one exception: the `RCR7` data files in the March, June, September and
+#'   December 2024 .zip files have been corrected to add rows that are missing
+#'   from FCA's versions. Without these rows, `process_data()` fails on the
+#'   2024 data. See <https://github.com/ketchbrookanalytics/fcall/issues/23>
+#'   for details. If you need FCA's original 2024 files, download them directly
+#'   from the FCA website.
+#'
+#' @return `TRUE` (invisibly) if the data was successfully downloaded and
+#'   unzipped, along with a console message informing the user where the
+#'   data was downloaded (and unzipped) into. If the data cannot be
+#'   downloaded (e.g., there is no internet connection, the resource is
+#'   unavailable, or there is no data for the requested `year` and `month`)
+#'   or unzipped, `download_data()` returns `FALSE` (invisibly) with an
+#'   informative console message, instead of throwing an error.
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("curl", quietly = TRUE) && curl::has_internet()
 #' \donttest{
 #'
 #'   path_1 <- tempfile("fcadata1")
@@ -129,24 +142,77 @@ download_data <- function(year, month, dest, files = NULL, quiet = FALSE) {
   }
 
   # Create temp storage location for .zip file
-  temp_path <- tempfile(fileext =  ".zip")
+  temp_path <- tempfile(fileext = ".zip")
+  on.exit(unlink(temp_path), add = TRUE)
 
   # Download .zip file into temp storage location
-  utils::download.file(
-    url = url,
-    destfile = temp_path,
-    quiet = quiet
+  # NOTE: per CRAN policy, fail gracefully (with an informative message instead
+  # of an error) if the resource is unavailable; `utils::download.file()`
+  # signals a warning before its error, so either condition means it failed
+  download_problem <- tryCatch(
+    expr = {
+      utils::download.file(
+        url = url,
+        destfile = temp_path,
+        quiet = quiet
+      )
+      NULL
+    },
+    error = function(e) conditionMessage(e),
+    warning = function(w) conditionMessage(w)
   )
 
+  if (!is.null(download_problem)) {
+
+    rlang::inform(
+      c(
+        paste0("Could not download ", url),
+        "x" = download_problem,
+        "i" = paste(
+          "The resource may be temporarily unavailable, or there may be no",
+          "data for the requested `year` and `month`. Please check your",
+          "internet connection and try again later."
+        )
+      )
+    )
+
+    return(invisible(FALSE))
+
+  }
+
   # Un-zip the files into the directory defined by the `dest` argument
-  utils::unzip(
-    zipfile = temp_path,
-    files = files,
-    exdir = dest
+  # NOTE: `utils::unzip()` signals a warning (not an error) if the .zip file is
+  # corrupt or the requested `files` aren't in it
+  unzip_problem <- tryCatch(
+    expr = {
+      utils::unzip(
+        zipfile = temp_path,
+        files = files,
+        exdir = dest
+      )
+      NULL
+    },
+    error = function(e) conditionMessage(e),
+    warning = function(w) conditionMessage(w)
   )
+
+  if (!is.null(unzip_problem)) {
+
+    rlang::inform(
+      c(
+        paste0("Could not unzip the files downloaded from ", url),
+        "x" = unzip_problem
+      )
+    )
+
+    return(invisible(FALSE))
+
+  }
 
   # Inform user
   paste0("Files successfully downloaded into ", dest) |>
     rlang::inform()
+
+  invisible(TRUE)
 
 }
